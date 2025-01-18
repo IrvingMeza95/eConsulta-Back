@@ -1,0 +1,958 @@
+{
+	"info": {
+		"_postman_id": "ef4ff788-a6de-4a0a-9965-f34a1ec10979",
+		"name": "usuarioService API",
+		"description": "Endpoinds para la gestion de proveedores y clientes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29391445"
+	},
+	"item": [
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "deshabilitar-habilitar",
+					"item": [
+						{
+							"name": "{param}",
+							"item": [
+								{
+									"name": "deshabilitar Habbilitar",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/usuarios/deshabilitar-habilitar/:param",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"usuarios",
+												"deshabilitar-habilitar",
+												":param"
+											],
+											"variable": [
+												{
+													"key": "param",
+													"value": "+528787912322",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/usuarios/deshabilitar-habilitar/:param",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"usuarios",
+														"deshabilitar-habilitar",
+														":param"
+													],
+													"variable": [
+														{
+															"key": "param"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "cambiar-password",
+					"item": [
+						{
+							"name": "{param}",
+							"item": [
+								{
+									"name": "cambiar Password",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/usuarios/cambiar-password/:param?password=12345&nuevaPassword=123456",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"usuarios",
+												"cambiar-password",
+												":param"
+											],
+											"query": [
+												{
+													"key": "password",
+													"value": "12345",
+													"description": "(Required) "
+												},
+												{
+													"key": "nuevaPassword",
+													"value": "123456",
+													"description": "(Required) "
+												}
+											],
+											"variable": [
+												{
+													"key": "param",
+													"value": "alfonso_m73",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/usuarios/cambiar-password/:param?password=<string>&nuevaPassword=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"usuarios",
+														"cambiar-password",
+														":param"
+													],
+													"query": [
+														{
+															"key": "password",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "nuevaPassword",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "param"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tipos-de-usuarios",
+					"item": [
+						{
+							"name": "tipos De Usuarios",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/tipos-de-usuarios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"tipos-de-usuarios"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/usuarios/tipos-de-usuarios",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"usuarios",
+												"tipos-de-usuarios"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  \"PROVEEDOR\",\n  \"PROVEEDOR\"\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "credenciales",
+					"item": [
+						{
+							"name": "{param}",
+							"item": [
+								{
+									"name": "get Usuario",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/usuarios/credenciales/:param",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"usuarios",
+												"credenciales",
+												":param"
+											],
+											"variable": [
+												{
+													"key": "param",
+													"value": "alfonso_m73",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/usuarios/credenciales/:param",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"usuarios",
+														"credenciales",
+														":param"
+													],
+													"variable": [
+														{
+															"key": "param"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"codigoDeLlamada\": \"<string>\",\n  \"celular\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"<long>\",\n      \"nombre\": \"ROLE_ADMIN\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"nombre\": \"ROLE_ADMIN\"\n    }\n  ],\n  \"enabled\": \"<boolean>\",\n  \"intentos\": \"<integer>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get Personas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<string>\",\n    \"pais\": \"<string>\",\n    \"ciudad\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"numeroExterior\": \"<string>\",\n    \"codigoPostal\": \"<string>\",\n    \"tipoUsuario\": \"PROVEEDOR\",\n    \"credenciales\": {\n      \"id\": \"<string>\",\n      \"persona\": {\n        \"id\": \"<string>\",\n        \"pais\": \"<string>\",\n        \"ciudad\": \"<string>\",\n        \"direccion\": \"<string>\",\n        \"numeroExterior\": \"<string>\",\n        \"codigoPostal\": \"<string>\",\n        \"tipoUsuario\": \"CONSUMIDOR\",\n        \"credenciales\": {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"username\": \"<string>\",\n          \"password\": \"<string>\",\n          \"codigoDeLlamada\": \"<string>\",\n          \"celular\": \"<string>\",\n          \"roles\": [\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            },\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            }\n          ],\n          \"enabled\": \"<boolean>\",\n          \"intentos\": \"<integer>\",\n          \"persona\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"archivos\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"verificado\": \"<boolean>\",\n        \"tipoPersona\": \"MORAL\",\n        \"cuentaBancaria\": {\n          \"id\": \"<string>\",\n          \"numeroCuenta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"tarjetas\": [\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"CREDITO\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"DEBITO\"\n          }\n        ]\n      },\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"codigoDeLlamada\": \"<string>\",\n      \"celular\": \"<string>\",\n      \"roles\": [\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_ADMIN\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_USER\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"intentos\": \"<integer>\"\n    },\n    \"verificado\": \"<boolean>\",\n    \"tipoPersona\": \"MORAL\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"pais\": \"<string>\",\n    \"ciudad\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"numeroExterior\": \"<string>\",\n    \"codigoPostal\": \"<string>\",\n    \"tipoUsuario\": \"PROVEEDOR\",\n    \"credenciales\": {\n      \"id\": \"<string>\",\n      \"persona\": {\n        \"id\": \"<string>\",\n        \"pais\": \"<string>\",\n        \"ciudad\": \"<string>\",\n        \"direccion\": \"<string>\",\n        \"numeroExterior\": \"<string>\",\n        \"codigoPostal\": \"<string>\",\n        \"tipoUsuario\": \"PROVEEDOR\",\n        \"credenciales\": {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"username\": \"<string>\",\n          \"password\": \"<string>\",\n          \"codigoDeLlamada\": \"<string>\",\n          \"celular\": \"<string>\",\n          \"roles\": [\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_ADMIN\"\n            },\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            }\n          ],\n          \"enabled\": \"<boolean>\",\n          \"intentos\": \"<integer>\",\n          \"persona\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"archivos\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"verificado\": \"<boolean>\",\n        \"tipoPersona\": \"FISICA\",\n        \"cuentaBancaria\": {\n          \"id\": \"<string>\",\n          \"numeroCuenta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"tarjetas\": [\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"CREDITO\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"DEBITO\"\n          }\n        ]\n      },\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"codigoDeLlamada\": \"<string>\",\n      \"celular\": \"<string>\",\n      \"roles\": [\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_ADMIN\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_USER\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"intentos\": \"<integer>\"\n    },\n    \"verificado\": \"<boolean>\",\n    \"tipoPersona\": \"MORAL\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "persona",
+			"item": [
+				{
+					"name": "{param}",
+					"item": [
+						{
+							"name": "get Persona",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/persona/:param",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"persona",
+										":param"
+									],
+									"variable": [
+										{
+											"key": "param",
+											"value": "irving_m95",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/persona/:param",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"persona",
+												":param"
+											],
+											"variable": [
+												{
+													"key": "param"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"pais\": \"<string>\",\n  \"ciudad\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"numeroExterior\": \"<string>\",\n  \"codigoPostal\": \"<string>\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"id\": \"<string>\",\n    \"persona\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"tipoUsuario\": \"PROVEEDOR\",\n      \"credenciales\": {\n        \"value\": \"<Circular reference to #/components/schemas/Usuario detected>\"\n      },\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MORAL\",\n      \"cuentaBancaria\": {\n        \"id\": \"<string>\",\n        \"numeroCuenta\": \"<string>\",\n        \"titular\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        }\n      },\n      \"tarjetas\": [\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"CREDITO\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"DEBITO\"\n        }\n      ]\n    },\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"codigoDeLlamada\": \"<string>\",\n    \"celular\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_ADMIN\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      }\n    ],\n    \"enabled\": \"<boolean>\",\n    \"intentos\": \"<integer>\"\n  },\n  \"verificado\": \"<boolean>\",\n  \"tipoPersona\": \"FISICA\"\n}"
+								}
+							]
+						},
+						{
+							"name": "modificar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pais\": \"argentina\",\n  \"ciudad\": \"buenos aires\",\n  \"direccion\": \"no se\",\n  \"numeroExterior\": \"123\",\n  \"codigoPostal\": \"260\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"tipoPersona\": \"MORAL\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"ine\": \"987654\",\n  \"nombres\": \"alfonso\",\n  \"apellidos\": \"meza\",\n  \"fechaNacimiento\": \"1973-01-01\",\n  \"rfc\": \"123456\",\n  \"nombre\": \"SANGAR FINANCIERA\",\n  \"razonSocial\": \"SOFOM ENR\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/persona/:param",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"persona",
+										":param"
+									],
+									"variable": [
+										{
+											"key": "param",
+											"value": "irving_m95",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<string>\",\n  \"pais\": \"<string>\",\n  \"ciudad\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"numeroExterior\": \"<string>\",\n  \"codigoPostal\": \"<string>\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"id\": \"<string>\",\n    \"persona\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"tipoUsuario\": \"PROVEEDOR\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"estatusDeVerificaciono\": \"PENDIENTE\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MORAL\",\n      \"cuentaBancaria\": {\n        \"id\": \"<string>\",\n        \"numeroCuenta\": \"<string>\",\n        \"titular\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        }\n      },\n      \"tarjetas\": [\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"CREDITO\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"DEBITO\"\n        }\n      ]\n    },\n    \"tipoPersona\": \"MORAL\",\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"codigoDeLlamada\": \"<string>\",\n    \"celular\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      }\n    ],\n    \"enabled\": \"<boolean>\",\n    \"intentos\": \"<integer>\",\n    \"codigoDeVerificacion\": \"<integer>\",\n    \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n    \"estatusDeVerificaciono\": \"SIN_VERIFICAR\",\n    \"verificacion2Factores\": \"<boolean>\"\n  },\n  \"verificado\": \"<boolean>\",\n  \"tipoPersona\": \"FISICA\",\n  \"archivos\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  ],\n  \"ine\": \"<string>\",\n  \"nombres\": \"<string>\",\n  \"apellidos\": \"<string>\",\n  \"fechaNacimiento\": \"<string>\",\n  \"rfc\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"razonSocial\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/persona/:param",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"persona",
+												":param"
+											],
+											"variable": [
+												{
+													"key": "param"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"pais\": \"<string>\",\n  \"ciudad\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"numeroExterior\": \"<string>\",\n  \"codigoPostal\": \"<string>\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"id\": \"<string>\",\n    \"persona\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"tipoUsuario\": \"PROVEEDOR\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"estatusDeVerificaciono\": \"PENDIENTE\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MORAL\",\n      \"cuentaBancaria\": {\n        \"id\": \"<string>\",\n        \"numeroCuenta\": \"<string>\",\n        \"titular\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        }\n      },\n      \"tarjetas\": [\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"CREDITO\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"DEBITO\"\n        }\n      ]\n    },\n    \"tipoPersona\": \"MORAL\",\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"codigoDeLlamada\": \"<string>\",\n    \"celular\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      }\n    ],\n    \"enabled\": \"<boolean>\",\n    \"intentos\": \"<integer>\",\n    \"codigoDeVerificacion\": \"<integer>\",\n    \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n    \"estatusDeVerificaciono\": \"SIN_VERIFICAR\",\n    \"verificacion2Factores\": \"<boolean>\"\n  },\n  \"verificado\": \"<boolean>\",\n  \"tipoPersona\": \"FISICA\",\n  \"archivos\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  ],\n  \"ine\": \"<string>\",\n  \"nombres\": \"<string>\",\n  \"apellidos\": \"<string>\",\n  \"fechaNacimiento\": \"<string>\",\n  \"rfc\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"razonSocial\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/persona/:param",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"persona",
+										":param"
+									],
+									"variable": [
+										{
+											"key": "param",
+											"value": "irving_m95",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/persona-moral/:param",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"persona-moral",
+												":param"
+											],
+											"variable": [
+												{
+													"key": "param"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "crear",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipoPersona\": \"MORAL\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"password\": \"123456\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 2\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/persona",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"tipoPersona\": \"MORAL\",\n  \"tipoUsuario\": \"<string>\",\n  \"credenciales\": {\n    \"id\": \"<string>\",\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"codigoDeLlamada\": \"<string>\",\n    \"celular\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_ADMIN\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      }\n    ],\n    \"enabled\": \"<boolean>\",\n    \"intentos\": \"<integer>\",\n    \"persona\": {\n      \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n    },\n    \"codigoDeVerificacion\": \"<integer>\",\n    \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n    \"estatusDeVerificaciono\": \"SIN_VERIFICAR\",\n    \"verificacion2Factores\": \"<boolean>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/persona",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"persona"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"pais\": \"<string>\",\n  \"ciudad\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"numeroExterior\": \"<string>\",\n  \"codigoPostal\": \"<string>\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"id\": \"<string>\",\n    \"persona\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"tipoUsuario\": \"PROVEEDOR\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"estatusDeVerificaciono\": \"PENDIENTE\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"data\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MORAL\",\n      \"cuentaBancaria\": {\n        \"id\": \"<string>\",\n        \"numeroCuenta\": \"<string>\",\n        \"titular\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        }\n      },\n      \"tarjetas\": [\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"CREDITO\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"numeroTarjeta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          },\n          \"fechaVencimiento\": \"<string>\",\n          \"codigoSeguridad\": \"<string>\",\n          \"bancoEmisor\": \"<string>\",\n          \"tipoTarjeta\": \"DEBITO\"\n        }\n      ]\n    },\n    \"tipoPersona\": \"MORAL\",\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"codigoDeLlamada\": \"<string>\",\n    \"celular\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"ROLE_USER\"\n      }\n    ],\n    \"enabled\": \"<boolean>\",\n    \"intentos\": \"<integer>\",\n    \"codigoDeVerificacion\": \"<integer>\",\n    \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n    \"estatusDeVerificaciono\": \"SIN_VERIFICAR\",\n    \"verificacion2Factores\": \"<boolean>\"\n  },\n  \"verificado\": \"<boolean>\",\n  \"tipoPersona\": \"FISICA\",\n  \"archivos\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\"\n    }\n  ],\n  \"ine\": \"<string>\",\n  \"nombres\": \"<string>\",\n  \"apellidos\": \"<string>\",\n  \"fechaNacimiento\": \"<string>\",\n  \"rfc\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"razonSocial\": \"<string>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "verificacion",
+			"item": [
+				{
+					"name": "verificar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"irvingmeza95@gmail.com\",\r\n    \"template\": \"CODIGO_VERIFICACION_DE_CELULAR\",\r\n    \"codigo\": 2758,\r\n    \"fecha\": \"2024-06-27 11:20:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/verificacion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"verificacion"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/verificacion?param=<string>&codigo=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"verificacion"
+									],
+									"query": [
+										{
+											"key": "param",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "codigo",
+											"value": "<integer>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Niveles De Verificacion",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/verificacion/niveles-de-verificacion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"verificacion",
+								"niveles-de-verificacion"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/persona/estatus-de-verificacion",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"persona",
+										"estatus-de-verificacion"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  \"VERIFICADO\",\n  \"PENDIENTE\"\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/usuarios",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3MjA5OTI2NzgsIlRpcG9QZXJzb25hIjoiTU9SQUwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQ2YmZmMjI0LWQxM2YtNDE3MS04YmM5LTRmMGE0ZTdhYmQ3MCIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nX205NSJ9.sDWvrtCW8DcfuKbM1gBNr_MKOOPeHwQ_dUHS2X-cPzs",
+			"type": "string"
+		}
+	]
+}

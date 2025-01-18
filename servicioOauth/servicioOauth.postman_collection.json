@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "e19fd72f-033a-4222-abef-3c883c843200",
+		"name": "servicioOauth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29391445"
+	},
+	"item": [
+		{
+			"name": "autenticación con credenciales",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front_app",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "fecha-hora",
+						"value": "fecha y hora",
+						"type": "text"
+					},
+					{
+						"key": "ubicacion",
+						"value": "mi ubicacion",
+						"type": "text"
+					},
+					{
+						"key": "dispositivo",
+						"value": "mi dispositivo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "irving_m95",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"token"
+					]
+				},
+				"description": "End point para la autenticación de aplicacion cliente, usuarios y a partir de ello retornar un JWT token encriptado.\n\nEn el basic auth se enviarián las credenciales de la aplicación cliente y en e form-data del body las credenciales del usuario espeficicando el 'grant_type' de tipo 'password'."
+			},
+			"response": []
+		},
+		{
+			"name": "autenticación con refresh token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "front_app",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJhdGkiOiJiYjdlZWI5Ni1lNjlhLTRmMDUtYWU3Zi0zYjQ4NWI0YWIwZWUiLCJleHAiOjE3MTU2MjM1NTEsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiOTk2M2JkZTEtMGE1MC00MGExLThhZTItYjQ0Y2IwMGU1ZTgyIiwiY2xpZW50X2lkIjoiZnJvbnRfYXBwIn0.9DMoLlCVj-8sxsW30_jqlzOJemyPhWWuofNP85QmVzQ",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"token"
+					]
+				},
+				"description": "End point para generar un token de acceso mediante el 'refresh_token'.\n\nEn el basic auth se enviarián las credenciales de la aplicación cliente y en e form-data del body el refresh token especificando el 'grant_type' de tipo 'refresh_token'."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/security/oauth",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/security/oauth",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

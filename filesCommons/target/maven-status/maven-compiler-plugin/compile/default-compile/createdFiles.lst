@@ -1,0 +1,7 @@
+com\iamf\filesCommons\enums\TipoDeArchivo.class
+com\iamf\filesCommons\responses\ResponseFile$ResponseFileBuilder.class
+com\iamf\filesCommons\responses\ResponseFile.class
+com\iamf\filesCommons\FilesCommonsApplication.class
+com\iamf\filesCommons\mappers\ResoonseFileMapper.class
+com\iamf\filesCommons\models\File$FileBuilder.class
+com\iamf\filesCommons\models\File.class

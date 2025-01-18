@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "df683404-222f-4b14-b008-86858b232021",
+		"name": "servicioVerificacion API",
+		"description": "Endpoinds para servicio de verificacion.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29391445"
+	},
+	"item": [
+		{
+			"name": "templates",
+			"item": [
+				{
+					"name": "save New Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/AureoEnvios/Templates/verificacion_2_factores_celular.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/templates?tipo=CELULAR_VERIFICACION_2_FACTORES&description=Verificacion de 2 factores por celular.&vars=nombreUsuario,codigo,fechaExpiracion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"templates"
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "CELULAR_VERIFICACION_2_FACTORES",
+									"description": "(Required) "
+								},
+								{
+									"key": "description",
+									"value": "Verificacion de 2 factores por celular.",
+									"description": "(Required) "
+								},
+								{
+									"key": "vars",
+									"value": "nombreUsuario,codigo,fechaExpiracion",
+									"description": "(Required) "
+								},
+								{
+									"key": "",
+									"value": "<string>",
+									"description": "(Required) ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"file\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/templates?tipo=<string>&description=<string>&vars=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templates"
+									],
+									"query": [
+										{
+											"key": "tipo",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "description",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "vars",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "tipos De Plantillas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/templates/tipos-de-plantillas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"templates",
+								"tipos-de-plantillas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/templates/tipos-de-plantillas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templates",
+										"tipos-de-plantillas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  \"BIENVENIDA\",\n  \"BIENVENIDA\"\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "phones",
+			"item": [
+				{
+					"name": "sms",
+					"item": [
+						{
+							"name": "send Sms",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/phones/sms?to=<string>&message=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"phones",
+										"sms"
+									],
+									"query": [
+										{
+											"key": "to",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "message",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/phones/sms?to=<string>&message=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"phones",
+												"sms"
+											],
+											"query": [
+												{
+													"key": "to",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "message",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "emails",
+			"item": [
+				{
+					"name": "bienvenida",
+					"item": [
+						{
+							"name": "email De Bienvenida",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/emails/bienvenida",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"emails",
+										"bienvenida"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"to\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"template\": \"<string>\",\n  \"metodoDeVerificacion\": \"<string>\",\n  \"fecha\": \"<string>\",\n  \"codigo\": \"<integer>\",\n  \"metaData\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/emails/bienvenida",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"emails",
+												"bienvenida"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "verificacion",
+			"item": [
+				{
+					"name": "codigo De Verificacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CELULAR\",\n    \"fecha\": \"2024-06-27 11:10:00\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/verificacion/codigo-de-verificacion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"verificacion",
+								"codigo-de-verificacion"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"to\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"template\": \"<string>\",\n  \"metodoDeVerificacion\": \"<string>\",\n  \"fecha\": \"<string>\",\n  \"codigo\": \"<integer>\",\n  \"metaData\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/emails/codigo-de-verificacion",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"emails",
+										"codigo-de-verificacion"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/verificacion",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/verificacion",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "0facf9b3-a390-4907-8b59-30ee62f431bf",
+		"name": "filesManagerServvice API",
+		"description": "Endpoinds para la gestion de archivos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29391445"
+	},
+	"item": [
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "ver Archivo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/files/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"files",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "54f86ec6-c089-40df-bdda-9980efe5059b",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/files/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"files",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tipos",
+					"item": [
+						{
+							"name": "tipos De Archivos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/files/tipos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"files",
+										"tipos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/files/tipos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"files",
+												"tipos"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  \"PROFILE_PICTURE\",\n  \"PROFILE_PICTURE\"\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "files-paths",
+					"item": [
+						{
+							"name": "listar Archivos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/files/files-paths",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"files",
+										"files-paths"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/files/files-paths",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"files",
+												"files-paths"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"type\": \"<string>\",\n    \"size\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"type\": \"<string>\",\n    \"size\": \"<integer>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{param}",
+					"item": [
+						{
+							"name": "{tipo}",
+							"item": [
+								{
+									"name": "ver Archivo2",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/files/:param/:tipo",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"files",
+												":param",
+												":tipo"
+											],
+											"variable": [
+												{
+													"key": "param",
+													"value": "irving_m95",
+													"description": "(Required) "
+												},
+												{
+													"key": "tipo",
+													"value": "PROFILE_PICTURE",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/files/:param/:tipo",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"files",
+														":param",
+														":tipo"
+													],
+													"variable": [
+														{
+															"key": "param"
+														},
+														{
+															"key": "tipo"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "subir",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/Irving/Profile Picture.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/files?idUsuario=irving_m95&tipo=PROFILE_PICTURE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"files"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": "irving_m95",
+									"description": "(Required) "
+								},
+								{
+									"key": "tipo",
+									"value": "PROFILE_PICTURE",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"file\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/files?idUsuario=<string>&tipo=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"files"
+									],
+									"query": [
+										{
+											"key": "idUsuario",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "tipo",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<string>\",\n  \"type\": \"<string>\",\n  \"size\": \"<integer>\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/files"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/files",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3MjA5OTE2OTksIlRpcG9QZXJzb25hIjoiTU9SQUwiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiZTdkZTI3NzItMDc0Zi00N2U0LTgyYjYtNTdmYmE0N2JhNGU3IiwiY2xpZW50X2lkIjoiZnJvbnRfYXBwIiwidXNlcm5hbWUiOiJpcnZpbmdfbTk1In0.zw2lwxpf9BqSEQ-RB_3fpi7zqIrmLva0hMXR985oiyI",
+			"type": "string"
+		}
+	]
+}
