@@ -19,6 +19,7 @@ public class MedicoServiceImpl implements MedicoService {
 
     @Override
     public Medico guardar(Medico medico) {
+        //En espera de creacion
         return null;
     }
 
