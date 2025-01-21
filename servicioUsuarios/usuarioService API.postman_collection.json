@@ -197,71 +197,6 @@
 					]
 				},
 				{
-					"name": "tipos-de-usuarios",
-					"item": [
-						{
-							"name": "tipos De Usuarios",
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/usuarios/tipos-de-usuarios",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"usuarios",
-										"tipos-de-usuarios"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/usuarios/tipos-de-usuarios",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"usuarios",
-												"tipos-de-usuarios"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "*/*"
-										}
-									],
-									"cookie": [],
-									"body": "[\n  \"PROVEEDOR\",\n  \"PROVEEDOR\"\n]"
-								}
-							]
-						}
-					]
-				},
-				{
 					"name": "credenciales",
 					"item": [
 						{
@@ -335,6 +270,111 @@
 											],
 											"cookie": [],
 											"body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"codigoDeLlamada\": \"<string>\",\n  \"celular\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"<long>\",\n      \"nombre\": \"ROLE_ADMIN\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"nombre\": \"ROLE_ADMIN\"\n    }\n  ],\n  \"enabled\": \"<boolean>\",\n  \"intentos\": \"<integer>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "agregar-password Copy",
+					"item": [
+						{
+							"name": "{param}",
+							"item": [
+								{
+									"name": "agregar Password",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=1437",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"usuarios",
+												"agregar-password",
+												":param"
+											],
+											"query": [
+												{
+													"key": "password",
+													"value": "123456",
+													"description": "(Required) "
+												},
+												{
+													"key": "codigo",
+													"value": "1437",
+													"description": "(Required) "
+												}
+											],
+											"variable": [
+												{
+													"key": "param",
+													"value": "irvingmeza95@gmail.com",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=<string>&codigo=<integer>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"usuarios",
+														"agregar-password",
+														":param"
+													],
+													"query": [
+														{
+															"key": "password",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "codigo",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "param"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\"\n}"
 										}
 									]
 								}
@@ -427,7 +467,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "irving_m95",
+											"value": "irvingmeza95@gmail.com",
 											"description": "(Required) "
 										}
 									]
@@ -490,7 +530,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"pais\": \"argentina\",\n  \"ciudad\": \"buenos aires\",\n  \"direccion\": \"no se\",\n  \"numeroExterior\": \"123\",\n  \"codigoPostal\": \"260\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"tipoPersona\": \"MORAL\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"ine\": \"987654\",\n  \"nombres\": \"alfonso\",\n  \"apellidos\": \"meza\",\n  \"fechaNacimiento\": \"1973-01-01\",\n  \"rfc\": \"123456\",\n  \"nombre\": \"SANGAR FINANCIERA\",\n  \"razonSocial\": \"SOFOM ENR\"\n}",
+									"raw": "{\n  \"pais\": \"mexico\",\n  \"ciudad\": \"piedras negras\",\n  \"direccion\": \"na\",\n  \"numeroExterior\": \"321\",\n  \"codigoPostal\": \"654\",\n  \"tipoPersona\": \"PACIENTE\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"dni\": \"987\",\n  \"nombre\": \"alfonso\",\n  \"apellido\": \"flores\",\n  \"fechaNacimiento\": \"27/06/1995\",\n  \"sueldo\": 150,\n  \"especialidad\": \"dentista\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -593,7 +633,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "irving_m95",
+											"value": "alfonso_m73",
 											"description": "(Required) "
 										}
 									]
@@ -661,7 +701,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"MORAL\",\n  \"tipoUsuario\": \"CONSUMIDOR\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"password\": \"123456\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 2\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0\n  }\n}",
+							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"27/06/1995\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -745,7 +785,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"to\": \"irvingmeza95@gmail.com\",\r\n    \"template\": \"CODIGO_VERIFICACION_DE_CELULAR\",\r\n    \"codigo\": 2758,\r\n    \"fecha\": \"2024-06-27 11:20:00\"\r\n}",
+							"raw": "{\r\n    \"to\": \"irvingmeza95@gmail.com\",\r\n    \"template\": \"CODIGO_VERIFICACION_DE_CELULAR\",\r\n    \"codigo\": 3325,\r\n    \"fecha\": \"2024-06-27 11:20:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -941,17 +981,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8080/api/usuarios",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3MjA5OTI2NzgsIlRpcG9QZXJzb25hIjoiTU9SQUwiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQ2YmZmMjI0LWQxM2YtNDE3MS04YmM5LTRmMGE0ZTdhYmQ3MCIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nX205NSJ9.sDWvrtCW8DcfuKbM1gBNr_MKOOPeHwQ_dUHS2X-cPzs",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDAwODQ2MjgsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQ5N2U5ZWFkLTc5OTYtNDllMy1hY2ZlLTFlYmNhMDM4MmMwZiIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.t7CVF3TM9BiwmJapRG2mArTZ0cWYkEnwlcZFcDu3Cro",
 			"type": "string"
 		}
 	]

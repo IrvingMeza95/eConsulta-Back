@@ -18,6 +18,14 @@ public abstract class Persona {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+    @Column(nullable = false, unique = true)
+    private String dni;
+    @Column(nullable = false)
+    private String nombre;
+    @Column(nullable = false)
+    private String apellido;
+    @Column(nullable = false)
+    private String fechaNacimiento;
     @Column(nullable = true, length = 50)
     private String pais;
     @Column(nullable = true, length = 50)

@@ -10,7 +10,7 @@ public interface PacienteService {
     Paciente guardar(Paciente paciente);
     Paciente crear(RegistroDTO registro) throws MyException;
     Paciente getPersona(String param) throws MyException;
-    Paciente modificar(String param, PersonaDTO nuevaPersonaFisica) throws MyException;
+    Paciente modificar(String param, PersonaDTO nuevoPaciente) throws MyException;
     void eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
 

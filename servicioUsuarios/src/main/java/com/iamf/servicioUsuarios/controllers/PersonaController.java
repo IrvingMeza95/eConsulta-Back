@@ -8,6 +8,7 @@ import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
+import com.iamf.filesCommons.responses.ResponseFile;
 import com.iamf.servicioUsuarios.clientes.FilesManagerService;
 import com.iamf.servicioUsuarios.clientes.ServicioVerificacion;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
@@ -18,6 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/persona")
@@ -45,15 +50,41 @@ public class PersonaController {
             log.info("Buscando persona tipo MEDICO.");
             Medico medico = medicoService.getPersona(param);
             personaDTO = personaMapper.getMedicoDTO(medico);
-            if (medico.getArchivos() != null)
-                personaDTO.setArchivos(filesManagerService.listarArchivos(medico.getArchivos()));
+            if (medico.getArchivos() != null){
+                personaDTO.setArchivos(
+                        (List<ResponseFile>) Optional.ofNullable(medico.getArchivos())
+                                .map(archivos -> {
+                                    try {
+                                        return filesManagerService.listarArchivos(archivos);
+                                    } catch (Exception e) {
+                                        log.error("Gestor de archivos no disponible.", e);
+                                        return Collections.emptyList();
+                                    }
+                                })
+                                .orElse(Collections.emptyList())
+                );
+            }
             return ResponseEntity.ok(personaDTO);
         }else if (tipoPersona.equals(TipoPersona.PACIENTE)){
             log.info("Buscando persona tipo PACIENTE    .");
             Paciente paciente = pacienteService.getPersona(param);
             personaDTO = personaMapper.getPersonaDTO(paciente);
-            if (paciente.getArchivos() != null)
-                personaDTO.setArchivos(filesManagerService.listarArchivos(paciente.getArchivos()));
+            if (paciente.getArchivos() != null){
+                personaDTO.setArchivos(
+                        (List<ResponseFile>) Optional.ofNullable(paciente.getArchivos())
+                                .map(archivos -> {
+                                    try {
+                                        return filesManagerService.listarArchivos(archivos);
+                                    } catch (Exception e) {
+                                        log.error("Gestor de archivos no disponible.", e);
+                                        return Collections.emptyList();
+                                    }
+                                })
+                                .orElse(Collections.emptyList())
+                );
+
+
+            }
             return ResponseEntity.ok(personaDTO);
         }
         return null;
@@ -67,13 +98,13 @@ public class PersonaController {
             log.info("Creando nueva persona PACIENTE.");
             Paciente paciente = pacienteService.crear(registro);
             request.setTo(paciente.getCredenciales().getEmail());
-            servicioVerificacion.codigoDeVerificacion(request);
+//            servicioVerificacion.codigoDeVerificacion(request);
             return ResponseEntity.ok(personaMapper.getPersonaDTO(paciente));
         }else if (registro.getTipoPersona().equals(TipoPersona.MEDICO)){
             log.info("Creando nueva persona MEDICO.");
             Medico medico = medicoService.crear(registro);
             request.setTo(medico.getCredenciales().getEmail());
-            servicioVerificacion.codigoDeVerificacion(request);
+//            servicioVerificacion.codigoDeVerificacion(request);
             return ResponseEntity.ok(personaMapper.getMedicoDTO(medico));
         }
         return null;

@@ -3,48 +3,76 @@ package com.iamf.servicioUsuarios.services.impl;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Medico;
+import com.iamf.commons.models.Paciente;
+import com.iamf.commons.models.Usuario;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.MedicoRepo;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
+import com.iamf.servicioUsuarios.services.interfaces.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
 public class MedicoServiceImpl implements MedicoService {
 
     @Autowired
+    private PersonaService personaService;
+    @Autowired
     private MedicoRepo medicoRepo;
 
     @Override
     public Medico guardar(Medico medico) {
-        //En espera de creacion
-        return null;
+        return medicoRepo.save(medico);
     }
 
     @Override
     public Medico crear(RegistroDTO registro) throws MyException {
-        return null;
+        Medico medico = new Medico();
+        if (registro.getEspecialidad() != null || !registro.getEspecialidad().equalsIgnoreCase(""))
+            medico.setEspecialidad(registro.getEspecialidad());
+        if (registro.getSueldo() == null || registro.getSueldo() == 0)
+            throw new MyException("El sueldo no puede ser 0 o vacio.");
+        medico.setSueldo(registro.getSueldo());
+        personaService.crear(registro, medico);
+        medico = medicoRepo.save(medico);
+        personaService.guardarCredencciales(medico);
+        return medico;
     }
 
     @Override
     public Medico getPersona(String param) throws MyException {
-        return null;
+        Usuario usuario = personaService.gatPersona(param).getCredenciales();
+        Optional<Medico> medico = medicoRepo.findById(usuario.getPersona().getId());
+        if (medico.isEmpty())
+            throw new MyException("No se pudieron cargar los datos de la persona.");
+        return medico.get();
     }
 
     @Override
-    public Medico modificar(String param, PersonaDTO nuevaPersonaMoral) throws MyException {
-        return null;
+    public Medico modificar(String param, PersonaDTO nuevoMedico) throws MyException {
+        Medico medico = getPersona(param);
+        if (nuevoMedico.getEspecialidad() != null)
+            medico.setEspecialidad(nuevoMedico.getEspecialidad());
+        if (nuevoMedico.getSueldo() != 0)
+            medico.setSueldo(nuevoMedico.getSueldo());
+        personaService.modificar(medico,nuevoMedico);
+        return guardar(medico);
     }
 
     @Override
     public void eliminar(String param) throws MyException {
-
+        Medico medico = getPersona(param);
+        medicoRepo.delete(medico);
     }
 
     @Override
     public void agregarArchivo(String param, String idArchivo) throws MyException {
-
+        Medico medico = getPersona(param);
+        personaService.agregarArchivo(medico,idArchivo);
+        guardar(medico);
     }
 }

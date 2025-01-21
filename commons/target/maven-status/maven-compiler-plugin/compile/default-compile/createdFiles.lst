@@ -30,6 +30,7 @@ com\iamf\commons\enums\TipoDeArchivo.class
 com\iamf\commons\models\Usuario$UsuarioBuilder.class
 com\iamf\commons\models\File$FileBuilder.class
 com\iamf\commons\enums\TiposDePlantillas.class
+com\iamf\commons\utils\ServicioVerificacionUtils.class
 com\iamf\commons\dtos\UsuarioDTO$UsuarioDTOBuilder.class
 com\iamf\commons\dtos\MessageDTO.class
 com\iamf\commons\responses\ResponseFile$ResponseFileBuilder.class

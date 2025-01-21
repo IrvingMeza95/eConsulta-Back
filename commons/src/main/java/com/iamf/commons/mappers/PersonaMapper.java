@@ -20,7 +20,12 @@ public class PersonaMapper {
     public PersonaDTO getPersonaDTO(Persona persona){
         PersonaDTO personaDTO = PersonaDTO.builder()
         		.id(persona.getId())
-        		.pais(persona.getPais())
+				.tipoPersona(persona.getTipoPersona())
+				.dni(persona.getDni())
+				.nombre(persona.getNombre())
+				.apellido(persona.getApellido())
+				.fechaNacimiento(persona.getFechaNacimiento())
+				.pais(persona.getPais())
         		.ciudad(persona.getCiudad())
         		.direccion(persona.getDireccion())
         		.numeroExterior(persona.getNumeroExterior())
@@ -36,13 +41,19 @@ public class PersonaMapper {
 	public PersonaDTO getMedicoDTO(Medico medico){
 		PersonaDTO personaDTO = new PersonaDTO();
 		fillPersonaDTO(medico,personaDTO);
-		personaDTO.setEspecialidad(medico.getEspecialidad());
+		if (medico.getEspecialidad() != null)
+			personaDTO.setEspecialidad(medico.getEspecialidad());
 		personaDTO.setSueldo(medico.getSueldo());
 		return personaDTO;
 	}
 
 	public void fillPersonaDTO(Persona persona, PersonaDTO personaDTO){
 		personaDTO.setId(persona.getId());
+		personaDTO.setTipoPersona(persona.getTipoPersona());
+		personaDTO.setDni(persona.getDni());
+		personaDTO.setNombre(persona.getNombre());
+		personaDTO.setApellido(persona.getApellido());
+		personaDTO.setFechaNacimiento(persona.getFechaNacimiento());
 	    personaDTO.setPais(persona.getPais());
 	    personaDTO.setCiudad(persona.getCiudad());
 	    personaDTO.setDireccion(persona.getDireccion());

@@ -20,7 +20,7 @@ public class UsuarioMapper {
         		.email(usuario.getEmail())
 				.username(usuario.getUsername())
         		.password(usuario.getPassword())
-        		.codigoDeLlamada(usuario.getCodigoDeLlamada())
+				.codigoDeLlamada(usuario.getCodigoDeLlamada())
         		.celular(usuario.getCelular())
         		.roles(usuario.getRoles())
         		.enabled(usuario.getEnabled())
@@ -29,7 +29,8 @@ public class UsuarioMapper {
 				.emailVerificado(usuario.getEmailVerificado())
 				.celularVerificado(usuario.getCelularVerificado())
 				.verificacion2Factores(usuario.getVerificacion2Factores())
-        		.build();
+				.codigoDeVerificacion(usuario.getCodigoDeVerificacion())
+				.build();
         return usuarioDTO;
     }
 

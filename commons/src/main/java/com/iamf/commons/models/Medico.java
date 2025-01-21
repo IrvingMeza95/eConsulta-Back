@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity(name = "medico")
 public class Medico extends  Persona {
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private  String especialidad;
     @Column(nullable = false)
     private double sueldo;

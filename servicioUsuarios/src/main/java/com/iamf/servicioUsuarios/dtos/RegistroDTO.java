@@ -10,5 +10,11 @@ import lombok.*;
 @Builder
 public class RegistroDTO {
     private TipoPersona tipoPersona;
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String fechaNacimiento;
+    private String especialidad;
+    private Double sueldo;
     private Usuario credenciales;
 }

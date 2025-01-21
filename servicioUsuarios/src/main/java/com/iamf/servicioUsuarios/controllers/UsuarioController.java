@@ -2,7 +2,6 @@ package com.iamf.servicioUsuarios.controllers;
 
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.dtos.UsuarioDTO;
-import com.iamf.commons.enums.TipoUsuario;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.mappers.UsuarioMapper;
@@ -10,9 +9,7 @@ import com.iamf.commons.models.Persona;
 import com.iamf.commons.models.Usuario;
 import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.services.interfaces.UsuarioService;
-import feign.ResponseMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.crypto.agreement.jpake.JPAKERound1Payload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,11 +37,6 @@ public class UsuarioController {
     @GetMapping("/{param}")
     public ResponseEntity<Persona> getPersona(@PathVariable String param) throws MyException {
         return ResponseEntity.ok(usuarioService.getPersona(param));
-    }
-
-    @GetMapping("/tipos-de-usuarios")
-    public ResponseEntity<List<TipoUsuario>> tiposDeUsuarios(){
-        return ResponseEntity.ok(List.of(TipoUsuario.values()));
     }
 
     @GetMapping
@@ -75,6 +67,13 @@ public class UsuarioController {
     @PutMapping("/guardar-codigo-verificacion")
     public Integer guardarCodigoDeVerificacion(@RequestParam String email, @RequestParam Integer codigo, @RequestParam String fechaDeExpiracion){
         return usuarioService.guardarCodigoDeVerificacion(email,codigo, fechaDeExpiracion);
+    }
+
+    @PutMapping("/agregar-password/{param}")
+    public ResponseEntity<ResponseMessage> agregarPassword(@PathVariable String param, @RequestParam String password,
+                                                           @RequestParam Integer codigo) throws MyException {
+        usuarioService.agregarPassword(param,password,codigo);
+        return  ResponseEntity.ok(new ResponseMessage("Contraseña actualizada exitósamente."));
     }
 
 }

@@ -9,6 +9,7 @@ import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Persona;
 import com.iamf.commons.models.Usuario;
 import com.iamf.commons.utils.EmailUtils;
+import com.iamf.commons.utils.ServicioVerificacionUtils;
 import com.iamf.servicioUsuarios.clientes.ServicioVerificacion;
 import com.iamf.servicioUsuarios.repositories.UsuarioRepo;
 import com.iamf.servicioUsuarios.services.interfaces.UsuarioService;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -34,10 +36,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario crear(Usuario usuario) throws MyException {
-        if (usuario.getPassword() == null || usuario.getPassword().equals(""))
-            throw new MyException("La contraseña no puede ser nula.");
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        usuario.setPassword(encoder.encode(usuario.getPassword()));
+//        if (usuario.getPassword() == null || usuario.getPassword().equals(""))
+//            throw new MyException("La contraseña no puede ser nula.");
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        usuario.setPassword(encoder.encode(usuario.getPassword()));
+        usuario.setUsername(usuario.getEmail());
+        usuario.setCodigoDeVerificacion(ServicioVerificacionUtils.codigoDeVerificacion());
         return guardar(usuario);
     }
 
@@ -66,7 +70,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario modificar(String paramUsuario, UsuarioDTO nuevoUsuario) throws MyException {
         Usuario usuario = getUsuario(paramUsuario);
-//        usuario.setEmail(nuevoUsuario.getEmail());
         if (nuevoUsuario.getCodigoDeLlamada() != null)
             usuario.setCodigoDeLlamada(nuevoUsuario.getCodigoDeLlamada());
         if (nuevoUsuario.getCelular() != null)
@@ -89,6 +92,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setEmailVerificado(nuevoUsuario.getEmailVerificado());
         if (nuevoUsuario.getCelularVerificado() != null)
             usuario.setCelularVerificado(nuevoUsuario.getCelularVerificado());
+        if (nuevoUsuario.getCodigoDeVerificacion() != null)
+            usuario.setCodigoDeVerificacion(nuevoUsuario.getCodigoDeVerificacion());
         return usuario;
     }
 
@@ -231,6 +236,22 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (fecha2.isAfter(fecha1)){
             return true;
         }else return false;
+    }
+
+    public void agregarPassword(String param, String password, Integer codigo) throws MyException {
+        Usuario usuario = getUsuario(param);
+        if (codigo == null || !Objects.equals(usuario.getCodigoDeVerificacion(), codigo)){
+            log.error("Error en el codigo de verificacion.");
+            throw new MyException("Error al actualizar la contraseña.");
+        }
+        if (password == null || password.equals(""))
+            throw new MyException("La contraseña no puede ser nula.");
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setPassword(encoder.encode(password));
+        eliminarCodigoDeVerificacion(usuario);
+        usuarioRepo.cambiarEmailVerificado(true,param);
+        cambiarNivelDeVerificacion(usuario,NivelDeVerificacion.BASICO);
+        guardar(usuario);
     }
 
 }

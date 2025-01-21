@@ -2,7 +2,6 @@ package com.iamf.servicioUsuarios.services.impl;
 
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
-import com.iamf.commons.enums.TipoUsuario;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.mappers.UsuarioMapper;
 import com.iamf.filesCommons.models.File;
@@ -32,6 +31,18 @@ public class PersonaServiceImpl implements PersonaService    {
 
     @Override
     public void crear(RegistroDTO registro, Persona persona) throws MyException {
+        if (registro.getDni() == null || registro.getDni().equalsIgnoreCase(""))
+            throw new MyException("El dni no puede estar vacio.");
+            persona.setDni(registro.getDni());
+        if (registro.getNombre() == null || registro.getNombre().equalsIgnoreCase(""))
+            throw new MyException("El nombre no puede estar vacio.");
+            persona.setNombre(registro.getNombre());
+        if (registro.getApellido() == null || registro.getApellido().equalsIgnoreCase(""))
+            throw new MyException("El apellido no puede estar vacio.");
+            persona.setApellido(registro.getApellido());
+        if (registro.getFechaNacimiento() == null || registro.getFechaNacimiento().equalsIgnoreCase(""))
+            throw new MyException("La fecha de nacimiento no puede estar vacio.");
+            persona.setFechaNacimiento(registro.getFechaNacimiento());
         persona.setCredenciales(usuarioService.crear(registro.getCredenciales()));
         persona.setVerificado(false);
     }
@@ -69,9 +80,14 @@ public class PersonaServiceImpl implements PersonaService    {
         if (nuevaPersona.getCredenciales() != null)
             personaActual.setCredenciales(usuarioService.modificar(
                     personaActual.getCredenciales().getEmail(), nuevaPersona.getCredenciales()));
-//        personaActual.setVerificado(nuevaPersona.getVerificado());
-        if (nuevaPersona.getTipoPersona() != null)
-//        personaActual.setArchivos(nuevaPersona.getArchivos());
+        if (nuevaPersona.getDni() != null)
+            personaActual.setDni(nuevaPersona.getDni());
+        if (nuevaPersona.getNombre() != null)
+            personaActual.setNombre(nuevaPersona.getNombre());
+        if (nuevaPersona.getApellido() != null)
+            personaActual.setApellido(nuevaPersona.getApellido());
+        if (nuevaPersona.getFechaNacimiento() != null)
+            personaActual.setFechaNacimiento(nuevaPersona.getFechaNacimiento());
         if (nuevaPersona.getCiudad() != null)
             personaActual.setCiudad(nuevaPersona.getCiudad());
         if (nuevaPersona.getCodigoPostal() != null)

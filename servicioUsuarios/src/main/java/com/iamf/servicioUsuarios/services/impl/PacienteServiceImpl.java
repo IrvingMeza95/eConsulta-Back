@@ -3,47 +3,66 @@ package com.iamf.servicioUsuarios.services.impl;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Paciente;
+import com.iamf.commons.models.Usuario;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.PacienteRepo;
 import com.iamf.servicioUsuarios.services.interfaces.PacienteService;
+import com.iamf.servicioUsuarios.services.interfaces.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
 public class PacienteServiceImpl implements PacienteService {
 
     @Autowired
+    private PersonaService personaService;
+    @Autowired
     private PacienteRepo pacienteRepo;
 
     @Override
     public Paciente guardar(Paciente paciente) {
-        return null;
+        return pacienteRepo.save(paciente);
     }
 
     @Override
     public Paciente crear(RegistroDTO registro) throws MyException {
-        return null;
+        Paciente paciente = new Paciente();
+        personaService.crear(registro, paciente);
+        paciente = pacienteRepo.save(paciente);
+        personaService.guardarCredencciales(paciente);
+        return paciente;
     }
 
     @Override
     public Paciente getPersona(String param) throws MyException {
-        return null;
+        Usuario usuario = personaService.gatPersona(param).getCredenciales();
+        Optional<Paciente> paciente = pacienteRepo.findById(usuario.getPersona().getId());
+        if (paciente.isEmpty())
+            throw new MyException("No se pudieron cargar los datos de la persona.");
+        return paciente.get();
     }
 
     @Override
-    public Paciente modificar(String param, PersonaDTO nuevaPersonaFisica) throws MyException {
-        return null;
+    public Paciente modificar(String param, PersonaDTO nuevoPaciente) throws MyException {
+        Paciente paciente = getPersona(param);
+        personaService.modificar(paciente,nuevoPaciente);
+        return guardar(paciente);
     }
 
     @Override
     public void eliminar(String param) throws MyException {
-
+        Paciente paciente = getPersona(param);
+        pacienteRepo.delete(paciente);
     }
 
     @Override
     public void agregarArchivo(String param, String idArchivo) throws MyException {
-
+        Paciente paciente = getPersona(param);
+        personaService.agregarArchivo(paciente,idArchivo);
+        guardar(paciente);
     }
 }

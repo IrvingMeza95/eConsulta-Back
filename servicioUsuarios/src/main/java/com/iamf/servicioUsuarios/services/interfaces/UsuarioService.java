@@ -22,4 +22,5 @@ public interface UsuarioService {
     Boolean verificar(String param, String template, Integer codigo, String fecha) throws MyException;
     Integer guardarCodigoDeVerificacion(String email, Integer codigo, String fechaDeExpiracion);
     TipoPersona getTipoPersona(String param) throws MyException;
+    void agregarPassword(String param, String password, Integer codigo) throws MyException;
 }
