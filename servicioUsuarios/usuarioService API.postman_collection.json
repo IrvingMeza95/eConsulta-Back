@@ -981,17 +981,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
-			"disabled": true
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8080/api/usuarios",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDAwODQ2MjgsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImQ5N2U5ZWFkLTc5OTYtNDllMy1hY2ZlLTFlYmNhMDM4MmMwZiIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.t7CVF3TM9BiwmJapRG2mArTZ0cWYkEnwlcZFcDu3Cro",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc0MjA2NzcsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImU3NGRjOWZlLWE4MzUtNDkzZC04ZGY2LWQ5OGMwMWY2N2MyMyIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.B0giO_Ifl2SV3QB3c58UWeJ5Z0zjNyQeQWZHz2Eqdgc",
 			"type": "string"
 		}
 	]
