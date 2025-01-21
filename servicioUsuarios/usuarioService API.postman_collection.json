@@ -294,7 +294,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=1437",
+											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=8201",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -311,14 +311,14 @@
 												},
 												{
 													"key": "codigo",
-													"value": "1437",
+													"value": "8201",
 													"description": "(Required) "
 												}
 											],
 											"variable": [
 												{
 													"key": "param",
-													"value": "irvingmeza95@gmail.com",
+													"value": "micjaelalexis099@gmail.com",
 													"description": "(Required) "
 												}
 											]
@@ -379,6 +379,31 @@
 									]
 								}
 							]
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
 						}
 					]
 				},
@@ -701,7 +726,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"27/06/1995\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"0654897\",\n    \"nombre\": \"michael\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"02/09/1999\",\n  \"credenciales\": {\n    \"email\": \"michaelalexxis099@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"1111111111\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -991,8 +1016,9 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc0MjA2NzcsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImU3NGRjOWZlLWE4MzUtNDkzZC04ZGY2LWQ5OGMwMWY2N2MyMyIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.B0giO_Ifl2SV3QB3c58UWeJ5Z0zjNyQeQWZHz2Eqdgc",
-			"type": "string"
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc0OTU5MTQsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImZkMGRhYmMyLWE0ZGMtNDllNC1iMzA5LWRhYmEwODI5ZmQ3ZCIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.6kOYWV-_SFm1IS5n9coSk7FUE5yHOS-akv8DErNP7KQ",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

@@ -31,7 +31,7 @@ public class SpringSecurityConfig {
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
 		return http.authorizeExchange()
 				.pathMatchers("/api/security/oauth/**", "/api/wsChats/**", "/api/usuarios/verificacion/**",
-						"/api/verificacion/**","/api/usuarios/usuarios/agregar-password/{param}").permitAll()
+						"/api/verificacion/**","/api/usuarios/usuarios/agregar-password/**").permitAll()
 				.pathMatchers(HttpMethod.POST,"/api/usuarios/persona").permitAll()
 				.pathMatchers(HttpMethod.GET,"/api/usuarios/persona/**", "/api/files/**", "/api/chats/**")
 				.hasAnyRole("ADMIN","USER")
