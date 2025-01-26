@@ -10,11 +10,11 @@ import java.util.Objects;
 public interface FileRepo extends JpaRepository<File, String> {
     @Query(value = "SELECT a.id_archivo, a.name\n" +
             "FROM archivos a\n" +
-            "JOIN aureo_envios_db.persona_archivos pa ON a.id_archivo = pa.archivos\n" +
+            "JOIN econsulta_db.persona_archivos pa ON a.id_archivo = pa.archivos\n" +
             "WHERE a.name = CAST(?2 AS CHAR)\n" +
             "AND pa.persona_id = (\n" +
             "    SELECT cu.id_persona\n" +
-            "    FROM aureo_envios_db.credenciales_de_usuario cu\n" +
+            "    FROM econsulta_db.credenciales_de_usuario cu\n" +
             "    WHERE cu.username = CAST(?1 AS CHAR)\n" +
             "       OR cu.email = CAST(?1 AS CHAR)\n" +
             "       OR CONCAT(cu.codigo_de_llamada, cu.celular) = CAST(?1 AS CHAR)\n" +

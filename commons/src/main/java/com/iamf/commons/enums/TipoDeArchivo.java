@@ -1,9 +1,6 @@
 package com.iamf.commons.enums;
 
 public enum TipoDeArchivo {
-    INE_FRONTAL,
-    INE_TRASERA,
-    SELFIE,
     PROFILE_PICTURE,
     OTRO;
 

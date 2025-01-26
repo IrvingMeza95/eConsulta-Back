@@ -13,4 +13,5 @@ public class ServiceProperties {
     private Integer twoFactoresValidationCodeDuration;
     private String phoneSmsPermited;
     private String whatsappPermited;
+    private String urlAgregarPassword;
 }

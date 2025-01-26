@@ -71,8 +71,8 @@ public class UsuarioController {
 
     @PutMapping("/agregar-password/{param}")
     public ResponseEntity<ResponseMessage> agregarPassword(@PathVariable String param, @RequestParam String password,
-                                                           @RequestParam Integer codigo) throws MyException {
-        usuarioService.agregarPassword(param,password,codigo);
+                                                           @RequestParam Integer codigo, @RequestParam String fecha) throws MyException {
+        usuarioService.agregarPassword(param,password,codigo, fecha);
         return  ResponseEntity.ok(new ResponseMessage("Contraseña actualizada exitósamente."));
     }
 

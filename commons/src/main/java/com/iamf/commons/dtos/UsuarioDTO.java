@@ -31,4 +31,6 @@ private TipoPersona tipoPersona;
     private Boolean emailVerificado;
     private Boolean celularVerificado;
     private Boolean verificacion2Factores;
+    private String nombre;
+    private String apellido;
 }

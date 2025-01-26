@@ -98,13 +98,13 @@ public class PersonaController {
             log.info("Creando nueva persona PACIENTE.");
             Paciente paciente = pacienteService.crear(registro);
             request.setTo(paciente.getCredenciales().getEmail());
-//            servicioVerificacion.codigoDeVerificacion(request);
+            servicioVerificacion.codigoDeVerificacion(request);
             return ResponseEntity.ok(personaMapper.getPersonaDTO(paciente));
         }else if (registro.getTipoPersona().equals(TipoPersona.MEDICO)){
             log.info("Creando nueva persona MEDICO.");
             Medico medico = medicoService.crear(registro);
             request.setTo(medico.getCredenciales().getEmail());
-//            servicioVerificacion.codigoDeVerificacion(request);
+            servicioVerificacion.codigoDeVerificacion(request);
             return ResponseEntity.ok(personaMapper.getMedicoDTO(medico));
         }
         return null;

@@ -41,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 //        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 //        usuario.setPassword(encoder.encode(usuario.getPassword()));
         usuario.setUsername(usuario.getEmail());
-        usuario.setCodigoDeVerificacion(ServicioVerificacionUtils.codigoDeVerificacion());
+//        usuario.setCodigoDeVerificacion(ServicioVerificacionUtils.codigoDeVerificacion());
         return guardar(usuario);
     }
 
@@ -238,8 +238,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         }else return false;
     }
 
-    public void agregarPassword(String param, String password, Integer codigo) throws MyException {
+    public void agregarPassword(String param, String password, Integer codigo, String fecha) throws MyException {
         Usuario usuario = getUsuario(param);
+        if (verificarExpiracionDeCodigo(usuario.getVencimientoDeCodigoDeVerificacion(), fecha)){
+            log.info("El codigo esta expirado.");
+            throw new MyException("El código há éxpirado.");
+        }
         if (codigo == null || !Objects.equals(usuario.getCodigoDeVerificacion(), codigo)){
             log.error("Error en el codigo de verificacion.");
             throw new MyException("Error al actualizar la contraseña.");

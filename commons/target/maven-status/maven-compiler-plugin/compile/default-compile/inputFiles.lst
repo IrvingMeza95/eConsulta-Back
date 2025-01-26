@@ -21,14 +21,17 @@ C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eC
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\responses\ResponseFile.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\TipoTarjeta.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\NivelDeVerificacion.java
+C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\TipoServicio.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\TipoDeArchivo.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Template.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\dtos\MetaData.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Persona.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\dtos\UsuarioDTO.java
+C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Paquete.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\responses\ResponseMessage.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\TipoPersona.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Message.java
+C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\ServicioMedico.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\dtos\MessageDTO.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\exceptions\MyException.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Chat.java

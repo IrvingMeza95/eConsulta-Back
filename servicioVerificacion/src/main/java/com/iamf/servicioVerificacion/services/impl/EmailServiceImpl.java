@@ -9,6 +9,7 @@ import com.iamf.servicioVerificacion.configs.ServiceProperties;
 import com.iamf.servicioVerificacion.dtos.Body;
 import com.iamf.commons.dtos.MetaData;
 import com.iamf.commons.dtos.RequestDTO;
+import com.iamf.servicioVerificacion.services.GmailService;
 import com.iamf.servicioVerificacion.services.interfaces.EmailService;
 import com.iamf.servicioVerificacion.util.Utilities;
 import jakarta.mail.MessagingException;
@@ -37,6 +38,8 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private ServicioUsuarios servicioUsuarios;
     @Autowired
+    private GmailService gmailService;
+    @Autowired
     private ServiceProperties serviceProperties;
 
     @Override
@@ -51,7 +54,7 @@ public class EmailServiceImpl implements EmailService {
                 helper.setTo(request.getTo());
                 helper.setSubject(request.getSubject());
                 helper.setText(messageContent, true);
-                mailSender.send(message);
+                gmailService.sendEmail(message);
             }else {
                 return new ResponseEntity<Body>(new Body("Correo electronico invalido!") , HttpStatus.NOT_ACCEPTABLE);
             }
@@ -60,6 +63,8 @@ public class EmailServiceImpl implements EmailService {
             return new ResponseEntity<Body>(new Body(e1.getReason()) , HttpStatus.NOT_ACCEPTABLE);
         } catch (MessagingException e) {
             return new ResponseEntity<Body>(new Body(e.getMessage() ), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
@@ -67,7 +72,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public ResponseEntity<?> codigoDeVerificacionDeCorreo(RequestDTO request, UsuarioDTO usuario, Integer codigoDeVerificacion) throws MyException {
         log.info("Generando codigo de verificacion de correo.");
-        request.setSubject("Código de verificación de correo.");
+        request.setSubject("Creación de contraseña.");
         log.info("Generando fecha de expiracion para codigo de verificacion de email.");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -81,11 +86,13 @@ public class EmailServiceImpl implements EmailService {
         request.setMetaData(new ArrayList<MetaData>());
         request.getMetaData().add(MetaData.builder()
                 .key("nombreUsuario")
-                .value(usuario.getUsername())
+                .value(usuario.getNombre() + " " + usuario.getApellido())
                 .build());
+        String urlAgregarPassword = serviceProperties.getUrlAgregarPassword().replace("username", usuario.getUsername());
+        String urlFinal = urlAgregarPassword.replace("codigo", String.valueOf(codigoDeVerificacion));
         request.getMetaData().add(MetaData.builder()
-                .key("codigo")
-                .value(String.valueOf(codigoDeVerificacion))
+                .key("urlAgregarPassword")
+                .value(urlFinal)
                 .build());
         request.getMetaData().add(MetaData.builder()
                 .key("fechaExpiracion")
@@ -94,7 +101,7 @@ public class EmailServiceImpl implements EmailService {
         request.setTemplate(templateService.buildMessage(request));
         log.info("Enviando correo.");
         sendMessage(request);
-        return new ResponseEntity<Body>(new Body("Se envió un código de verificación al correo "
+        return new ResponseEntity<Body>(new Body("Se envió un correo de verificación de cuenta a la dirección "
                 + request.getTo() + "."), HttpStatus.CREATED);
     }
 

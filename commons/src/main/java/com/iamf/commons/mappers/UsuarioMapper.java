@@ -60,6 +60,8 @@ public class UsuarioMapper {
 		PersonaDTO personaDTO = new PersonaDTO();
 		personaDTO.setCredenciales(getUsuarioDTO(persona.getCredenciales()));
 		personaDTO.getCredenciales().setTipoPersona(persona.getTipoPersona());
+		personaDTO.getCredenciales().setNombre(persona.getNombre());
+		personaDTO.getCredenciales().setApellido(persona.getApellido());
 		return personaDTO.getCredenciales();
 	}
 

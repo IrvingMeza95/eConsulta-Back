@@ -237,7 +237,7 @@
 											"variable": [
 												{
 													"key": "param",
-													"value": "irving_m95",
+													"value": "irvingmeza95@gmail.com",
 													"description": "(Required) "
 												},
 												{
@@ -317,12 +317,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/Irving/Profile Picture.jpg"
+									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/Irving/Profile picture 2.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/files?idUsuario=irving_m95&tipo=PROFILE_PICTURE",
+							"raw": "{{baseUrl}}/files?idUsuario=irvingmeza95@gmail.com&tipo=PROFILE_PICTURE",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -332,7 +332,7 @@
 							"query": [
 								{
 									"key": "idUsuario",
-									"value": "irving_m95",
+									"value": "irvingmeza95@gmail.com",
 									"description": "(Required) "
 								},
 								{
@@ -452,7 +452,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3MjA5OTE2OTksIlRpcG9QZXJzb25hIjoiTU9SQUwiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiZTdkZTI3NzItMDc0Zi00N2U0LTgyYjYtNTdmYmE0N2JhNGU3IiwiY2xpZW50X2lkIjoiZnJvbnRfYXBwIiwidXNlcm5hbWUiOiJpcnZpbmdfbTk1In0.zw2lwxpf9BqSEQ-RB_3fpi7zqIrmLva0hMXR985oiyI",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc1MDkwNDUsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImVhNjU5ODhjLWZjOWItNDMzOS1hZGIxLWNlYTllYjA3ODUxZiIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.3RgFARzhmUbmqtRvUT1yKWul_awjm5i-i4pqCDrPCCs",
 			"type": "string"
 		}
 	]

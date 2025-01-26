@@ -30,12 +30,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/AureoEnvios/Templates/verificacion_2_factores_celular.txt"
+									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/Correo_agregar_password.html"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/templates?tipo=CELULAR_VERIFICACION_2_FACTORES&description=Verificacion de 2 factores por celular.&vars=nombreUsuario,codigo,fechaExpiracion",
+							"raw": "{{baseUrl}}/templates?tipo=CODIGO_VERIFICACION_DE_CORREO&description=Correo para agregar contraseña a nueva cuenta.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -45,22 +45,22 @@
 							"query": [
 								{
 									"key": "tipo",
-									"value": "CELULAR_VERIFICACION_2_FACTORES",
+									"value": "CODIGO_VERIFICACION_DE_CORREO",
 									"description": "(Required) "
 								},
 								{
 									"key": "description",
-									"value": "Verificacion de 2 factores por celular.",
+									"value": "Correo para agregar contraseña a nueva cuenta.",
 									"description": "(Required) "
 								},
 								{
 									"key": "vars",
-									"value": "nombreUsuario,codigo,fechaExpiracion",
+									"value": "nombreUsuario,urlAgregarPassword,fechaExpiracion",
 									"description": "(Required) "
 								},
 								{
 									"key": "",
-									"value": "<string>",
+									"value": "",
 									"description": "(Required) ",
 									"disabled": true
 								}
@@ -397,7 +397,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CELULAR\",\n    \"fecha\": \"2024-06-27 11:10:00\"\n}",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
