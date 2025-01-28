@@ -74,9 +74,7 @@ public class EmailServiceImpl implements EmailService {
         log.info("Generando codigo de verificacion de correo.");
         request.setSubject("Creación de contraseña.");
         log.info("Generando fecha de expiracion para codigo de verificacion de email.");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String fechaDeExpiracion = Utilities.obtenerFechaDeExpiracionDeCodigo(now.format(formatter),
+        String fechaDeExpiracion = Utilities.obtenerFechaDeExpiracionDeCodigo(request.getFecha(),
                 serviceProperties.getValidationCodeDuration());
         log.info("Codigo de verificacion: " + codigoDeVerificacion);
         Integer codigoRespuesta = servicioUsuarios.guardarCodigoDeVerificacion(request.getTo(), codigoDeVerificacion,fechaDeExpiracion);

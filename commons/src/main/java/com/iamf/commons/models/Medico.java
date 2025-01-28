@@ -27,6 +27,8 @@ public class Medico extends  Persona {
     private List<Turno> turnos;
     @Column(nullable = false)
     private double sueldo;
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    private List<Consulta> consultas;
 
     @PrePersist
     public void prePersist() {

@@ -15,6 +15,9 @@ import java.util.List;
 @Entity(name = "pacientes")
 public class Paciente extends  Persona {
 
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Consulta> consultas;
+
     @PrePersist
     public void prePersist() {
         setTipoPersona(TipoPersona.PACIENTE);

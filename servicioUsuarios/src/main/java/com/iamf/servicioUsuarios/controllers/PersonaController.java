@@ -93,6 +93,7 @@ public class PersonaController {
     @PostMapping
     public ResponseEntity<PersonaDTO> crear(@RequestBody RegistroDTO registro) throws MyException {
         RequestDTO request = new RequestDTO();
+        request.setFecha(registro.getCredenciales().getFechaDeSolicitudDeCodigoDeVerificacion());
         request.setTemplate(TiposDePlantillas.CODIGO_VERIFICACION_DE_CORREO.name());
         if (registro.getTipoPersona().equals(TipoPersona.PACIENTE)){
             log.info("Creando nueva persona PACIENTE.");

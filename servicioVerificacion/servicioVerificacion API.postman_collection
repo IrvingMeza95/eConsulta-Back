@@ -397,7 +397,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -494,13 +494,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/verificacion",
-			"disabled": true
+			"value": "http://localhost:8080/api/verificacion"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/verificacion",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		}
 	]
 }
