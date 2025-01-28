@@ -52,9 +52,6 @@ public class GmailService {
 
     private String getAccessToken() throws IOException {
         log.info("Generando nuevo access token.");
-        log.info("Cliente ID: " + clientId);
-        log.info("Cliente Secreto ID: " + clientSecret);
-        log.info("Refresh token: " + refreshToken);
         UserCredentials credentials = UserCredentials.newBuilder()
                 .setClientId(clientId)
                 .setClientSecret(clientSecret)

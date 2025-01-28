@@ -4,15 +4,18 @@ import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
+import com.iamf.commons.models.Turno;
 import com.iamf.commons.models.Usuario;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.MedicoRepo;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
 import com.iamf.servicioUsuarios.services.interfaces.PersonaService;
+import com.iamf.servicioUsuarios.services.interfaces.TurnoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +26,8 @@ public class MedicoServiceImpl implements MedicoService {
     private PersonaService personaService;
     @Autowired
     private MedicoRepo medicoRepo;
+    @Autowired
+    private TurnoService turnoService;
 
     @Override
     public Medico guardar(Medico medico) {
@@ -37,6 +42,9 @@ public class MedicoServiceImpl implements MedicoService {
         if (registro.getSueldo() == null || registro.getSueldo() == 0)
             throw new MyException("El sueldo no puede ser 0 o vacio.");
         medico.setSueldo(registro.getSueldo());
+        List<Turno> turnos = turnoService.getAll();
+        if (turnos != null)
+            medico.setTurnos(turnos);
         personaService.crear(registro, medico);
         medico = medicoRepo.save(medico);
         personaService.guardarCredencciales(medico);

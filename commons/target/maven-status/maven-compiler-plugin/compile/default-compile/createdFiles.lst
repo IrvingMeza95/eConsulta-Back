@@ -1,7 +1,10 @@
 com\iamf\commons\dtos\MessageDTO$MessageDTOBuilder.class
+com\iamf\commons\dtos\ConsultaDTO.class
+com\iamf\commons\models\Consulta$ConsultaBuilder.class
 com\iamf\commons\models\Persona.class
 com\iamf\commons\models\Template.class
 com\iamf\commons\models\TipoServicio$TipoServicioBuilder.class
+com\iamf\commons\models\Consulta.class
 com\iamf\commons\models\Chat$ChatBuilder.class
 com\iamf\commons\enums\NivelDeVerificacion.class
 com\iamf\commons\models\Chat.class
@@ -12,6 +15,8 @@ com\iamf\commons\models\Paquete.class
 com\iamf\commons\dtos\PersonaDTO.class
 com\iamf\commons\dtos\RequestDTO.class
 com\iamf\commons\responses\ResponseFile.class
+com\iamf\commons\mappers\ConsultaMapper.class
+com\iamf\commons\models\Turno$TurnoBuilder.class
 com\iamf\commons\models\ServicioMedico.class
 com\iamf\commons\models\Usuario$UsuarioBuilder.class
 com\iamf\commons\models\Paquete$PaqueteBuilder.class
@@ -22,6 +27,7 @@ com\iamf\commons\dtos\ChatDTO$ChatDTOBuilder.class
 com\iamf\commons\models\Message.class
 com\iamf\commons\utils\EmailUtils.class
 com\iamf\commons\dtos\UsuarioDTO.class
+com\iamf\commons\models\Turno.class
 com\iamf\commons\dtos\RequestDTO$RequestDTOBuilder.class
 com\iamf\commons\enums\Roles.class
 com\iamf\commons\responses\ResponseMessage.class
@@ -42,6 +48,7 @@ com\iamf\commons\models\File$FileBuilder.class
 com\iamf\commons\utils\ServicioVerificacionUtils.class
 com\iamf\commons\models\ServicioMedico$ServicioMedicoBuilder.class
 com\iamf\commons\dtos\MessageDTO.class
+com\iamf\commons\dtos\ConsultaDTO$ConsultaDTOBuilder.class
 com\iamf\commons\enums\TipoTarjeta.class
 com\iamf\commons\exceptions\MyFunctionalExceptionHandler.class
 com\iamf\commons\CommonsApplication.class

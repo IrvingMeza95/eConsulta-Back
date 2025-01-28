@@ -47,5 +47,7 @@ public abstract class Persona {
     @Column(nullable = false, length = 10)
     @Enumerated(EnumType.STRING)
     private TipoPersona tipoPersona;
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+    private List<Consulta> consultas;
 
 }

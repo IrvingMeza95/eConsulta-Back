@@ -1,6 +1,7 @@
 package com.iamf.commons.dtos;
 
 import com.iamf.commons.enums.TipoPersona;
+import com.iamf.commons.models.Turno;
 import com.iamf.filesCommons.responses.ResponseFile;
 import lombok.*;
 
@@ -29,5 +30,6 @@ public class PersonaDTO {
     //Atributos de medico
     private double sueldo;
     private  String especialidad;
-
+    private List<Turno> turnos;
+    private List<ConsultaDTO> consultas;
 }
