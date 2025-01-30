@@ -12,7 +12,7 @@ public class APIDocConfig {
     public OpenAPI customOpenAPI(){
         return new OpenAPI()
                 .info(new Info()
-                                .title("usuarioService API")
+                                .title("Serviico Consultas API")
                                 .version("1.0")
                                 .description("Endpoinds para la gestion de consultas.")
 //                        .termsOfService("http://swagger.io/terms/")

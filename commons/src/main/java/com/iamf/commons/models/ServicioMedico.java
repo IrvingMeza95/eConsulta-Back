@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @AllArgsConstructor
@@ -20,7 +19,14 @@ public class ServicioMedico {
     private String descripcion;
     @Column(nullable = false)
     private Double precio;
-    @OneToOne
-    @JoinColumn(name = "tipo_servicio_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "tipo_servicio_id", nullable = false) // Define la clave foránea
     private TipoServicio tipoServicio;
+    @Column(nullable = false)
+    private Boolean enabled;
+
+    @PrePersist
+    public void prePersist() {
+        setEnabled(true);
+    }
 }

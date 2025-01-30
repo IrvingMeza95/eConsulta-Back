@@ -17,4 +17,5 @@ public class RegistroDTO {
     private String especialidad;
     private Double sueldo;
     private Usuario credenciales;
+    private Boolean obraSocial;
 }

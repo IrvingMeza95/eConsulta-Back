@@ -5,6 +5,7 @@ import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.enums.TiposDePlantillas;
 import com.iamf.commons.exceptions.MyException;
+import com.iamf.commons.mappers.ConsultaMapper;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
@@ -40,6 +41,7 @@ public class PersonaController {
     private final PersonaMapper personaMapper = new PersonaMapper();
     @Autowired
     private FilesManagerService filesManagerService;
+    private  final ConsultaMapper consultaMapper = new ConsultaMapper();
 
     @GetMapping("/{param}")
     public ResponseEntity<PersonaDTO> getPersona(@PathVariable String param) throws MyException {
@@ -50,7 +52,10 @@ public class PersonaController {
             log.info("Buscando persona tipo MEDICO.");
             Medico medico = medicoService.getPersona(param);
             personaDTO = personaMapper.getMedicoDTO(medico);
+            if (medico.getConsultas() != null)
+                personaDTO.setConsultas(consultaMapper.getConsultas(medico.getConsultas()));
             if (medico.getArchivos() != null){
+                log.info("Cargando lista de archivos para medico.");
                 personaDTO.setArchivos(
                         (List<ResponseFile>) Optional.ofNullable(medico.getArchivos())
                                 .map(archivos -> {
@@ -68,8 +73,11 @@ public class PersonaController {
         }else if (tipoPersona.equals(TipoPersona.PACIENTE)){
             log.info("Buscando persona tipo PACIENTE    .");
             Paciente paciente = pacienteService.getPersona(param);
-            personaDTO = personaMapper.getPersonaDTO(paciente);
+            personaDTO = personaMapper.getPacienteDTO(paciente);
+            if (paciente.getConsultas() != null)
+                personaDTO.setConsultas(consultaMapper.getConsultas(paciente.getConsultas()));
             if (paciente.getArchivos() != null){
+                log.info("Cargando lista de archivos para paciente.");
                 personaDTO.setArchivos(
                         (List<ResponseFile>) Optional.ofNullable(paciente.getArchivos())
                                 .map(archivos -> {
@@ -117,7 +125,7 @@ public class PersonaController {
         if (tipoPersona.equals(TipoPersona.PACIENTE)){
             log.info("Modificando persona PACIENTE con param: " + param);
             return ResponseEntity.ok(
-                    personaMapper.getPersonaDTO(pacienteService.modificar(param, personaDTO))
+                    personaMapper.getPacienteDTO(pacienteService.modificar(param, personaDTO))
             );
         }else if (tipoPersona.equals(TipoPersona.MEDICO)){
             log.info("Modificando persona MEDICO con param: " + param);

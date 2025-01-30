@@ -32,6 +32,7 @@ public class PacienteServiceImpl implements PacienteService {
     public Paciente crear(RegistroDTO registro) throws MyException {
         Paciente paciente = new Paciente();
         personaService.crear(registro, paciente);
+        paciente.setObraSocial(registro.getObraSocial());
         paciente = pacienteRepo.save(paciente);
         personaService.guardarCredencciales(paciente);
         return paciente;
@@ -49,6 +50,8 @@ public class PacienteServiceImpl implements PacienteService {
     @Override
     public Paciente modificar(String param, PersonaDTO nuevoPaciente) throws MyException {
         Paciente paciente = getPersona(param);
+        if (nuevoPaciente.getObraSocial() != null)
+            paciente.setObraSocial(nuevoPaciente.getObraSocial());
         personaService.modificar(paciente,nuevoPaciente);
         return guardar(paciente);
     }

@@ -3,6 +3,9 @@ package com.iamf.commons.mappers;
 import com.iamf.commons.dtos.ConsultaDTO;
 import com.iamf.commons.models.Consulta;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ConsultaMapper {
 
     private final PersonaMapper personaMapper = new PersonaMapper();
@@ -21,6 +24,10 @@ public class ConsultaMapper {
         consultaDTO.setTotal(consulta.getTotal());
         consultaDTO.setPagado(consulta.getPagado());
         return consultaDTO;
+    }
+
+    public List<ConsultaDTO> getConsultas(List<Consulta> consultas){
+        return consultas.stream().map(this::getConsultaDTO).collect(Collectors.toList());
     }
 
 }

@@ -37,7 +37,7 @@ public class SpringSecurityConfig {
 				.hasAnyRole("ADMIN","USER")
 				.pathMatchers(HttpMethod.DELETE, "/api/usuarios/persona/{param}")
 				.hasRole("ADMIN")
-				.pathMatchers("/api/usuarios/usuarios/**", "/api/phones/**").hasRole("ADMIN")
+				.pathMatchers("/api/usuarios/usuarios/**","/api/consultas/**", "/api/phones/**").hasRole("ADMIN")
 				.anyExchange().authenticated()
 				.and().cors().configurationSource(corsConfigurationSource())
 				.and().cors().configurationSource(corsConfigurationSource())

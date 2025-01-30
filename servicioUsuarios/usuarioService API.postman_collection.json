@@ -294,7 +294,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=7274&fecha=2025-01-27 13:20:00",
+											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=5751&fecha=2025-01-27 13:20:00",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -311,7 +311,7 @@
 												},
 												{
 													"key": "codigo",
-													"value": "7274",
+													"value": "5751",
 													"description": "(Required) "
 												},
 												{
@@ -559,7 +559,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"pais\": \"mexico\",\n  \"ciudad\": \"piedras negras\",\n  \"direccion\": \"na\",\n  \"numeroExterior\": \"321\",\n  \"codigoPostal\": \"654\",\n  \"tipoPersona\": \"PACIENTE\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"username\": \"irving_m95\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"dni\": \"987\",\n  \"nombre\": \"alfonso\",\n  \"apellido\": \"flores\",\n  \"fechaNacimiento\": \"27/06/1995\",\n  \"sueldo\": 150,\n  \"especialidad\": \"dentista\"\n}",
+									"raw": "{\n  \"pais\": \"mexico\",\n  \"ciudad\": \"piedras negras\",\n  \"direccion\": \"na\",\n  \"numeroExterior\": \"321\",\n  \"codigoPostal\": \"654\",\n  \"tipoPersona\": \"PACIENTE\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"dni\": \"000000\",\n  \"nombre\": \"alfonso\",\n  \"apellido\": \"flores\",\n  \"fechaNacimiento\": \"27/06/1995\",\n  \"obraSocial\": true,\n  \"sueldo\": 150,\n  \"especialidad\": \"dentista\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -579,7 +579,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "irving_m95",
+											"value": "iamf_095@hotmail.com",
 											"description": "(Required) "
 										}
 									]
@@ -662,7 +662,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "alfonso_m73",
+											"value": "irvingmeza95@gmail.com",
 											"description": "(Required) "
 										}
 									]
@@ -730,7 +730,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\",\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\",\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1010,7 +1010,8 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
@@ -1019,9 +1020,8 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc0OTU5MTQsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImZkMGRhYmMyLWE0ZGMtNDllNC1iMzA5LWRhYmEwODI5ZmQ3ZCIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.6kOYWV-_SFm1IS5n9coSk7FUE5yHOS-akv8DErNP7KQ",
-			"type": "string",
-			"disabled": true
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDA4NjQ4NDAsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJkZDVkM2JkYi02NTFmLTQ2M2MtOGU5ZS0yNmUyNTFhMjYyZDIiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.IyPH_dZSKurddnNEuQ3Cv4pasAKgeAlDPgzQ2QAt_cM",
+			"type": "string"
 		}
 	]
 }

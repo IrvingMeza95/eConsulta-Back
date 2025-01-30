@@ -27,6 +27,7 @@ public class PersonaDTO {
     private String nombre;
     private String apellido;
     private String fechaNacimiento;
+    private Boolean obraSocial;
     //Atributos de medico
     private double sueldo;
     private  String especialidad;

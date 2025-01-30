@@ -2,6 +2,7 @@ package com.iamf.commons.mappers;
 
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.models.Medico;
+import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Persona;
 
 import java.util.List;
@@ -37,6 +38,13 @@ public class PersonaMapper {
         		.build();
         return personaDTO;
     }
+
+	public PersonaDTO getPacienteDTO(Paciente paciente){
+		PersonaDTO personaDTO = new PersonaDTO();
+		fillPersonaDTO(paciente,personaDTO);
+		personaDTO.setObraSocial(paciente.getObraSocial());
+		return personaDTO;
+	}
 
 	public PersonaDTO getMedicoDTO(Medico medico){
 		PersonaDTO personaDTO = new PersonaDTO();
