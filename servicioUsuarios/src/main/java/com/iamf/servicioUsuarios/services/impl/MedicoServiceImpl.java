@@ -6,6 +6,7 @@ import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Turno;
 import com.iamf.commons.models.Usuario;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.MedicoRepo;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
@@ -72,9 +73,13 @@ public class MedicoServiceImpl implements MedicoService {
     }
 
     @Override
-    public void eliminar(String param) throws MyException {
+    public ResponseMessage eliminar(String param) throws MyException {
         Medico medico = getPersona(param);
+        if (medicoRepo.participaEnConsultasPagadas(medico.getId()))
+            throw new MyException("No es posible eliminar al medico con el email " + medico.getCredenciales().getEmail()
+            + " debido a que tiene historial de pacientes.");
         medicoRepo.delete(medico);
+        return new ResponseMessage("Medico con el email " + medico.getCredenciales().getEmail() + " fue eliminado correctamente.");
     }
 
     @Override

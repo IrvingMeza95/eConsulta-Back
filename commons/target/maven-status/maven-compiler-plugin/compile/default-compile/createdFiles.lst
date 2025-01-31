@@ -10,6 +10,7 @@ com\iamf\commons\enums\NivelDeVerificacion.class
 com\iamf\commons\models\Chat.class
 com\iamf\commons\enums\TipoPersona.class
 com\iamf\commons\models\Paciente.class
+com\iamf\commons\models\ServicioContratado$ServicioContratadoBuilder.class
 com\iamf\commons\dtos\MetaData$MetaDataBuilder.class
 com\iamf\commons\models\Paquete.class
 com\iamf\commons\dtos\PersonaDTO.class
@@ -49,6 +50,7 @@ com\iamf\commons\utils\ServicioVerificacionUtils.class
 com\iamf\commons\models\ServicioMedico$ServicioMedicoBuilder.class
 com\iamf\commons\dtos\MessageDTO.class
 com\iamf\commons\dtos\ConsultaDTO$ConsultaDTOBuilder.class
+com\iamf\commons\models\ServicioContratado.class
 com\iamf\commons\enums\TipoTarjeta.class
 com\iamf\commons\exceptions\MyFunctionalExceptionHandler.class
 com\iamf\commons\CommonsApplication.class

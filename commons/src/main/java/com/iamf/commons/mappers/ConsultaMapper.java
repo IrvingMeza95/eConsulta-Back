@@ -17,12 +17,13 @@ public class ConsultaMapper {
         consultaDTO.setHorario(consulta.getHorario());
         consultaDTO.setMedico(personaMapper.getMedicoDTO(consulta.getMedico()));
         consultaDTO.setPaciente(personaMapper.getPersonaDTO(consulta.getPaciente()));
-        if (consulta.getServicioMedico() != null)
-            consultaDTO.setServicioMedico(consulta.getServicioMedico());
-        if (consulta.getPaquete() != null)
-            consultaDTO.setPaquete(consulta.getPaquete());
+        if (consulta.getIdServicioMedico() != null)
+            consultaDTO.setIdServicioMedico(consulta.getIdServicioMedico());
+        if (consulta.getIdPaquete() != null)
+            consultaDTO.setIdPaquete(consulta.getIdPaquete());
         consultaDTO.setTotal(consulta.getTotal());
         consultaDTO.setPagado(consulta.getPagado());
+        consultaDTO.setServiciosContratados(consulta.getServiciosContratados());
         return consultaDTO;
     }
 

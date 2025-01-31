@@ -13,7 +13,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "medico")
+@Entity
+@Table(name = "medicos")
 public class Medico extends  Persona {
 
     @Column(nullable = true)

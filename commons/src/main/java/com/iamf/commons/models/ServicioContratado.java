@@ -11,23 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "servicios_medicos")
-public class ServicioMedico {
+@Table(name = "servicios_contratados")
+public class ServicioContratado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true, length = 250)
+    @Column(nullable = false, unique = false, length = 100)
+    private String nombre;
+    @Column(nullable = false, unique = false, length = 250)
     private String descripcion;
     @Column(nullable = false)
     private Double precio;
-    @ManyToOne
-    @JoinColumn(name = "tipo_servicio_id", nullable = false) // Define la clave foránea
-    private TipoServicio tipoServicio;
-    @Column(nullable = false)
-    private Boolean enabled;
 
-    @PrePersist
-    public void prePersist() {
-        setEnabled(true);
-    }
 }

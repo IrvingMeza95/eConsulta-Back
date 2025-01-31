@@ -28,6 +28,12 @@ public class PaqueteController {
         return ResponseEntity.ok(paqueteService.getPaquete(id));
     }
 
+    @GetMapping
+    public ResponseEntity<List<Paquete>> buscarPorServiicosIds(@RequestBody List<Long> serviciosIds) throws MyException {
+        log.info("Buscando paquete con " + serviciosIds.size() + " servicios, los ids son..");
+        return ResponseEntity.ok(paqueteService.buscarPaquetePorServiciosIds(serviciosIds));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Paquete> modificar(@PathVariable Long id, @RequestBody Paquete paquete) throws MyException {
         return ResponseEntity.ok(paqueteService.modificar(id,paquete));

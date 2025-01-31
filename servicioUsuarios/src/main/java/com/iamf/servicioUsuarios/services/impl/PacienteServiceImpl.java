@@ -4,6 +4,7 @@ import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Usuario;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.PacienteRepo;
 import com.iamf.servicioUsuarios.services.interfaces.PacienteService;
@@ -57,9 +58,14 @@ public class PacienteServiceImpl implements PacienteService {
     }
 
     @Override
-    public void eliminar(String param) throws MyException {
+    public ResponseMessage eliminar(String param) throws MyException {
         Paciente paciente = getPersona(param);
+        if (pacienteRepo.tieneConsultasPagadas(paciente.getId()))
+            throw new MyException("No es posible eliminar al paciente con el email " + paciente.getCredenciales().getEmail()
+            + " porque cuenta con historial de consultas pagadas.");
         pacienteRepo.delete(paciente);
+        return new ResponseMessage("El paciente con el email " + paciente.getCredenciales().getEmail() +
+                " fue eliminado correctamente.");
     }
 
     @Override

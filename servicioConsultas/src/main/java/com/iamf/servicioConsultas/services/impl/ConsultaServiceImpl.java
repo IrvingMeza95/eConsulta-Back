@@ -3,16 +3,17 @@ package com.iamf.servicioConsultas.services.impl;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.*;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioConsultas.clientes.ServicioUsuaruis;
 import com.iamf.servicioConsultas.repositories.ConsultaRepo;
 import com.iamf.servicioConsultas.services.interfaces.ConsultaService;
-import com.iamf.servicioConsultas.services.interfaces.PaqueteService;
-import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
+import com.iamf.servicioConsultas.services.interfaces.ServicioContratadoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,9 +23,7 @@ public class ConsultaServiceImpl implements ConsultaService {
     @Autowired
     private ConsultaRepo consultaRepo;
     @Autowired
-    private ServicioMedicoService servicioMedicoService;
-    @Autowired
-    private PaqueteService paqueteService;
+    private ServicioContratadoService servicioContratadoService;
     @Autowired
     private ServicioUsuaruis servicioUsuaruis;
     @Value("${porcentaje.descuento.obra.social}")
@@ -60,20 +59,9 @@ public class ConsultaServiceImpl implements ConsultaService {
         medicoDb.setCredenciales(medicoCred);
         consulta.setMedico(medicoDb);
 
-        if (consulta.getServicioMedico() == null && consulta.getPaquete() == null)
-            throw new MyException("Es necesario elegir un servicio medico o un paquete.");
-        if (consulta.getServicioMedico() != null){
-            log.info("Buscando servicio medico con el id " + consulta.getServicioMedico().getId()
-                    + " para la consulta.");
-            ServicioMedico servicioMedico = servicioMedicoService.getServicioMedico(consulta.getServicioMedico().getId());
-            consulta.setTotal(servicioMedico.getPrecio());
-        }
-        if (consulta.getPaquete() != null){
-            log.info("Buscando paquete con el id " + consulta.getPaquete().getId()
-                    + " para la consulta.");
-            Paquete paquete = paqueteService.getPaquete(consulta.getPaquete().getId());
-            consulta.setTotal(paquete.getPrecio());
-        }
+        List<ServicioContratado> servicioContratados = servicioContratadoService.crearLista(consulta);
+        consulta.setServiciosContratados(servicioContratados);
+
         if (paciente.get().getObraSocial())
             consulta.setTotal(consulta.getTotal() * (1 - porcentajeDescuentoObraSocial));
         if (consulta.getFecha().isEmpty() || consulta.getFecha().equalsIgnoreCase(""))
@@ -90,12 +78,32 @@ public class ConsultaServiceImpl implements ConsultaService {
     }
 
     @Override
-    public Consulta getConsulta(String id) throws MyException {
+    public Consulta getConsulta(Long id) throws MyException {
         if (id == null)
             throw new MyException("La id no puede ser nula.");
         Optional<Consulta> consulta = consultaRepo.findById(id);
         if (consulta.isEmpty())
-            throw new MyException("Noo se enccontro la consulta solicitada.");
+            throw new MyException("No se enccontro la consulta solicitada.");
         return consulta.get();
+    }
+
+    @Override
+    public ResponseMessage eliminar(Long id) throws MyException {
+        Consulta consulta = getConsulta(id);
+        if (consulta.getPagado()){
+            throw new MyException("No es posible eliminar una consulta que ya há sido pagada.");
+        }else{
+            consultaRepo.delete(consulta);
+            return new ResponseMessage("Consulta con el id " + id + " há sido eliminada correctamente.");
+        }
+    }
+
+    @Override
+    public Consulta modificar(Long id, Consulta nuevaConsulta) throws MyException {
+        log.info("Modificando consulta con id " + id);
+        Consulta consulta = getConsulta(id);
+        if (nuevaConsulta.getPagado() != null)
+            consulta.setPagado(nuevaConsulta.getPagado());
+        return guardar(consulta);
     }
 }

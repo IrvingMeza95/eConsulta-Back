@@ -9,7 +9,8 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity(name = "pacientes")
+@Entity
+@Table(name = "pacientes")
 public class Paciente extends  Persona {
 
     @Column(nullable = false)

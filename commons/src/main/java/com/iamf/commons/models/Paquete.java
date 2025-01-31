@@ -12,7 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "paquetes")
+@Entity
+@Table(name = "paquetes")
 public class Paquete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

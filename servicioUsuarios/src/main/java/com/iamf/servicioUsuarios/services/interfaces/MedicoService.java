@@ -3,6 +3,7 @@ package com.iamf.servicioUsuarios.services.interfaces;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Medico;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 
 public interface MedicoService {
@@ -11,7 +12,7 @@ public interface MedicoService {
     Medico crear(RegistroDTO registro) throws MyException;
     Medico getPersona(String param) throws MyException;
     Medico modificar(String param, PersonaDTO nuevaPersonaMoral) throws MyException;
-    void eliminar(String param) throws MyException;
+    ResponseMessage eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
 
 }

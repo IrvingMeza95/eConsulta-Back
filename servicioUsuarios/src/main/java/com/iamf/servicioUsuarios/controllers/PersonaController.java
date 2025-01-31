@@ -9,6 +9,7 @@ import com.iamf.commons.mappers.ConsultaMapper;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.filesCommons.responses.ResponseFile;
 import com.iamf.servicioUsuarios.clientes.FilesManagerService;
 import com.iamf.servicioUsuarios.clientes.ServicioVerificacion;
@@ -137,15 +138,16 @@ public class PersonaController {
     }
 
     @DeleteMapping("/{param}")
-    public void eliminar(@PathVariable String param) throws MyException {
+    public ResponseEntity<ResponseMessage> eliminar(@PathVariable String param) throws MyException {
         TipoPersona tipoPersona = personaService.getTipoPersona(param);
         if (tipoPersona.equals(TipoPersona.PACIENTE)){
             log.info("Eliminando persona PACIENTE con param: " + param);
-            pacienteService.eliminar(param);
+            return ResponseEntity.ok(pacienteService.eliminar(param));
         }else if (tipoPersona.equals(TipoPersona.MEDICO)){
             log.info("Eliminando persona MEDICO con param: " + param);
-            medicoService.eliminar(param);
+            return ResponseEntity.ok(medicoService.eliminar(param));
         }
+        return null;
     }
 
     @PutMapping("/agregar-archivo/{param}/{idArchivo}")

@@ -7,7 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "tipos_de_servicios")
+@Entity
+@Table(name = "tipos_de_servicios")
 public class TipoServicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

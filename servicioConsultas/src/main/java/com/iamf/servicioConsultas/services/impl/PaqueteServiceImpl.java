@@ -80,4 +80,11 @@ public class PaqueteServiceImpl implements PaqueteService {
         return guardar(paqueteBd);
     }
 
+    @Override
+    public List<Paquete> buscarPaquetePorServiciosIds(List<Long> serviciosIds) throws MyException {
+        if (serviciosIds.isEmpty())
+            throw new MyException("No se enviaron servicios para buscar paquete.");
+        return paqueteRepo.buscarPaquetePorServiciosIds(serviciosIds, serviciosIds.size());
+    }
+
 }
