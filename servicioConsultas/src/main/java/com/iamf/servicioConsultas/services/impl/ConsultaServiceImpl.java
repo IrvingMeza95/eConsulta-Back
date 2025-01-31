@@ -106,4 +106,11 @@ public class ConsultaServiceImpl implements ConsultaService {
             consulta.setPagado(nuevaConsulta.getPagado());
         return guardar(consulta);
     }
+
+    @Override
+    public List<Consulta> getConsultasDePersona(String email) throws MyException {
+        if (email.isEmpty())
+            throw new MyException("Es necesario un id de alguna persona.");
+        return consultaRepo.getConsultasDePersona(email);
+    }
 }

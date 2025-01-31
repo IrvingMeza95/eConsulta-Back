@@ -19,7 +19,7 @@ public class Medico extends  Persona {
 
     @Column(nullable = true)
     private  String especialidad;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "medico_turno",
             joinColumns = @JoinColumn(name = "medico_id"),

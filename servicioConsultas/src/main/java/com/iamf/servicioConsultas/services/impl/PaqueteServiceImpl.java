@@ -87,4 +87,9 @@ public class PaqueteServiceImpl implements PaqueteService {
         return paqueteRepo.buscarPaquetePorServiciosIds(serviciosIds, serviciosIds.size());
     }
 
+    @Override
+    public List<Paquete> getAll() {
+        return paqueteRepo.findAll();
+    }
+
 }

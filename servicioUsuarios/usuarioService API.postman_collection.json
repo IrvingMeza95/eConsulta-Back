@@ -278,140 +278,6 @@
 					]
 				},
 				{
-					"name": "agregar-password Copy",
-					"item": [
-						{
-							"name": "{param}",
-							"item": [
-								{
-									"name": "agregar Password",
-									"request": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=5751&fecha=2025-01-27 13:20:00",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"usuarios",
-												"agregar-password",
-												":param"
-											],
-											"query": [
-												{
-													"key": "password",
-													"value": "123456",
-													"description": "(Required) "
-												},
-												{
-													"key": "codigo",
-													"value": "5751",
-													"description": "(Required) "
-												},
-												{
-													"key": "fecha",
-													"value": "2025-01-27 13:20:00"
-												}
-											],
-											"variable": [
-												{
-													"key": "param",
-													"value": "irvingmeza95@gmail.com",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "OK",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "*/*"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=<string>&codigo=<integer>",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"usuarios",
-														"agregar-password",
-														":param"
-													],
-													"query": [
-														{
-															"key": "password",
-															"value": "<string>",
-															"description": "(Required) "
-														},
-														{
-															"key": "codigo",
-															"value": "<integer>",
-															"description": "(Required) "
-														}
-													],
-													"variable": [
-														{
-															"key": "param"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "*/*"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"message\": \"<string>\"\n}"
-										}
-									]
-								}
-							]
-						}
-					],
-					"auth": {
-						"type": "noauth"
-					},
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"packages": {},
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"packages": {},
-								"exec": [
-									""
-								]
-							}
-						}
-					]
-				},
-				{
 					"name": "get Personas",
 					"request": {
 						"method": "GET",
@@ -463,6 +329,105 @@
 							],
 							"cookie": [],
 							"body": "[\n  {\n    \"id\": \"<string>\",\n    \"pais\": \"<string>\",\n    \"ciudad\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"numeroExterior\": \"<string>\",\n    \"codigoPostal\": \"<string>\",\n    \"tipoUsuario\": \"PROVEEDOR\",\n    \"credenciales\": {\n      \"id\": \"<string>\",\n      \"persona\": {\n        \"id\": \"<string>\",\n        \"pais\": \"<string>\",\n        \"ciudad\": \"<string>\",\n        \"direccion\": \"<string>\",\n        \"numeroExterior\": \"<string>\",\n        \"codigoPostal\": \"<string>\",\n        \"tipoUsuario\": \"CONSUMIDOR\",\n        \"credenciales\": {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"username\": \"<string>\",\n          \"password\": \"<string>\",\n          \"codigoDeLlamada\": \"<string>\",\n          \"celular\": \"<string>\",\n          \"roles\": [\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            },\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            }\n          ],\n          \"enabled\": \"<boolean>\",\n          \"intentos\": \"<integer>\",\n          \"persona\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"archivos\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"verificado\": \"<boolean>\",\n        \"tipoPersona\": \"MORAL\",\n        \"cuentaBancaria\": {\n          \"id\": \"<string>\",\n          \"numeroCuenta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"tarjetas\": [\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"CREDITO\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"DEBITO\"\n          }\n        ]\n      },\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"codigoDeLlamada\": \"<string>\",\n      \"celular\": \"<string>\",\n      \"roles\": [\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_ADMIN\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_USER\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"intentos\": \"<integer>\"\n    },\n    \"verificado\": \"<boolean>\",\n    \"tipoPersona\": \"MORAL\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"pais\": \"<string>\",\n    \"ciudad\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"numeroExterior\": \"<string>\",\n    \"codigoPostal\": \"<string>\",\n    \"tipoUsuario\": \"PROVEEDOR\",\n    \"credenciales\": {\n      \"id\": \"<string>\",\n      \"persona\": {\n        \"id\": \"<string>\",\n        \"pais\": \"<string>\",\n        \"ciudad\": \"<string>\",\n        \"direccion\": \"<string>\",\n        \"numeroExterior\": \"<string>\",\n        \"codigoPostal\": \"<string>\",\n        \"tipoUsuario\": \"PROVEEDOR\",\n        \"credenciales\": {\n          \"id\": \"<string>\",\n          \"email\": \"<string>\",\n          \"username\": \"<string>\",\n          \"password\": \"<string>\",\n          \"codigoDeLlamada\": \"<string>\",\n          \"celular\": \"<string>\",\n          \"roles\": [\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_ADMIN\"\n            },\n            {\n              \"id\": \"<long>\",\n              \"nombre\": \"ROLE_USER\"\n            }\n          ],\n          \"enabled\": \"<boolean>\",\n          \"intentos\": \"<integer>\",\n          \"persona\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"archivos\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"<string>\",\n            \"data\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"verificado\": \"<boolean>\",\n        \"tipoPersona\": \"FISICA\",\n        \"cuentaBancaria\": {\n          \"id\": \"<string>\",\n          \"numeroCuenta\": \"<string>\",\n          \"titular\": {\n            \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n          }\n        },\n        \"tarjetas\": [\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"CREDITO\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"numeroTarjeta\": \"<string>\",\n            \"titular\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"fechaVencimiento\": \"<string>\",\n            \"codigoSeguridad\": \"<string>\",\n            \"bancoEmisor\": \"<string>\",\n            \"tipoTarjeta\": \"DEBITO\"\n          }\n        ]\n      },\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"codigoDeLlamada\": \"<string>\",\n      \"celular\": \"<string>\",\n      \"roles\": [\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_ADMIN\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"nombre\": \"ROLE_USER\"\n        }\n      ],\n      \"enabled\": \"<boolean>\",\n      \"intentos\": \"<integer>\"\n    },\n    \"verificado\": \"<boolean>\",\n    \"tipoPersona\": \"MORAL\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "agregar Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=1695&fecha=2025-01-27 13:20:00",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"agregar-password",
+								":param"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "(Required) "
+								},
+								{
+									"key": "codigo",
+									"value": "1695",
+									"description": "(Required) "
+								},
+								{
+									"key": "fecha",
+									"value": "2025-01-27 13:20:00"
+								}
+							],
+							"variable": [
+								{
+									"key": "param",
+									"value": "irvingmeza95@gmail.com",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=<string>&codigo=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"agregar-password",
+										":param"
+									],
+									"query": [
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "codigo",
+											"value": "<integer>",
+											"description": "(Required) "
+										}
+									],
+									"variable": [
+										{
+											"key": "param"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\"\n}"
 						}
 					]
 				}
@@ -730,7 +695,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\",\n    \"enabled\": true,\n    \"intentos\": 0\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",

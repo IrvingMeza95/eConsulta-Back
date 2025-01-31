@@ -1,21 +1,67 @@
-<h1 align="center"> Servidor de configuracion </h1>
-<p>Este proyecto representaria el servidor de configuracion centralizada donde los microservicios obtendran sus caracteristicas, variables, etc de configuracion de manera remota y sencilla</p>
+# Spring Boot Config Server
 
-## Caracteristicas del proyecto
-  - `Centralizacion`: Los archivos de configuración se centralizan en un único repositorio, lo que facilita su gestión y acceso.
-  - `Escalabilidad`: Permite una actualización más eficiente y facilita hacer cambios a las configuraciones, soportando el crecimiento del sistema sin incrementar el esfuerzo de mantenimiento.
-  - `Flexibilidad`: Se pueden definir y modificar configuraciones sin necesidad de redeployar o reiniciar los servicios, lo que mejora el tiempo de respuesta a cambios.
+Este proyecto es un **Config Server** basado en **Spring Boot**, que permite la gestión centralizada de configuraciones para múltiples microservicios. Soporta conexión tanto a un **repositorio local** como a un **repositorio privado en Git**.
 
-## Versiones y tecnologias importantes para ejecutar el programa
-  - `Jdk`:  Jdk version 17
+## Requisitos
+- Java 17+  
+- Spring Boot  
+- Maven  
+- Acceso a un repositorio Git privado (si se usa esta opción)  
 
-## Instrucciones de uso
-  1. [Descargar](#) o clonar este repositorio: git clone https://github.com/IrvingMeza95/ethereal-trek-configServer
-  2. Abrir el proyecto en tu entorno de desarrollo Java preferido
-  3. Ejecutar la aplicación.
+## Configuración del Config Server
+### 1. Uso con un Repositorio Local
+Para utilizar un repositorio local, define la siguiente configuración en `application.yml` o `application.properties`:
 
-## Autores
-[Irving Meza ]
-[Jose Zambrano]
+```
+server:
+  port: 8888
 
-Muchas gracias por llegar hasta aqui!! espero te sirva de mucho este proyecto hasta luego!!
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///{ruta-al-repositorio-local}
+```
+
+Reemplaza `{ruta-al-repositorio-local}` con la ubicación de tu repositorio en el sistema de archivos.
+
+### 2. Uso con un Repositorio Privado en Git
+Si deseas conectarte a un repositorio privado en GitHub o GitLab, configura lo siguiente:
+
+```
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/usuario/repositorio-config
+          username: {tu-usuario}
+          password: {tu-token-de-acceso}
+```
+
+> **Nota:** Es recomendable usar variables de entorno o un servicio seguro para manejar credenciales en lugar de definirlas en texto plano.
+
+## Ejecución del Config Server
+Para ejecutar el servidor, usa el siguiente comando:
+
+```
+mvn spring-boot:run
+```
+
+## Acceso a la Configuración desde un Cliente
+Los microservicios pueden acceder a su configuración con la siguiente URL:
+
+```
+http://localhost:8888/{nombre-del-servicio}/{perfil}
+```
+
+Ejemplo para un servicio llamado `orders` con perfil `dev`:
+
+```
+http://localhost:8888/orders/dev
+```
+

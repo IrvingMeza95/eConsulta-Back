@@ -10,4 +10,5 @@ public interface PaqueteService {
     Paquete getPaquete(Long id) throws MyException;
     Paquete modificar(Long id, Paquete nuevoPaquete) throws MyException;
     List<Paquete> buscarPaquetePorServiciosIds(List<Long> serviciosIds) throws MyException;
+    List<Paquete> getAll();
 }

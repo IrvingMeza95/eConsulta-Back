@@ -53,47 +53,47 @@ public class PersonaController {
             log.info("Buscando persona tipo MEDICO.");
             Medico medico = medicoService.getPersona(param);
             personaDTO = personaMapper.getMedicoDTO(medico);
-            if (medico.getConsultas() != null)
-                personaDTO.setConsultas(consultaMapper.getConsultas(medico.getConsultas()));
-            if (medico.getArchivos() != null){
-                log.info("Cargando lista de archivos para medico.");
-                personaDTO.setArchivos(
-                        (List<ResponseFile>) Optional.ofNullable(medico.getArchivos())
-                                .map(archivos -> {
-                                    try {
-                                        return filesManagerService.listarArchivos(archivos);
-                                    } catch (Exception e) {
-                                        log.error("Gestor de archivos no disponible.", e);
-                                        return Collections.emptyList();
-                                    }
-                                })
-                                .orElse(Collections.emptyList())
-                );
-            }
+//            if (medico.getConsultas() != null)
+//                personaDTO.setConsultas(consultaMapper.getConsultas(medico.getConsultas()));
+//            if (medico.getArchivos() != null){
+//                log.info("Cargando lista de archivos para medico.");
+//                personaDTO.setArchivos(
+//                        (List<ResponseFile>) Optional.ofNullable(medico.getArchivos())
+//                                .map(archivos -> {
+//                                    try {
+//                                        return filesManagerService.listarArchivos(archivos);
+//                                    } catch (Exception e) {
+//                                        log.error("Gestor de archivos no disponible.", e);
+//                                        return Collections.emptyList();
+//                                    }
+//                                })
+//                                .orElse(Collections.emptyList())
+//                );
+//            }
             return ResponseEntity.ok(personaDTO);
         }else if (tipoPersona.equals(TipoPersona.PACIENTE)){
             log.info("Buscando persona tipo PACIENTE    .");
             Paciente paciente = pacienteService.getPersona(param);
             personaDTO = personaMapper.getPacienteDTO(paciente);
-            if (paciente.getConsultas() != null)
-                personaDTO.setConsultas(consultaMapper.getConsultas(paciente.getConsultas()));
-            if (paciente.getArchivos() != null){
-                log.info("Cargando lista de archivos para paciente.");
-                personaDTO.setArchivos(
-                        (List<ResponseFile>) Optional.ofNullable(paciente.getArchivos())
-                                .map(archivos -> {
-                                    try {
-                                        return filesManagerService.listarArchivos(archivos);
-                                    } catch (Exception e) {
-                                        log.error("Gestor de archivos no disponible.", e);
-                                        return Collections.emptyList();
-                                    }
-                                })
-                                .orElse(Collections.emptyList())
-                );
-
-
-            }
+//            if (paciente.getConsultas() != null)
+//                personaDTO.setConsultas(consultaMapper.getConsultas(paciente.getConsultas()));
+//            if (paciente.getArchivos() != null){
+//                log.info("Cargando lista de archivos para paciente.");
+//                personaDTO.setArchivos(
+//                        (List<ResponseFile>) Optional.ofNullable(paciente.getArchivos())
+//                                .map(archivos -> {
+//                                    try {
+//                                        return filesManagerService.listarArchivos(archivos);
+//                                    } catch (Exception e) {
+//                                        log.error("Gestor de archivos no disponible.", e);
+//                                        return Collections.emptyList();
+//                                    }
+//                                })
+//                                .orElse(Collections.emptyList())
+//                );
+//
+//
+//            }
             return ResponseEntity.ok(personaDTO);
         }
         return null;
@@ -108,13 +108,25 @@ public class PersonaController {
             log.info("Creando nueva persona PACIENTE.");
             Paciente paciente = pacienteService.crear(registro);
             request.setTo(paciente.getCredenciales().getEmail());
-            servicioVerificacion.codigoDeVerificacion(request);
+            try{
+                log.info("Enviando correo para creacion de contraseña.");
+                servicioVerificacion.codigoDeVerificacion(request);
+            }catch (RuntimeException e){
+                log.error(e.getMessage());
+                throw new RuntimeException("Error al enviar el correo de creacion de contraseña.");
+            }
             return ResponseEntity.ok(personaMapper.getPersonaDTO(paciente));
         }else if (registro.getTipoPersona().equals(TipoPersona.MEDICO)){
             log.info("Creando nueva persona MEDICO.");
             Medico medico = medicoService.crear(registro);
             request.setTo(medico.getCredenciales().getEmail());
-            servicioVerificacion.codigoDeVerificacion(request);
+            try{
+                log.info("Enviando correo para creacion de contraseña.");
+                servicioVerificacion.codigoDeVerificacion(request);
+            }catch (RuntimeException e){
+                log.error(e.getMessage());
+                throw new RuntimeException("Error al enviar el correo de creacion de contraseña.");
+            }
             return ResponseEntity.ok(personaMapper.getMedicoDTO(medico));
         }
         return null;

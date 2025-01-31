@@ -39,4 +39,9 @@ public class PaqueteController {
         return ResponseEntity.ok(paqueteService.modificar(id,paquete));
     }
 
+    @GetMapping("/get-all")
+    public ResponseEntity<List<Paquete>> getAll(){
+        return ResponseEntity.ok(paqueteService.getAll());
+    }
+
 }

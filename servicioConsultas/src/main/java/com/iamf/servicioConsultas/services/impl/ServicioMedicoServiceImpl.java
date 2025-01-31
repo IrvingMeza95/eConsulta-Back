@@ -86,6 +86,10 @@ public class ServicioMedicoServiceImpl implements ServicioMedicoService {
         return guardar(servicioBd);
     }
 
+    @Override
+    public List<ServicioMedico> getAll() {
+        return servicioMedicoRepo.findAll();
+    }
 
 
 }

@@ -263,6 +263,63 @@
 							"body": "{\n  \"id\": \"<long>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"tipoServicio\": {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n}"
 						}
 					]
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/servicios/get-all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"servicios",
+								"get-all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/servicios/get-all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"servicios",
+										"get-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -596,6 +653,63 @@
 							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"servicios\": [\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"precio\": \"<double>\",\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"servicios\": [\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"precio\": \"<double>\",\n    \"enabled\": \"<boolean>\"\n  }\n]"
 						}
 					]
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/paquetes/get-all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paquetes",
+								"get-all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/paquetes/get-all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"paquetes",
+										"get-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"servicios\": [\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"precio\": \"<double>\",\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"servicios\": [\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\",\n        \"tipoServicio\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"enabled\": \"<boolean>\"\n      }\n    ],\n    \"precio\": \"<double>\",\n    \"enabled\": \"<boolean>\"\n  }\n]"
+						}
+					]
 				}
 			]
 		},
@@ -843,6 +957,80 @@
 					]
 				},
 				{
+					"name": "{persona}",
+					"item": [
+						{
+							"name": "get Consultas",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/consultas/persona-consultas/:email",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"consultas",
+										"persona-consultas",
+										":email"
+									],
+									"variable": [
+										{
+											"key": "email",
+											"value": "irvingmeza95@gmail.com"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/consultas/:idPersona",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"consultas",
+												":idPersona"
+											],
+											"variable": [
+												{
+													"key": "idPersona"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<string>\",\n    \"horario\": \"<string>\",\n    \"medico\": {\n      \"id\": \"<string>\",\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"SIN_VERIFICAR\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"PACIENTE\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"sueldo\": \"<double>\",\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        }\n      ]\n    },\n    \"paciente\": {\n      \"id\": \"<string>\",\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"MEDIO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MEDICO\",\n      \"obraSocial\": \"<boolean>\",\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        }\n      ]\n    },\n    \"idServicioMedico\": \"<long>\",\n    \"idPaquete\": \"<long>\",\n    \"total\": \"<double>\",\n    \"pagado\": \"<boolean>\",\n    \"serviciosContratados\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<string>\",\n    \"horario\": \"<string>\",\n    \"medico\": {\n      \"id\": \"<string>\",\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"BASICO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"PACIENTE\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"sueldo\": \"<double>\",\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        }\n      ]\n    },\n    \"paciente\": {\n      \"id\": \"<string>\",\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"persona\": {\n          \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n        },\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"ALTO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\"\n      },\n      \"archivos\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MEDICO\",\n      \"obraSocial\": \"<boolean>\",\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Consulta detected>\"\n        }\n      ]\n    },\n    \"idServicioMedico\": \"<long>\",\n    \"idPaquete\": \"<long>\",\n    \"total\": \"<double>\",\n    \"pagado\": \"<boolean>\",\n    \"serviciosContratados\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      }\n    ]\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "crear",
 					"request": {
 						"method": "POST",
@@ -858,7 +1046,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaquete\": 2\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",

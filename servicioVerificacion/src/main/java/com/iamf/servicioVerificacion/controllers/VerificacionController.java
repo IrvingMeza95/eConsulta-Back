@@ -32,7 +32,13 @@ public class VerificacionController {
     public ResponseEntity<?> codigoDeVerificacion(@RequestBody RequestDTO request) throws MyException {
         log.info("Se solicito un codigo de verificacion.");
         TiposDePlantillas.validarExistencia(request.getTemplate());
-        UsuarioDTO usuario = servicioUsuarios.getUsuario(request.getTo());
+        UsuarioDTO usuario = new UsuarioDTO();
+        try{
+            usuario = servicioUsuarios.getUsuario(request.getTo());
+        }catch (RuntimeException e){
+            log.error(e.getMessage());
+            throw new RuntimeException("Error al obtener al usuario con el email " + request.getTo() + ".");
+        }
         Integer codigoDeVerificacion = Utilities.codigoDeVerificacion();
         if (request.getTemplate().equals(TiposDePlantillas.CODIGO_VERIFICACION_DE_CORREO.name())) {
             return emailService.codigoDeVerificacionDeCorreo(request, usuario, codigoDeVerificacion);

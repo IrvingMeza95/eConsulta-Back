@@ -1,20 +1,78 @@
-<h1 align="center"> Servidor Eureka </h1>
-<p>Este proyecto representaria el nucleo de nuestra aplicacion actuando como registro y descubrimiento de servicios para facilitar la interconexión y la resiliencia entre aplicaciones.</p>
+# Spring Boot Eureka Server
 
-## Caracteristicas del proyecto
-  - `Operaciones basicas`: Implementa las funciones esenciales de un servidor Eureka, como el registro de servicios, la renovación de leases, y la cancelación de registros.
-  - `Dependencias`: Utiliza la dependencia de Spring Cloud Netflix Eureka Server, facilitando la creación de un registro de servicios robusto y fácil de utilizar.
+Este proyecto es un **Eureka Server** basado en **Spring Boot**, que actúa como un servicio de descubrimiento para microservicios. Obtiene su configuración de un **Config Server**.
 
-## Versiones y tecnologias importantes para ejecutar el programa
-  - `Jdk`:  Jdk version 17
+## Requisitos
+- Java 17+
+- Spring Boot
+- Maven
+- Un Config Server en ejecución
 
-## Instrucciones de uso
-  1. [Descargar](#) o clonar este repositorio: git clone https://github.com/IrvingMeza95/ethereal-trek-eureka-server
-  2. Abrir el proyecto en tu entorno de desarrollo Java preferido
-  3. Ejecutar la aplicación.
+## Configuración del Eureka Server
+### 1. Configurar `bootstrap.yml`
+Para que el Eureka Server obtenga su configuración desde el Config Server, usa `bootstrap.yml`:
 
-## Autores
-[Irving ]
-[Jose Zambrano]
+```
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: eureka-server
+```
 
-Muchas gracias por llegar hasta aqui!! espero te sirva de mucho este proyecto hasta luego!!
+Esto permite que el Eureka Server recupere su configuración desde el Config Server con el nombre `eureka-server`.
+
+### 2. Configurar `application.yml`
+El Config Server debe proporcionar las siguientes configuraciones en `eureka-server.yml`:
+
+```
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+### 3. Dependencias en `pom.xml`
+Asegúrate de incluir la dependencia de Eureka Server:
+
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+```
+
+### 4. Habilitar Eureka Server en la Aplicación
+En la clase principal, agrega la anotación:
+
+```
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApplication.class, args);
+    }
+}
+```
+
+## Ejecución del Eureka Server
+Para ejecutar el Eureka Server, usa el siguiente comando:
+
+```
+mvn spring-boot:run
+```
+
+El Eureka Server estará disponible en:
+
+```
+http://localhost:8761
+```

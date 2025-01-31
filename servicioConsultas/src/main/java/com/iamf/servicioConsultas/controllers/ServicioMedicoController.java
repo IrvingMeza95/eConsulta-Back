@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/servicios")
 @Slf4j
@@ -31,6 +33,11 @@ public class ServicioMedicoController {
         return ResponseEntity.ok(
                 servicioMedicoService.modificar(id,servicio)
         );
+    }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<List<ServicioMedico>> getAll(){
+        return ResponseEntity.ok(servicioMedicoService.getAll());
     }
 
 }
