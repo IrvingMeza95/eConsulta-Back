@@ -69,6 +69,9 @@ public class FileServiceImpl implements FileService {
                 log.error(e.getMessage());
                 throw new RuntimeException(e.getMessage());
             }
+            if (!consulta.getPagado())
+                throw new MyException("No es posible generar un recibo o factura ya que la consulta" +
+                        " con el id " + idConsulta + " no figura como pagada en el sistema.");
         }
 
         File response = null;

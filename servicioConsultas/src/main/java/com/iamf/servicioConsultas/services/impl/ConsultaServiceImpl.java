@@ -117,4 +117,5 @@ public class ConsultaServiceImpl implements ConsultaService {
             throw new MyException("Es necesario un id de alguna persona.");
         return consultaRepo.getConsultasDePersona(email);
     }
+
 }

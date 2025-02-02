@@ -974,7 +974,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "2",
+											"value": "1",
 											"description": "(Required) "
 										}
 									]
@@ -1195,6 +1195,163 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "reportes",
+			"item": [
+				{
+					"name": "reporte-por-anio",
+					"item": [
+						{
+							"name": "reporte Consultas Por Anio",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reportes/reporte-por-anio/:anio",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reportes",
+										"reporte-por-anio",
+										":anio"
+									],
+									"variable": [
+										{
+											"key": "anio",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/reportes/reporte-por-anio/:anio",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reportes",
+												"reporte-por-anio",
+												":anio"
+											],
+											"variable": [
+												{
+													"key": "anio"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  [],\n  []\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "reporte-por-anio-por-tipo",
+					"item": [
+						{
+							"name": "reporte Consultas Por Tipo Por Anio",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reportes/reporte-por-anio-por-tipo/:anio",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reportes",
+										"reporte-por-anio-por-tipo",
+										":anio"
+									],
+									"variable": [
+										{
+											"key": "anio",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/reportes/reporte-por-anio-por-tipo/:anio",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reportes",
+												"reporte-por-anio-por-tipo",
+												":anio"
+											],
+											"variable": [
+												{
+													"key": "anio"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  [],\n  []\n]"
+								}
+							]
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1232,13 +1389,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas",
-			"disabled": true
+			"value": "http://localhost:8080/api/consultas"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",

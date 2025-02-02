@@ -5,13 +5,10 @@ import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.enums.TiposDePlantillas;
 import com.iamf.commons.exceptions.MyException;
-import com.iamf.commons.mappers.ConsultaMapper;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
 import com.iamf.commons.responses.ResponseMessage;
-import com.iamf.filesCommons.responses.ResponseFile;
-import com.iamf.servicioUsuarios.clientes.FilesManagerService;
 import com.iamf.servicioUsuarios.clientes.ServicioVerificacion;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
@@ -23,9 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/persona")
@@ -41,9 +36,6 @@ public class PersonaController {
     @Autowired
     private ServicioVerificacion servicioVerificacion;
     private final PersonaMapper personaMapper = new PersonaMapper();
-    @Autowired
-    private FilesManagerService filesManagerService;
-    private  final ConsultaMapper consultaMapper = new ConsultaMapper();
 
     @GetMapping("/{param}")
     public ResponseEntity<PersonaDTO> getPersona(@PathVariable String param) throws MyException {

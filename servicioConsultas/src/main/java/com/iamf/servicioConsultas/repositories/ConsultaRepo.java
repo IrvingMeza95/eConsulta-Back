@@ -12,4 +12,5 @@ import java.util.List;
 public interface ConsultaRepo extends JpaRepository<Consulta,Long> {
     @Query("SELECT c FROM Consulta c WHERE c.paciente.credenciales.email = :email OR c.medico.credenciales.email = :email")
     List<Consulta> getConsultasDePersona(@Param("email") String  email);
+
 }
