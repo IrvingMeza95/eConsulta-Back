@@ -30,12 +30,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/Correo_agregar_password.html"
+									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/correo_recuperacion_password.html"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/templates?tipo=CODIGO_VERIFICACION_DE_CORREO&description=Correo para agregar contraseña a nueva cuenta.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
+							"raw": "{{baseUrl}}/templates?tipo=CORREO_RECUPERACION_PASSWORD&description=Correo de recuperacion de contraseña.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -45,12 +45,12 @@
 							"query": [
 								{
 									"key": "tipo",
-									"value": "CODIGO_VERIFICACION_DE_CORREO",
+									"value": "CORREO_RECUPERACION_PASSWORD",
 									"description": "(Required) "
 								},
 								{
 									"key": "description",
-									"value": "Correo para agregar contraseña a nueva cuenta.",
+									"value": "Correo de recuperacion de contraseña.",
 									"description": "(Required) "
 								},
 								{
@@ -397,7 +397,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CORREO_RECUPERACION_PASSWORD\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -494,13 +494,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/verificacion"
+			"value": "http://localhost:8080/api/verificacion",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/verificacion",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		}
 	]
 }

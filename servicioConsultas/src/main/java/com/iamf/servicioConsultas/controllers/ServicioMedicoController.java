@@ -40,4 +40,10 @@ public class ServicioMedicoController {
         return ResponseEntity.ok(servicioMedicoService.getAll());
     }
 
+    @GetMapping("/get-all/{tipo}")
+    public ResponseEntity<List<ServicioMedico>> getAllPorTipo(@PathVariable String tipo) throws MyException {
+        log.info("Buscando servicios de tipo " + tipo);
+        return ResponseEntity.ok(servicioMedicoService.getAllPorTipo(tipo));
+    }
+
 }

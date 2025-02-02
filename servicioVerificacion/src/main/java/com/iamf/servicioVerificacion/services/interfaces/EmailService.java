@@ -11,4 +11,5 @@ public interface EmailService {
     ResponseEntity<?> codigoDeVerificacion2Factores(RequestDTO request, UsuarioDTO usuarioDTO, Integer codigo) throws MyException;
     ResponseEntity<?> nuevoLogin(RequestDTO request) throws MyException;
     ResponseEntity<?> emailDeBienvenida(RequestDTO request) throws MyException;
+    ResponseEntity<?> correoRecuperacionPassword(RequestDTO request, UsuarioDTO usuarioDTO, Integer codigo) throws MyException;
 }

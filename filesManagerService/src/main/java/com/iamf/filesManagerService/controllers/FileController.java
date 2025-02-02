@@ -28,12 +28,12 @@ public class FileController {
     private ResoonseFileMapper resoonseFileMapper = new ResoonseFileMapper();
 
     @PostMapping
-    public ResponseEntity<ResponseFile> subir(@RequestParam("file") MultipartFile file, @RequestParam("idUsuario") String idUsuario,
-                                              @RequestParam("tipo") String tipo) throws IOException, MyException {
-        if (file.getContentType() == null || tipo.isEmpty()){
-            throw new IOException();
+    public ResponseEntity<ResponseFile> subirActualizar(@RequestParam("file") MultipartFile file, @RequestParam("idUsuario") String idUsuario,
+                                              @RequestParam("tipo") String tipo, @RequestParam(value = "idConsulta",required = false) Long idConsulta) throws IOException, MyException {
+        if (file.getContentType() == null){
+            throw new IOException("Es necesario definir el content type.");
         }
-        File newFile = fileService.store(file, idUsuario, tipo);
+        File newFile = fileService.store(file, idUsuario, tipo,idConsulta);
         return ResponseEntity.status(HttpStatus.OK).body(resoonseFileMapper.getResponseFile(newFile));
     }
 
@@ -57,9 +57,10 @@ public class FileController {
                 .body(file.getData());
     }
 
-    @GetMapping("/files-paths")
-    public ResponseEntity<List<ResponseFile>> listarArchivos(@RequestParam List<String> filesIds){
-        List<ResponseFile> files = fileService.getFiles(filesIds);
+    @GetMapping("/{param}/files-paths")
+    public ResponseEntity<List<ResponseFile>> getFilesPaths(@PathVariable String param,
+                                                             @RequestParam(name = "tipo", required = false) String tipo) throws MyException {
+        List<ResponseFile> files = fileService.getFiles(param, tipo);
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 

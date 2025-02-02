@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 public interface FileService {
-    File store(MultipartFile file, String idUsuario, String tipoDeArchivo) throws IOException, MyException;
+    File store(MultipartFile file, String idUsuario, String tipoDeArchivo, Long idConsulta) throws IOException, MyException;
     File getFile1(String id) throws FileNotFoundException;
     File getFile2(String param,String tipo) ;
-    List<ResponseFile> getFiles(List<String> filesIds);
+    List<ResponseFile> getFiles(String emailUsuario, String tipo) throws MyException;
 }

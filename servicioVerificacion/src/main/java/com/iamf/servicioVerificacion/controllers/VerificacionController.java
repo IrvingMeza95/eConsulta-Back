@@ -50,8 +50,10 @@ public class VerificacionController {
         }else if (request.getTemplate().equals(TiposDePlantillas.CELULAR_VERIFICACION_2_FACTORES.name())) {
             log.info("Se eligio verificacion por sms.");
             return smsService.codigoDeVerificacion2Factores(request, usuario, codigoDeVerificacion);
+        }else if (request.getTemplate().equals(TiposDePlantillas.CORREO_RECUPERACION_PASSWORD.name())) {
+            return emailService.correoRecuperacionPassword(request, usuario, codigoDeVerificacion);
         }
-        return null;
+            return null;
     }
 
 }

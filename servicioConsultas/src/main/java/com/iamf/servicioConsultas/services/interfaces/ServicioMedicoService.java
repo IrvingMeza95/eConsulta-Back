@@ -11,4 +11,5 @@ public interface ServicioMedicoService {
     List<ServicioMedico> getServiciosMedicos(List<Long> ids);
     ServicioMedico modificar(Long id, ServicioMedico nuevoServicio) throws MyException;
     List<ServicioMedico> getAll();
+    List<ServicioMedico> getAllPorTipo(String nombre) throws MyException;
 }

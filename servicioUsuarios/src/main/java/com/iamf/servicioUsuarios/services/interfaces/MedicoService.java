@@ -6,6 +6,8 @@ import com.iamf.commons.models.Medico;
 import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 
+import java.util.List;
+
 public interface MedicoService {
 
     Medico guardar(Medico medico);
@@ -14,5 +16,6 @@ public interface MedicoService {
     Medico modificar(String param, PersonaDTO nuevaPersonaMoral) throws MyException;
     ResponseMessage eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
+    List<Medico> getAll();
 
 }

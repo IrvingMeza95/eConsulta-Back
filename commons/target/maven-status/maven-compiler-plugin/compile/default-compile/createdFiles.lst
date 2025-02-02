@@ -15,7 +15,6 @@ com\iamf\commons\dtos\MetaData$MetaDataBuilder.class
 com\iamf\commons\models\Paquete.class
 com\iamf\commons\dtos\PersonaDTO.class
 com\iamf\commons\dtos\RequestDTO.class
-com\iamf\commons\responses\ResponseFile.class
 com\iamf\commons\mappers\ConsultaMapper.class
 com\iamf\commons\models\Turno$TurnoBuilder.class
 com\iamf\commons\models\ServicioMedico.class
@@ -23,7 +22,6 @@ com\iamf\commons\models\Usuario$UsuarioBuilder.class
 com\iamf\commons\models\Paquete$PaqueteBuilder.class
 com\iamf\commons\enums\TiposDePlantillas.class
 com\iamf\commons\dtos\UsuarioDTO$UsuarioDTOBuilder.class
-com\iamf\commons\responses\ResponseFile$ResponseFileBuilder.class
 com\iamf\commons\dtos\ChatDTO$ChatDTOBuilder.class
 com\iamf\commons\models\Message.class
 com\iamf\commons\utils\EmailUtils.class
@@ -40,12 +38,9 @@ com\iamf\commons\mappers\PersonaMapper.class
 com\iamf\commons\dtos\PersonaDTO$PersonaDTOBuilder.class
 com\iamf\commons\models\Usuario.class
 com\iamf\commons\mappers\UsuarioMapper.class
-com\iamf\commons\models\File.class
 com\iamf\commons\enums\TipoUsuario.class
 com\iamf\commons\mappers\MessageMapper.class
 com\iamf\commons\dtos\ChatDTO.class
-com\iamf\commons\enums\TipoDeArchivo.class
-com\iamf\commons\models\File$FileBuilder.class
 com\iamf\commons\utils\ServicioVerificacionUtils.class
 com\iamf\commons\models\ServicioMedico$ServicioMedicoBuilder.class
 com\iamf\commons\dtos\MessageDTO.class

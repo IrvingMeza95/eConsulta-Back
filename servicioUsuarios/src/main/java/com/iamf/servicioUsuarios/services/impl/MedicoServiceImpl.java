@@ -88,4 +88,9 @@ public class MedicoServiceImpl implements MedicoService {
         personaService.agregarArchivo(medico,idArchivo);
         guardar(medico);
     }
+
+    @Override
+    public List<Medico> getAll() {
+        return medicoRepo.findAll();
+    }
 }

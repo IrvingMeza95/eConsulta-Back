@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -73,5 +74,10 @@ public class PacienteServiceImpl implements PacienteService {
         Paciente paciente = getPersona(param);
         personaService.agregarArchivo(paciente,idArchivo);
         guardar(paciente);
+    }
+
+    @Override
+    public List<Paciente> getAll() {
+        return pacienteRepo.findAll();
     }
 }

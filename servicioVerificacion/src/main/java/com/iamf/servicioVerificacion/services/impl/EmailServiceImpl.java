@@ -182,4 +182,38 @@ public class EmailServiceImpl implements EmailService {
         return new ResponseEntity<Body>(new Body("Email de bienvenida enviado éxitosamente!"), HttpStatus.CREATED);
     }
 
+    @Override
+    public ResponseEntity<?> correoRecuperacionPassword(RequestDTO request, UsuarioDTO usuario, Integer codigoDeVerificacion) throws MyException {
+        log.info("Generando codigo de recuperacion de contraseña.");
+        request.setSubject("Recuperación de contraseña.");
+        log.info("Generando fecha de expiracion para codigo de recuperacion de contrseña.");
+        String fechaDeExpiracion = Utilities.obtenerFechaDeExpiracionDeCodigo(request.getFecha(),
+                serviceProperties.getValidationCodeDuration());
+        log.info("Codigo de verificacion: " + codigoDeVerificacion);
+        Integer codigoRespuesta = servicioUsuarios.guardarCodigoDeVerificacion(request.getTo(), codigoDeVerificacion,fechaDeExpiracion);
+        log.info("Codigo respuesta: " + codigoRespuesta);
+        if (codigoRespuesta == null || codigoRespuesta < 1)
+            throw new MyException("Error al generar el código de verificación.");
+        request.setMetaData(new ArrayList<MetaData>());
+        request.getMetaData().add(MetaData.builder()
+                .key("nombreUsuario")
+                .value(usuario.getNombre() + " " + usuario.getApellido())
+                .build());
+        String urlAgregarPassword = serviceProperties.getUrlAgregarPassword().replace("username", usuario.getUsername());
+        String urlFinal = urlAgregarPassword.replace("codigo", String.valueOf(codigoDeVerificacion));
+        request.getMetaData().add(MetaData.builder()
+                .key("urlAgregarPassword")
+                .value(urlFinal)
+                .build());
+        request.getMetaData().add(MetaData.builder()
+                .key("fechaExpiracion")
+                .value(fechaDeExpiracion)
+                .build());
+        request.setTemplate(templateService.buildMessage(request));
+        log.info("Enviando correo.");
+        sendMessage(request);
+        return new ResponseEntity<Body>(new Body("Se envió un correo de recuperaciín de cuenta a la dirección "
+                + request.getTo() + "."), HttpStatus.CREATED);
+    }
+
 }

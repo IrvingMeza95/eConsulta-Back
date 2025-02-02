@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -172,6 +173,23 @@ public class PersonaController {
             log.info("Asociando nuevo archivo a persona MEDICO  con param" + param);
             medicoService.agregarArchivo(param,idArchivo);
         }
+    }
+
+    @GetMapping("/get-all/{tipo}")
+    public ResponseEntity<List<PersonaDTO>> getAll(@PathVariable TipoPersona tipo) throws MyException {
+        List<PersonaDTO> personas = new ArrayList<>();
+        if (tipo == null)
+            throw new MyException("Es necesario especificar el tipo de persona.");
+        if (tipo.equals(TipoPersona.MEDICO)){
+            log.info("Buscando personas tipo MEDICO.");
+            personas = personaMapper.listaMedicos(medicoService.getAll());
+            return ResponseEntity.ok(personas);
+        }else if (tipo.equals(TipoPersona.PACIENTE)){
+            log.info("Buscando personsa tipo PACIENTE    .");
+            personas = personaMapper.listaPacientes(pacienteService.getAll());
+            return ResponseEntity.ok(personas);
+        }
+        return null;
     }
 
 }

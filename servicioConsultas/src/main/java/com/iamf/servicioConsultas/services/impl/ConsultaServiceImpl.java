@@ -40,6 +40,8 @@ public class ConsultaServiceImpl implements ConsultaService {
                 servicioUsuaruis.getPersona(consulta.getPaciente().getCredenciales().getEmail()));
         if (paciente.isEmpty())
             throw new MyException("Error al cargar los datos del paciente.");
+        if (!paciente.get().getCredenciales().getEnabled())
+            throw new MyException("El paciente seleccionado no há concluido su proceso de registro.");
         Paciente pacienteDb = new Paciente();
         pacienteDb.setId(paciente.get().getId());
         Usuario pacienteCred = new Usuario();
@@ -52,6 +54,8 @@ public class ConsultaServiceImpl implements ConsultaService {
                 servicioUsuaruis.getPersona(consulta.getMedico().getCredenciales().getEmail()));
         if (medico.isEmpty())
             throw new MyException("Error al cargar los datos del medico.");
+        if (!medico.get().getCredenciales().getEnabled())
+            throw new MyException("El médico seleccionado no há concluido su proceso de registro.");
         Medico medicoDb = new Medico();
         medicoDb.setId(medico.get().getId());
         Usuario medicoCred = new Usuario();

@@ -14,7 +14,7 @@
 					"name": "{id}",
 					"item": [
 						{
-							"name": "ver Archivo",
+							"name": "ver Archivo 1",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -85,10 +85,10 @@
 					]
 				},
 				{
-					"name": "tipos",
+					"name": "{tipo}",
 					"item": [
 						{
-							"name": "tipos De Archivos",
+							"name": "ver Archivo 2",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -98,13 +98,26 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/files/tipos",
+									"raw": "{{baseUrl}}/files/:param/:tipo",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"files",
-										"tipos"
+										":param",
+										":tipo"
+									],
+									"variable": [
+										{
+											"key": "param",
+											"value": "irvingmeza95@gmail.com",
+											"description": "(Required) "
+										},
+										{
+											"key": "tipo",
+											"value": "PROFILE_PICTURE",
+											"description": "(Required) "
+										}
 									]
 								}
 							},
@@ -120,13 +133,22 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/files/tipos",
+											"raw": "{{baseUrl}}/files/:param/:tipo",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"files",
-												"tipos"
+												":param",
+												":tipo"
+											],
+											"variable": [
+												{
+													"key": "param"
+												},
+												{
+													"key": "tipo"
+												}
 											]
 										}
 									},
@@ -140,7 +162,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  \"PROFILE_PICTURE\",\n  \"PROFILE_PICTURE\"\n]"
+									"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
 								}
 							]
 						}
@@ -150,7 +172,7 @@
 					"name": "files-paths",
 					"item": [
 						{
-							"name": "listar Archivos",
+							"name": "getFilesPaths",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -160,13 +182,29 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/files/files-paths",
+									"raw": "{{baseUrl}}/files/:param/files-paths",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"files",
+										":param",
 										"files-paths"
+									],
+									"query": [
+										{
+											"key": "tipo",
+											"value": "RECIBO",
+											"description": "Agregar el tipo para filtrar.",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "param",
+											"value": "irvingmeza95@gmail.com",
+											"description": "(Required) "
+										}
 									]
 								}
 							},
@@ -182,13 +220,19 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/files/files-paths",
+											"raw": "{{baseUrl}}/files/:param/files-paths",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"files",
+												":param",
 												"files-paths"
+											],
+											"variable": [
+												{
+													"key": "param"
+												}
 											]
 										}
 									},
@@ -209,96 +253,7 @@
 					]
 				},
 				{
-					"name": "{param}",
-					"item": [
-						{
-							"name": "{tipo}",
-							"item": [
-								{
-									"name": "ver Archivo2",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/files/:param/:tipo",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"files",
-												":param",
-												":tipo"
-											],
-											"variable": [
-												{
-													"key": "param",
-													"value": "irvingmeza95@gmail.com",
-													"description": "(Required) "
-												},
-												{
-													"key": "tipo",
-													"value": "PROFILE_PICTURE",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "OK",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "*/*"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/files/:param/:tipo",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"files",
-														":param",
-														":tipo"
-													],
-													"variable": [
-														{
-															"key": "param"
-														},
-														{
-															"key": "tipo"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "*/*"
-												}
-											],
-											"cookie": [],
-											"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "subir",
+					"name": "subir-actualizar",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -317,12 +272,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/Irving/Profile picture 2.jpg"
+									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/SANGAR/ADMINISTRACION/FACTURAS/Facturas 2024/MNTO COMISIONES.pdf"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/files?idUsuario=irvingmeza95@gmail.com&tipo=PROFILE_PICTURE",
+							"raw": "{{baseUrl}}/files?idUsuario=irvingmeza95@gmail.com&tipo=FACTURA-1",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -337,8 +292,14 @@
 								},
 								{
 									"key": "tipo",
-									"value": "PROFILE_PICTURE",
-									"description": "(Required) "
+									"value": "FACTURA-1",
+									"description": "(Required)"
+								},
+								{
+									"key": "idConsulta",
+									"value": "1",
+									"description": "(Optional)",
+									"disabled": true
 								}
 							]
 						}
@@ -403,6 +364,63 @@
 							"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<string>\",\n  \"type\": \"<string>\",\n  \"size\": \"<integer>\"\n}"
 						}
 					]
+				},
+				{
+					"name": "tipos De Archivos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/files/tipos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"files",
+								"tipos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/files/tipos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"files",
+										"tipos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  \"PROFILE_PICTURE\",\n  \"PROFILE_PICTURE\"\n]"
+						}
+					]
 				}
 			]
 		}
@@ -442,17 +460,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/files"
+			"value": "http://localhost:8080/api/files",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/files",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3Mzc1MDkwNDUsIlRpcG9QZXJzb25hIjoiUEFDSUVOVEUiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImVhNjU5ODhjLWZjOWItNDMzOS1hZGIxLWNlYTllYjA3ODUxZiIsImNsaWVudF9pZCI6ImZyb250X2FwcCIsInVzZXJuYW1lIjoiaXJ2aW5nbWV6YTk1QGdtYWlsLmNvbSJ9.3RgFARzhmUbmqtRvUT1yKWul_awjm5i-i4pqCDrPCCs",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDExMTA3NDEsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI0MmE3ZDc4Yi1mOTFhLTRjNDktYTZlMi1hY2MwYThjYzZhMGMiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.olIpSN9qrgkyKy9tvAPXe9wstMNmVopDc-VQIkSgxIc",
 			"type": "string"
 		}
 	]

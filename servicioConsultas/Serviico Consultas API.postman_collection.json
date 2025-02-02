@@ -182,6 +182,144 @@
 					]
 				},
 				{
+					"name": "get-all",
+					"item": [
+						{
+							"name": "{tipo}",
+							"item": [
+								{
+									"name": "get All Por Tipo",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/servicios/get-all/:tipo",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"servicios",
+												"get-all",
+												":tipo"
+											],
+											"variable": [
+												{
+													"key": "tipo",
+													"value": "Consultas especializadas",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/servicios/get-all/:tipo",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"servicios",
+														"get-all",
+														":tipo"
+													],
+													"variable": [
+														{
+															"key": "tipo"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/servicios/get-all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"servicios",
+										"get-all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/servicios/get-all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"servicios",
+												"get-all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "crear",
 					"request": {
 						"method": "POST",
@@ -197,7 +335,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"descripcion\": \"Consulta en cardiologia.\",\n  \"precio\": 150,\n  \"tipoServicio\": {\n    \"id\": 2\n  }\n}",
+							"raw": "{\n  \"descripcion\": \"Examen de la vista.\",\n  \"precio\": 15,\n  \"tipoServicio\": {\n    \"id\": 3\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -261,63 +399,6 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"id\": \"<long>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"tipoServicio\": {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n}"
-						}
-					]
-				},
-				{
-					"name": "get All",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/servicios/get-all",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"servicios",
-								"get-all"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/servicios/get-all",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"servicios",
-										"get-all"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"tipoServicio\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\"\n  }\n]"
 						}
 					]
 				}
@@ -513,7 +594,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  2\n]",
+							"raw": "[\n  1,\n  2,\n  3\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1046,7 +1127,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaquete\": 2\n}",
+							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaqquete\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1151,13 +1232,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas"
+			"value": "http://localhost:8080/api/consultas",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",

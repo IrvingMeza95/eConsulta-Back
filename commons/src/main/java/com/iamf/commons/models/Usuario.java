@@ -60,7 +60,7 @@ public class Usuario {
 
     @PrePersist
     public void prePersist() {
-        enabled = true;
+        enabled = false;
         intentos = 0;
         nivelDeVerificacion = NivelDeVerificacion.SIN_VERIFICAR;
         verificacion2Factores = false;

@@ -255,6 +255,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         eliminarCodigoDeVerificacion(usuario);
         usuarioRepo.cambiarEmailVerificado(true,param);
         cambiarNivelDeVerificacion(usuario,NivelDeVerificacion.BASICO);
+        usuario.setEnabled(true);
         guardar(usuario);
     }
 

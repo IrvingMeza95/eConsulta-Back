@@ -6,6 +6,8 @@ import com.iamf.commons.models.Paciente;
 import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 
+import java.util.List;
+
 public interface PacienteService {
 
     Paciente guardar(Paciente paciente);
@@ -14,5 +16,5 @@ public interface PacienteService {
     Paciente modificar(String param, PersonaDTO nuevoPaciente) throws MyException;
     ResponseMessage eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
-
+    List<Paciente> getAll();
 }

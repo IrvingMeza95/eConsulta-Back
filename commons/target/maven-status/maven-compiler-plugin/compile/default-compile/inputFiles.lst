@@ -8,7 +8,6 @@ C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eC
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\mappers\ChatMapper.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Usuario.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\mappers\UsuarioMapper.java
-C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\File.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\TarjetaBancaria.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\mappers\MessageMapper.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\CuentaBancaria.java
@@ -16,14 +15,11 @@ C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eC
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\exceptions\MyFunctionalExceptionHandler.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\utils\EmailUtils.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\dtos\RequestDTO.java
-C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\mappers\ResoonseFileMapper.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\dtos\PersonaDTO.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\Roles.java
-C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\responses\ResponseFile.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\TipoTarjeta.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\NivelDeVerificacion.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\TipoServicio.java
-C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\enums\TipoDeArchivo.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Turno.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\mappers\ConsultaMapper.java
 C:\Users\iamf_\OneDrive\Desktop\Drive\Irving\Programacion\Proyectos\eConsulta\eConsulta-Back\commons\src\main\java\com\iamf\commons\models\Template.java

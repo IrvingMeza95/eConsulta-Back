@@ -91,5 +91,12 @@ public class ServicioMedicoServiceImpl implements ServicioMedicoService {
         return servicioMedicoRepo.findAll();
     }
 
+    @Override
+    public List<ServicioMedico> getAllPorTipo(String nombre) throws MyException {
+        if (nombre.isEmpty())
+            throw new MyException("Es necesario especificar el tipo de servicio.");
+        return servicioMedicoRepo.getAllPorTipo(nombre);
+    }
+
 
 }

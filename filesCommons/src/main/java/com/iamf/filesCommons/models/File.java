@@ -17,7 +17,7 @@ public class File {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id_archivo")
     private String id;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, unique = true, length = 50)
     private String name;
     @Column(nullable = false, length = 50)
     private String type;

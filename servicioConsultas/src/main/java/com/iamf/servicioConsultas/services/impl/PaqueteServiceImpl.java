@@ -33,6 +33,9 @@ public class PaqueteServiceImpl implements PaqueteService {
 
     @Override
     public Paquete crear(List<Long> ids) throws MyException {
+        List<Paquete> paqueteExxistente = buscarPaquetePorServiciosIds(ids);
+        if (!paqueteExxistente.isEmpty())
+            throw new MyException("Ya existe un paquete con los servicios seleccionados, su id es " + paqueteExxistente.get(0).getId() + ".");
         log.info("Creando paquete");
         List<ServicioMedico> servicioMedicos = servicioMedicoService.getServiciosMedicos(ids);
         Double precio = servicioMedicos.stream()

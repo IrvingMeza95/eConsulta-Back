@@ -80,4 +80,12 @@ public class PersonaMapper {
 		return personas.stream().map(this::getPersonaDTO).collect(Collectors.toList());
 	}
 
+	public List<PersonaDTO> listaMedicos(List<Medico> medicos){
+		return medicos.stream().map(this::getMedicoDTO).collect(Collectors.toList());
+	}
+
+	public List<PersonaDTO> listaPacientes(List<Paciente> medicos){
+		return medicos.stream().map(this::getPacienteDTO).collect(Collectors.toList());
+	}
+
 }
