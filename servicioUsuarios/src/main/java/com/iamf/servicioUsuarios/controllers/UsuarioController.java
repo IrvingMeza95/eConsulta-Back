@@ -2,6 +2,7 @@ package com.iamf.servicioUsuarios.controllers;
 
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.dtos.UsuarioDTO;
+import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.mappers.PersonaMapper;
 import com.iamf.commons.mappers.UsuarioMapper;
@@ -74,6 +75,11 @@ public class UsuarioController {
                                                            @RequestParam Integer codigo, @RequestParam String fecha) throws MyException {
         usuarioService.agregarPassword(param,password,codigo, fecha);
         return  ResponseEntity.ok(new ResponseMessage("Contraseña actualizada exitósamente."));
+    }
+
+    @GetMapping("/tipo-persona/{param}")
+    public ResponseEntity<TipoPersona> getTipoPersona(@PathVariable String param) throws MyException {
+        return ResponseEntity.ok(usuarioService.getTipoPersona(param));
     }
 
 }

@@ -11,6 +11,7 @@ import com.iamf.filesManagerService.clientes.ServicioConsultas;
 import com.iamf.filesManagerService.clientes.ServicioUsuarios;
 import com.iamf.filesManagerService.repositories.FileRepo;
 import com.iamf.filesManagerService.services.interfaces.FileService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class FileServiceImpl implements FileService {
     @Autowired
     private ServicioConsultas servicioConsultas;
 
+    @Transactional(rollbackOn = Exception.class)
     @Override
     public File store(MultipartFile file, String idUsuario, String tipoDeArchivo, Long idConsulta) throws IOException, MyException {
         if (idUsuario == null || tipoDeArchivo == null)
@@ -60,6 +62,8 @@ public class FileServiceImpl implements FileService {
                 log.error(e.getMessage());
                 throw new RuntimeException(e.getMessage());
             }
+            if (!idUsuario.equals(consulta.getPaciente().getCredenciales().getEmail()))
+                throw new MyException("El paciente con el email " + idUsuario + " no tiene relacion con la consulta con el id " + idCon + ".");
         }else if (!tipoDeArchivo.equals(TipoDeArchivo.PROFILE_PICTURE.name())){
             log.info("Validando si la consulta con id " + idConsulta + " existe.");
             ConsultaDTO consulta = null;
@@ -69,6 +73,8 @@ public class FileServiceImpl implements FileService {
                 log.error(e.getMessage());
                 throw new RuntimeException(e.getMessage());
             }
+            if (!idUsuario.equals(consulta.getPaciente().getCredenciales().getEmail()))
+                throw new MyException("El paciente con el email " + idUsuario + " no tiene relacion con la consulta con el id " + idConsulta + ".");
             if (!consulta.getPagado())
                 throw new MyException("No es posible generar un recibo o factura ya que la consulta" +
                         " con el id " + idConsulta + " no figura como pagada en el sistema.");

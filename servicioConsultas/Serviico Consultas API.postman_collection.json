@@ -594,7 +594,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  2,\n  3\n]",
+							"raw": "[\n  1,\n  2\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -974,7 +974,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "1",
+											"value": "3",
 											"description": "(Required) "
 										}
 									]
@@ -1127,7 +1127,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaqquete\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaquete\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1200,11 +1200,38 @@
 			"name": "reportes",
 			"item": [
 				{
-					"name": "reporte-por-anio",
-					"item": [
+					"name": "reporte Consultas Por Anio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reportes/reporte-por-anio/:anio",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reportes",
+								"reporte-por-anio",
+								":anio"
+							],
+							"variable": [
+								{
+									"key": "anio",
+									"value": "2025",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
 						{
-							"name": "reporte Consultas Por Anio",
-							"request": {
+							"name": "OK",
+							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
@@ -1224,63 +1251,58 @@
 									],
 									"variable": [
 										{
-											"key": "anio",
-											"value": "<string>",
-											"description": "(Required) "
+											"key": "anio"
 										}
 									]
 								}
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
 								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/reportes/reporte-por-anio/:anio",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"reportes",
-												"reporte-por-anio",
-												":anio"
-											],
-											"variable": [
-												{
-													"key": "anio"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "*/*"
-										}
-									],
-									"cookie": [],
-									"body": "[\n  [],\n  []\n]"
+									"key": "Content-Type",
+									"value": "*/*"
 								}
-							]
+							],
+							"cookie": [],
+							"body": "[\n  [],\n  []\n]"
 						}
 					]
 				},
 				{
-					"name": "reporte-por-anio-por-tipo",
-					"item": [
+					"name": "reporte Consultas Por Tipo Por Anio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reportes/reporte-por-anio-por-tipo/:anio",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reportes",
+								"reporte-por-anio-por-tipo",
+								":anio"
+							],
+							"variable": [
+								{
+									"key": "anio",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
 						{
-							"name": "reporte Consultas Por Tipo Por Anio",
-							"request": {
+							"name": "OK",
+							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
@@ -1300,8 +1322,222 @@
 									],
 									"variable": [
 										{
-											"key": "anio",
-											"value": "<string>",
+											"key": "anio"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [],\n  []\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "tipos-de-servicios",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "modificar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"NADA\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tipos-de-servicios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tipos-de-servicios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tipos-de-servicios/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tipos-de-servicios",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tipos-de-servicios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tipos-de-servicios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/tipos-de-servicios/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tipos-de-servicios",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get Tipo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tipos-de-servicios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tipos-de-servicios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
 											"description": "(Required) "
 										}
 									]
@@ -1319,18 +1555,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/reportes/reporte-por-anio-por-tipo/:anio",
+											"raw": "{{baseUrl}}/tipos-de-servicios/:id",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
-												"reportes",
-												"reporte-por-anio-por-tipo",
-												":anio"
+												"tipos-de-servicios",
+												":id"
 											],
 											"variable": [
 												{
-													"key": "anio"
+													"key": "id"
 												}
 											]
 										}
@@ -1345,9 +1580,149 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  [],\n  []\n]"
+									"body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}"
 								}
 							]
+						}
+					]
+				},
+				{
+					"name": "crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tipos-de-servicios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tipos-de-servicios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tipos-de-servicios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tipos-de-servicios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tipos-de-servicios/get-all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tipos-de-servicios",
+								"get-all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/tipos-de-servicios/get-all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tipos-de-servicios",
+										"get-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n]"
 						}
 					]
 				}
@@ -1389,17 +1764,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas"
+			"value": "http://localhost:8080/api/consultas",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDA4NjQ4NDAsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJkZDVkM2JkYi02NTFmLTQ2M2MtOGU5ZS0yNmUyNTFhMjYyZDIiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.IyPH_dZSKurddnNEuQ3Cv4pasAKgeAlDPgzQ2QAt_cM",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDIyMjU2NDMsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiJjMjJlZGFhNy1kZmFlLTRlMDItYTE1MS03YjQ4YjYzM2NiZWYiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.bDiqGkYYO9nEHovIfSTibfUYkV1g-BYidProPtgvO18",
 			"type": "string"
 		}
 	]
