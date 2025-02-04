@@ -2,6 +2,7 @@ package com.iamf.servicioConsultas.controllers;
 
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.ServicioMedico;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class ServicioMedicoController {
     public ResponseEntity<List<ServicioMedico>> getAllPorTipo(@PathVariable String tipo) throws MyException {
         log.info("Buscando servicios de tipo " + tipo);
         return ResponseEntity.ok(servicioMedicoService.getAllPorTipo(tipo));
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseMessage> eliminar(@PathVariable Long id) throws MyException {
+        return ResponseEntity.ok(servicioMedicoService.eliminar(id));
     }
 
 }

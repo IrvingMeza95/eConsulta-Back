@@ -18,6 +18,12 @@ public interface PaqueteRepo extends JpaRepository<Paquete, Long> {
             (SELECT COUNT(s) FROM p.servicios s) = :size
     """)
     List<Paquete> buscarPaquetePorServiciosIds(@Param("servicioIds") List<Long> servicioIds,
-                                               @Param("size") long size);
+                                                   @Param("size") long size);
+@Query(value = "SELECT EXISTS (\n" +
+        "    SELECT 1\n" +
+        "    FROM econsulta_db.consultas c\n" +
+        "    WHERE c.id_paquete = ?1\n" +
+        ") AS coincidencia;", nativeQuery = true)
+    List<Object[]> existeEnConsuñtas(Long id);
 
 }

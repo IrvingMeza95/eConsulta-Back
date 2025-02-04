@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "86c44c86-db78-4d10-8401-e071029992a1",
+		"_postman_id": "f030546f-3548-4a88-a460-5676860f2a6b",
 		"name": "Serviico Consultas API",
 		"description": "Endpoinds para la gestion de consultas.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -176,6 +176,75 @@
 									],
 									"cookie": [],
 									"body": "{\n  \"id\": \"<long>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"tipoServicio\": {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/servicios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"servicios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/servicios/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"servicios",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
 								}
 							]
 						}
@@ -575,6 +644,75 @@
 									"body": "{\n  \"id\": \"<long>\",\n  \"servicios\": [\n    {\n      \"id\": \"<long>\",\n      \"descripcion\": \"<string>\",\n      \"precio\": \"<double>\",\n      \"tipoServicio\": {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"descripcion\": \"<string>\",\n      \"precio\": \"<double>\",\n      \"tipoServicio\": {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"precio\": \"<double>\",\n  \"enabled\": \"<boolean>\"\n}"
 								}
 							]
+						},
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/paquetes/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"paquetes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/paquetes/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"paquetes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
 						}
 					]
 				},
@@ -594,7 +732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  2\n]",
+							"raw": "[\n  2,\n  3,\n  4\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -974,7 +1112,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "3",
+											"value": "2",
 											"description": "(Required) "
 										}
 									]
@@ -1127,7 +1265,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaquete\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-01-29\",\n  \"horario\": \"11-12\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idPaquete\": 2\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1764,13 +1902,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas",
-			"disabled": true
+			"value": "http://localhost:8080/api/consultas"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",

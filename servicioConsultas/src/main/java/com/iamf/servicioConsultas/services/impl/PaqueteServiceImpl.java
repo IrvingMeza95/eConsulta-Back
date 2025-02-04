@@ -4,6 +4,7 @@ import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Paquete;
 import com.iamf.commons.models.ServicioMedico;
 import com.iamf.commons.models.TipoServicio;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioConsultas.repositories.PaqueteRepo;
 import com.iamf.servicioConsultas.services.interfaces.PaqueteService;
 import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
@@ -93,6 +94,23 @@ public class PaqueteServiceImpl implements PaqueteService {
     @Override
     public List<Paquete> getAll() {
         return paqueteRepo.findAll();
+    }
+
+    @Override
+    public ResponseMessage eliminar(Long id) throws MyException {
+        validarExistenciaEnConsultas(id);
+        Paquete paquete = getPaquete(id);
+        paqueteRepo.delete(paquete);
+        return new ResponseMessage("Paquete con id " + id + " fue eliminado correctamente.");
+    }
+
+    private void validarExistenciaEnConsultas(Long id) throws MyException {
+        if (id == null)
+            throw new MyException("Es necesario un id.");
+        List<Object[]> respuesta = paqueteRepo.existeEnConsuñtas(id);
+        if (String.valueOf(respuesta.get(0)[0]).equals("1"))
+            throw new MyException("No es posible eliminar el paquete con id " + id +
+                    " debido a que ya ha sido usado en consultas.");
     }
 
 }

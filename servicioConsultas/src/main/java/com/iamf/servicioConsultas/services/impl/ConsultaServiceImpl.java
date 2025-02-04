@@ -1,6 +1,7 @@
 package com.iamf.servicioConsultas.services.impl;
 
 import com.iamf.commons.dtos.PersonaDTO;
+import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.*;
 import com.iamf.commons.responses.ResponseMessage;
@@ -40,6 +41,9 @@ public class ConsultaServiceImpl implements ConsultaService {
                 servicioUsuaruis.getPersona(consulta.getPaciente().getCredenciales().getEmail()));
         if (paciente.isEmpty())
             throw new MyException("Error al cargar los datos del paciente.");
+        if (!paciente.get().getTipoPersona().equals(TipoPersona.PACIENTE))
+            throw new MyException("El email " + consulta.getPaciente().getCredenciales().getEmail() +
+                    " no pertenece a ningun paciente.");
         if (!paciente.get().getCredenciales().getEnabled())
             throw new MyException("El paciente seleccionado no há concluido su proceso de registro.");
         Paciente pacienteDb = new Paciente();
@@ -54,6 +58,9 @@ public class ConsultaServiceImpl implements ConsultaService {
                 servicioUsuaruis.getPersona(consulta.getMedico().getCredenciales().getEmail()));
         if (medico.isEmpty())
             throw new MyException("Error al cargar los datos del medico.");
+        if (!medico.get().getTipoPersona().equals(TipoPersona.MEDICO))
+            throw new MyException("El email " + consulta.getMedico().getCredenciales().getEmail() +
+                    " no pertenece a ningun medico.");
         if (!medico.get().getCredenciales().getEnabled())
             throw new MyException("El médico seleccionado no há concluido su proceso de registro.");
         Medico medicoDb = new Medico();

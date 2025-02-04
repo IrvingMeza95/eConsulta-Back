@@ -3,6 +3,7 @@ package com.iamf.servicioConsultas.services.impl;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.ServicioMedico;
 import com.iamf.commons.models.TipoServicio;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioConsultas.repositories.ServicioMedicoRepo;
 import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
 import com.iamf.servicioConsultas.services.interfaces.TipoServicioService;
@@ -96,6 +97,23 @@ public class ServicioMedicoServiceImpl implements ServicioMedicoService {
         if (nombre.isEmpty())
             throw new MyException("Es necesario especificar el tipo de servicio.");
         return servicioMedicoRepo.getAllPorTipo(nombre);
+    }
+
+    @Override
+    public ResponseMessage eliminar(Long id) throws MyException {
+        validarExistenciaEnConsultas(id);
+        ServicioMedico servicioMedico = getServicioMedico(id);
+        servicioMedicoRepo.delete(servicioMedico);
+        return new ResponseMessage("El servicio con el id " + id + " fue eliminado correctamente.");
+    }
+
+    private void validarExistenciaEnConsultas(Long id) throws MyException {
+        if (id == null)
+            throw new MyException("Es necesario un id.");
+        List<Object[]> respuesta = servicioMedicoRepo.existeEnConsuñtas(id);
+        if (String.valueOf(respuesta.get(0)[0]).equals("1"))
+            throw new MyException("No es posible eliminar el servicio con el id " + id +
+                    " ya que ha sido usado en consultas.");
     }
 
 

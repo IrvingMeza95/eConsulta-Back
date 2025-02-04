@@ -2,6 +2,7 @@ package com.iamf.servicioConsultas.controllers;
 
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Paquete;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioConsultas.services.interfaces.PaqueteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class PaqueteController {
     @GetMapping("/get-all")
     public ResponseEntity<List<Paquete>> getAll(){
         return ResponseEntity.ok(paqueteService.getAll());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseMessage> eliminar(@PathVariable Long id) throws MyException {
+        return ResponseEntity.ok(paqueteService.eliminar(id));
     }
 
 }

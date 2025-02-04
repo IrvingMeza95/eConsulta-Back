@@ -12,5 +12,11 @@ import java.util.List;
 public interface ServicioMedicoRepo extends JpaRepository<ServicioMedico, Long> {
     @Query("SELECT s FROM ServicioMedico s WHERE s.tipoServicio.nombre = :nombre")
     List<ServicioMedico> getAllPorTipo(@Param("nombre") String nombre);
-
+    @Query(value = "SELECT EXISTS (\n" +
+            "    SELECT 1\n" +
+            "    FROM econsulta_db.consultas c\n" +
+            "    JOIN econsulta_db.paquete_servicio ps ON c.id_paquete = ps.paquete_id\n" +
+            "    WHERE ps.servicio_medico_id = ?1\n" +
+            ") AS existe;", nativeQuery = true)
+    List<Object[]> existeEnConsuñtas(Long id);
 }
