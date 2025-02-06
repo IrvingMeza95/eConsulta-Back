@@ -3,7 +3,6 @@ package com.iamf.servicioUsuarios.services.impl;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Medico;
-import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Turno;
 import com.iamf.commons.models.Usuario;
 import com.iamf.commons.responses.ResponseMessage;
@@ -19,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -146,6 +147,44 @@ public class MedicoServiceImpl implements MedicoService {
             medico.getTurnos().add(turno);
         }
         guardar(medico);
+        return new ResponseMessage(mensaje);
+    }
+
+    @Override
+    public ResponseMessage asignarRemoverTurnATodos(String idOHorario, String accion) throws MyException {
+        Turno turno = turnoService.getTurno(idOHorario);
+        List<Medico> medicos = getAll();
+        String mensaje = null;
+        AtomicInteger contador = new AtomicInteger();
+        if (accion.equalsIgnoreCase("ASIGNAR")){
+
+            log.info("Asignando el turno con horario " + turno.getHorario() +
+                    " a todos los medicos.");
+            medicos.stream().map(m -> {
+                if (!m.getTurnos().contains(turno)){
+                    log.info("Se asigno el turno al medico con email " + m.getCredenciales().getEmail());
+                    m.getTurnos().add(turno);
+                    contador.getAndIncrement();
+                }
+                return m;
+            }).collect(Collectors.toList());
+            mensaje = "Se asigno el turno a " + contador + " medicos.";
+        }else if (accion.equalsIgnoreCase("REMOVER")){
+            log.info("Removiendo el turno con horario " + turno.getHorario() +
+                    " a todos los medicos.");
+            medicos.stream().map(m -> {
+                if (m.getTurnos().contains(turno)){
+                    log.info("Se removio el turno al medico con email " + m.getCredenciales().getEmail());
+                    m.getTurnos().remove(turno);
+                    contador.getAndIncrement();
+                }
+                return m;
+            }).collect(Collectors.toList());
+            mensaje = "Se removio el turno a " + contador + " medicos.";
+        }else{
+            throw new MyException("Es necesario especificar la accion correcta (ASIGNAR, REMOVER).");
+        }
+        medicoRepo.saveAll(medicos);
         return new ResponseMessage(mensaje);
     }
 

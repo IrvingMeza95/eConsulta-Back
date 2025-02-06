@@ -28,4 +28,9 @@ public class MedicoController {
         return ResponseEntity.ok(medicoService.asignarRemoverTurno(email,idOHorarioTurno));
     }
 
+    @PutMapping("/asignar-remover-turno-a-todos")
+    public ResponseEntity<ResponseMessage> asignarRemoverTurnATodos(@RequestParam String idOHorario,@RequestParam String accion) throws MyException {
+        return ResponseEntity.ok(medicoService.asignarRemoverTurnATodos(idOHorario,accion));
+    }
+
 }

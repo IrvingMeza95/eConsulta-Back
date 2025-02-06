@@ -436,7 +436,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "irvingmeza95@gmail.com",
+											"value": "iamf_095@hotmail.com",
 											"description": "(Required) "
 										}
 									]
@@ -1443,7 +1443,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=irvingmeza95@gmail.com&idOHorarioTurno=13-14",
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=irvingmeza95@gmail.com&idOHorarioTurno=16-17",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1459,7 +1459,7 @@
 								},
 								{
 									"key": "idOHorarioTurno",
-									"value": "13-14",
+									"value": "16-17",
 									"description": "(Required) "
 								}
 							]
@@ -1493,6 +1493,87 @@
 										},
 										{
 											"key": "idOHorarioTurno",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "asignar Remover Turn A Todos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?idOHorario=16-17&accion=REMOVER",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"asignar-remover-turno-a-todos"
+							],
+							"query": [
+								{
+									"key": "idOHorario",
+									"value": "16-17",
+									"description": "(Required) "
+								},
+								{
+									"key": "accion",
+									"value": "REMOVER",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?idOHorario=<string>&accion=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"asignar-remover-turno-a-todos"
+									],
+									"query": [
+										{
+											"key": "idOHorario",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "accion",
 											"value": "<string>",
 											"description": "(Required) "
 										}
@@ -1561,7 +1642,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDIyMDkzMDQsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiI0YTBlYjM3OC01NDkwLTQzNTAtYmZhZC1kNjdmMmMxYTk1MTAiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.wE2tCatBhl1-FpGWxOeUWXIR_pSmkjxJrmDosxr8Iqw",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDI0ODczMDMsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiJjZTcyY2Q2YS03YzMwLTQ4OTItYmM2Ni1mMmI0Njg5NDBkOGYiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.VEjhi8oUaeTl-mO765_CYSlcj2GhlZo0j2hA2yBCJsg",
 			"type": "string"
 		}
 	]
