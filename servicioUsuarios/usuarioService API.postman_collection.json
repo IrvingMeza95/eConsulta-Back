@@ -152,7 +152,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=7036&fecha=2025-01-27 13:20:00",
+							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=5388&fecha=2025-01-27 13:20:00",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -169,7 +169,7 @@
 								},
 								{
 									"key": "codigo",
-									"value": "7036",
+									"value": "5388",
 									"description": "(Required) "
 								},
 								{
@@ -745,7 +745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"654321\",\n    \"nombre\": \"alfonso\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 3\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -988,6 +988,532 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "turnos",
+			"item": [
+				{
+					"name": "{idOHorario}",
+					"item": [
+						{
+							"name": "get Turno",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/turnos/:idOHorario",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos",
+										":idOHorario"
+									],
+									"variable": [
+										{
+											"key": "idOHorario",
+											"value": "10-11",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/turnos/:idOHorario",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"turnos",
+												":idOHorario"
+											],
+											"variable": [
+												{
+													"key": "idOHorario"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"horario\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "habilitar Deshabilitar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/turnos/habilitar-deshabilitar/:idHorario",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos",
+										"habilitar-deshabilitar",
+										":idHorario"
+									],
+									"variable": [
+										{
+											"key": "idHorario",
+											"value": "9-10",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/turnos/habilitar-deshabilitar/:idHorario",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"turnos",
+												"habilitar-deshabilitar",
+												":idHorario"
+											],
+											"variable": [
+												{
+													"key": "idHorario"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/turnos/:idHorario",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos",
+										":idHorario"
+									],
+									"variable": [
+										{
+											"key": "idHorario",
+											"value": "10-11",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/turnos/:idHorario",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"turnos",
+												":idHorario"
+											],
+											"variable": [
+												{
+													"key": "idHorario"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"horario\": \"16-17\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/turnos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turnos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"horario\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/turnos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"horario\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/turnos/get-all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"turnos",
+								"get-all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/turnos/get-all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos",
+										"get-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"horario\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"horario\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "medicos",
+			"item": [
+				{
+					"name": "disponibilidad Semanal",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/disponibilidad-semanal?email=irvingmeza95@gmail.com&fecha=2025-01-29",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"disponibilidad-semanal"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "irvingmeza95@gmail.com",
+									"description": "(Required) "
+								},
+								{
+									"key": "fecha",
+									"value": "2025-01-29",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/disponibilidad-semanal?email=<string>&fecha=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"disponibilidad-semanal"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "fecha",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [],\n  []\n]"
+						}
+					]
+				},
+				{
+					"name": "asignar Remover Turno",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=irvingmeza95@gmail.com&idOHorarioTurno=13-14",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"asignar-remover-turno"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "irvingmeza95@gmail.com",
+									"description": "(Required) "
+								},
+								{
+									"key": "idOHorarioTurno",
+									"value": "13-14",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=<string>&idOHorarioTurno=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"asignar-remover-turno"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "idOHorarioTurno",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1025,17 +1551,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8080/api/usuarios",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDIxMjYzNDgsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJkMGE1OGZkOC03ODgyLTQyOTEtOTgzYi03OTlmNmYxMTIwNDQiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.p7E9IL_TaQ7MJryCfedqEet5rJc0vXYrsGsI0dVT2GU",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDIyMDkzMDQsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiI0YTBlYjM3OC01NDkwLTQzNTAtYmZhZC1kNjdmMmMxYTk1MTAiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.wE2tCatBhl1-FpGWxOeUWXIR_pSmkjxJrmDosxr8Iqw",
 			"type": "string"
 		}
 	]

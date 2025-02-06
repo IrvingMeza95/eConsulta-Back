@@ -29,6 +29,8 @@ public class ConsultaServiceImpl implements ConsultaService {
     private ServicioUsuaruis servicioUsuaruis;
     @Value("${porcentaje.descuento.obra.social}")
     private Double porcentajeDescuentoObraSocial;
+    @Value("${limite.consultas.por.horario}")
+    private Integer limiteConsultasPorHorario;
 
     private Consulta guardar(Consulta consulta){
         return consultaRepo.save(consulta);
@@ -69,6 +71,10 @@ public class ConsultaServiceImpl implements ConsultaService {
         medicoCred.setId(medico.get().getCredenciales().getId());
         medicoDb.setCredenciales(medicoCred);
         consulta.setMedico(medicoDb);
+
+        log.error("Validando disponibilidad de fecha y hora.");
+        if (consultaRepo.validarCupoDeTurno(medicoDb.getId(), consulta.getHorario(),consulta.getFecha(),limiteConsultasPorHorario))
+            throw new MyException("No hay cupo en la fecha y hora especificada.");
 
         List<ServicioContratado> servicioContratados = servicioContratadoService.crearLista(consulta);
         consulta.setServiciosContratados(servicioContratados);
@@ -123,6 +129,13 @@ public class ConsultaServiceImpl implements ConsultaService {
         if (email.isEmpty())
             throw new MyException("Es necesario un id de alguna persona.");
         return consultaRepo.getConsultasDePersona(email);
+    }
+
+    @Override
+    public Boolean validarExistenciaDeTurnoEnconsultas(String horario) throws MyException {
+        if (horario == null)
+            throw new MyException("Es necesario especificar un horario.");
+        return consultaRepo.validarExistenciaDeTurnoEnconsultas(horario);
     }
 
 }

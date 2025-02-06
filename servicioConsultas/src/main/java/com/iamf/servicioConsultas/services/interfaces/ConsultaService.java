@@ -12,4 +12,5 @@ public interface ConsultaService {
     ResponseMessage eliminar(Long id) throws MyException;
     Consulta modificar(Long id, Consulta nuevaConsulta) throws MyException;
     List<Consulta> getConsultasDePersona(String email) throws MyException;
+    Boolean validarExistenciaDeTurnoEnconsultas(String horario) throws MyException;
 }

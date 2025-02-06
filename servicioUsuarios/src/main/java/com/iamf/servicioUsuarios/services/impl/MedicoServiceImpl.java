@@ -7,6 +7,7 @@ import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Turno;
 import com.iamf.commons.models.Usuario;
 import com.iamf.commons.responses.ResponseMessage;
+import com.iamf.servicioUsuarios.clientes.ServicioConsultas;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.repositories.MedicoRepo;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
@@ -29,6 +30,8 @@ public class MedicoServiceImpl implements MedicoService {
     private MedicoRepo medicoRepo;
     @Autowired
     private TurnoService turnoService;
+    @Autowired
+    private ServicioConsultas servicioConsultas;
 
     @Override
     public Medico guardar(Medico medico) {
@@ -93,4 +96,57 @@ public class MedicoServiceImpl implements MedicoService {
     public List<Medico> getAll() {
         return medicoRepo.findAll();
     }
+
+    @Override
+    public List<Object[]> disponibilidadSemanal(String fecha, String email) throws MyException {
+        log.info("Generando calendario de disponibilidad de horario para el medico con el email " + email);
+        if (fecha == null)
+            throw new MyException("Es necesario especificar una fecha.");
+        if (email == null)
+            throw new MyException("Es necesario especificar un email de medico");
+        Medico medico = getPersona(email);
+        Integer limiteConsultasPorHorario = null;
+        try{
+            limiteConsultasPorHorario = servicioConsultas.limiteConsultasPorHorario();
+        }catch (RuntimeException e){
+            log.error(e.getMessage());
+            throw new RuntimeException("Error al obtener el limite de consultas por horario.");
+        }
+        List<Object[]> respuesta = medicoRepo.validarDisnibilidadDeMedicoPorSemana(fecha,medico.getId(),limiteConsultasPorHorario);
+        return respuesta;
+    }
+
+    @Override
+    public ResponseMessage asignarRemoverTurno(String email, String idOHorario) throws MyException {
+        if (email == null)
+            throw new MyException("Es neccesario un email.");
+        if (idOHorario == null)
+            throw new MyException("Es necesario un id o un horario de turno.");
+        Medico medico = getPersona(email);
+        Boolean existe = false;
+        Turno turno = new Turno();
+        for (Turno t : medico.getTurnos()){
+            if (t.getHorario().equals(idOHorario) || String.valueOf(t.getId()).equals(idOHorario)){
+                existe = true;
+                turno = turnoService.getTurno(idOHorario);
+                break;
+            }
+        }
+        String mensaje = null;
+        if (existe){
+            log.info("Eliminando turno del medico con email " + email);
+            mensaje = "Se removio el turno con horario " + turno.getHorario() +
+                    " del medico con el email " + email + ".";
+            medico.getTurnos().remove(turno);
+        }else{
+            log.info("Añadiendo turno al medico con email " + email);
+            turno = turnoService.getTurno(idOHorario);
+            mensaje = "Se añadio el turno con horario " + turno.getHorario() +
+                    " al medico con el email " + email + ".";
+            medico.getTurnos().add(turno);
+        }
+        guardar(medico);
+        return new ResponseMessage(mensaje);
+    }
+
 }

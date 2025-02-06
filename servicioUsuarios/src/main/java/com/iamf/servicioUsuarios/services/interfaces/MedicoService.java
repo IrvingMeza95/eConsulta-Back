@@ -17,5 +17,6 @@ public interface MedicoService {
     ResponseMessage eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
     List<Medico> getAll();
-
+    List<Object[]> disponibilidadSemanal(String fecha, String email) throws MyException;
+    ResponseMessage asignarRemoverTurno(String email, String idOHorario) throws MyException;
 }
