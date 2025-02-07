@@ -9,7 +9,8 @@ public enum TiposDePlantillas {
     EMAILS_VERIFICACION_2_FACTORES,
     CELULAR_VERIFICACION_2_FACTORES,
     CORREO_RECUPERACION_PASSWORD,
-    NUEVO_INICIO_DE_SESION;
+    NUEVO_INICIO_DE_SESION,
+    ENVIO_DE_ARCHIVO;
 
     public static Boolean validarExistencia(String tipo) throws MyException {
         for (TiposDePlantillas t : TiposDePlantillas.values()){

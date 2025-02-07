@@ -13,4 +13,5 @@ public interface ConsultaService {
     Consulta modificar(Long id, Consulta nuevaConsulta) throws MyException;
     List<Consulta> getConsultasDePersona(String email) throws MyException;
     Boolean validarExistenciaDeTurnoEnconsultas(String horario) throws MyException;
+    List<Consulta> getAll();
 }

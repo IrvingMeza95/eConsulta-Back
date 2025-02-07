@@ -436,7 +436,7 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "iamf_095@hotmail.com",
+											"value": "irvingmeza95@gmail.com",
 											"description": "(Required) "
 										}
 									]
@@ -745,7 +745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 3\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112643\",\n    \"roles\": [\n      {\n        \"id\": 3\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1524,7 +1524,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?idOHorario=16-17&accion=REMOVER",
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?idOHorario=8-9&accion=ASIGNAR",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1535,12 +1535,12 @@
 							"query": [
 								{
 									"key": "idOHorario",
-									"value": "16-17",
+									"value": "8-9",
 									"description": "(Required) "
 								},
 								{
 									"key": "accion",
-									"value": "REMOVER",
+									"value": "ASIGNAR",
 									"description": "(Required) "
 								}
 							]
@@ -1632,17 +1632,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
-			"disabled": true
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8080/api/usuarios",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDI0ODczMDMsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiJjZTcyY2Q2YS03YzMwLTQ4OTItYmM2Ni1mMmI0Njg5NDBkOGYiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.VEjhi8oUaeTl-mO765_CYSlcj2GhlZo0j2hA2yBCJsg",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDE1NDYxMjksIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiJmZjExNWFjNC04NGY4LTQ4N2UtOGQ1MC0xN2RiYzM3Yzc5ZjYiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ._QnGwOJZBGzYsBXS_apa0elT0Hf-lPZpq1XBxnkq4mc",
 			"type": "string"
 		}
 	]

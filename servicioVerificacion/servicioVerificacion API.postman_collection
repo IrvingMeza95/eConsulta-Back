@@ -30,12 +30,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/correo_recuperacion_password.html"
+									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/Correo_agregar_password.html"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/templates?tipo=CORREO_RECUPERACION_PASSWORD&description=Correo de recuperacion de contraseña.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
+							"raw": "{{baseUrl}}/templates?tipo=CODIGO_VERIFICACION_DE_CORREO&description=Correo para agregar contraseña.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -45,12 +45,12 @@
 							"query": [
 								{
 									"key": "tipo",
-									"value": "CORREO_RECUPERACION_PASSWORD",
+									"value": "CODIGO_VERIFICACION_DE_CORREO",
 									"description": "(Required) "
 								},
 								{
 									"key": "description",
-									"value": "Correo de recuperacion de contraseña.",
+									"value": "Correo para agregar contraseña.",
 									"description": "(Required) "
 								},
 								{
@@ -59,8 +59,8 @@
 									"description": "(Required) "
 								},
 								{
-									"key": "",
-									"value": "",
+									"key": "vars",
+									"value": "nombreUsuario,tipoArchivo",
 									"description": "(Required) ",
 									"disabled": true
 								}
@@ -375,6 +375,91 @@
 							]
 						}
 					]
+				},
+				{
+					"name": "enviar Archivo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"to\": \"iamf_095@hotmail.com\",\n  \"template\": \"ENVIO_DE_ARCHIVO\",\n  \"responseFile\": {\n    \"name\": \"RECIBO-22\",\n    \"type\": \".pdf\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/emails/enviar-archivo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"emails",
+								"enviar-archivo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"to\": \"<string>\",\n  \"username\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"template\": \"<string>\",\n  \"fecha\": \"<string>\",\n  \"ubicacion\": \"<string>\",\n  \"dispositivo\": \"<string>\",\n  \"codigo\": \"<integer>\",\n  \"metaData\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"responseFile\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"type\": \"<string>\",\n    \"size\": \"<integer>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/emails/enviar-archivo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"emails",
+										"enviar-archivo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
 				}
 			]
 		},
@@ -397,7 +482,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CORREO_RECUPERACION_PASSWORD\"\n}",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",

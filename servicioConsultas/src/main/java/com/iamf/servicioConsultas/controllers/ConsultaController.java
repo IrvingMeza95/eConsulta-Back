@@ -65,4 +65,9 @@ public class ConsultaController {
         return ResponseEntity.ok(limiteConsultasPorHorario);
     }
 
+    @GetMapping("/get-all")
+    public ResponseEntity<List<ConsultaDTO>> getAll(){
+        return ResponseEntity.ok(consultaMapper.getConsultasBasic(consultaService.getAll()));
+    }
+
 }

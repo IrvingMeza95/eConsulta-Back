@@ -1,10 +1,13 @@
 package com.iamf.filesManagerService.controllers;
 
+import com.iamf.commons.dtos.RequestDTO;
+import com.iamf.commons.enums.TiposDePlantillas;
 import com.iamf.filesCommons.enums.TipoDeArchivo;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.filesCommons.mappers.ResoonseFileMapper;
 import com.iamf.filesCommons.models.File;
 import com.iamf.filesCommons.responses.ResponseFile;
+import com.iamf.filesManagerService.clientes.ServicioVerificacion;
 import com.iamf.filesManagerService.services.interfaces.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class FileController {
     @Autowired
     private FileService fileService;
     private ResoonseFileMapper resoonseFileMapper = new ResoonseFileMapper();
+    @Autowired
+    private ServicioVerificacion servicioVerificacion;
 
     @PostMapping
     public ResponseEntity<ResponseFile> subirActualizar(@RequestParam("file") MultipartFile file, @RequestParam("idUsuario") String idUsuario,
@@ -34,7 +39,23 @@ public class FileController {
             throw new IOException("Es necesario definir el content type.");
         }
         File newFile = fileService.store(file, idUsuario, tipo,idConsulta);
-        return ResponseEntity.status(HttpStatus.OK).body(resoonseFileMapper.getResponseFile(newFile));
+        ResponseFile responseFile = resoonseFileMapper.getResponseFile(newFile);
+        if(tipo.equals(TipoDeArchivo.RECIBO.name()) || tipo.equals(TipoDeArchivo.FACTURA.name())){
+            try{
+                RequestDTO request = RequestDTO.builder()
+                        .to(idUsuario)
+                        .template(TiposDePlantillas.ENVIO_DE_ARCHIVO.name())
+                        .responseFile(ResponseFile.builder()
+                                .name(responseFile.getName())
+                                .type(".pdf")
+                                .build())
+                        .build();
+                servicioVerificacion.enviarArchivo(request);
+            }catch (RuntimeException e){
+                log.error(e.getMessage());
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(responseFile);
     }
 
     @GetMapping("/{id}")

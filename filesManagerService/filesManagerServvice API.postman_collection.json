@@ -110,12 +110,12 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "irvingmeza95@gmail.com",
+											"value": "iamf_095@hotmail.com",
 											"description": "(Required) "
 										},
 										{
 											"key": "tipo",
-											"value": "PROFILE_PICTURE",
+											"value": "RECIBO-22",
 											"description": "(Required) "
 										}
 									]
@@ -182,7 +182,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/files/:param/files-paths",
+									"raw": "{{baseUrl}}/files/:param/files-paths?tipo=RECIBO",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -195,15 +195,13 @@
 										{
 											"key": "tipo",
 											"value": "RECIBO",
-											"description": "Agregar el tipo para filtrar.",
-											"disabled": true
+											"description": "Agregar el tipo para filtrar."
 										}
 									],
 									"variable": [
 										{
 											"key": "param",
-											"value": "irvingmeza95@gmail.com",
-											"description": "(Required) "
+											"value": ""
 										}
 									]
 								}
@@ -272,12 +270,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/iamf_/Streaming de Google Drive/Otros ordenadores/Mi Portátil/SANGAR/ADMINISTRACION/FACTURAS/Facturas 2024/MNTO COMISIONES.pdf"
+									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Archivos de prueba/FACTURA DE CONSULTA 1.pdf"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/files?idUsuario=irvingmeza95@gmail.com&tipo=FACTURA-1",
+							"raw": "{{baseUrl}}/files?idUsuario=iamf_095@hotmail.com&tipo=FACTURA&idConsulta=1",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -287,19 +285,18 @@
 							"query": [
 								{
 									"key": "idUsuario",
-									"value": "irvingmeza95@gmail.com",
+									"value": "iamf_095@hotmail.com",
 									"description": "(Required) "
 								},
 								{
 									"key": "tipo",
-									"value": "FACTURA-1",
+									"value": "FACTURA",
 									"description": "(Required)"
 								},
 								{
 									"key": "idConsulta",
 									"value": "1",
-									"description": "(Optional)",
-									"disabled": true
+									"description": "(Optional)"
 								}
 							]
 						}
@@ -470,7 +467,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDExMTA3NDEsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI0MmE3ZDc4Yi1mOTFhLTRjNDktYTZlMi1hY2MwYThjYzZhMGMiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.olIpSN9qrgkyKy9tvAPXe9wstMNmVopDc-VQIkSgxIc",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJpcnZpbmdtZXphOTVAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImNvcnJlbyI6ImlydmluZ21lemE5NUBnbWFpbC5jb20iLCJ2ZXJpZmljYWNpb24yRmFjdG9yZXMiOmZhbHNlLCJleHAiOjE3NDIyMTk2NzcsIlRpcG9QZXJzb25hIjoiTUVESUNPIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiJdLCJqdGkiOiJlNThkZjExMi00OThiLTRkNDItODUzMC1kNWYyM2NhMGVmNTAiLCJjbGllbnRfaWQiOiJmcm9udF9hcHAiLCJ1c2VybmFtZSI6ImlydmluZ21lemE5NUBnbWFpbC5jb20ifQ.-3zkvgK8pN24gXbgJQQ07rzVEccaOqVz6BAVBHNAa7Q",
 			"type": "string"
 		}
 	]

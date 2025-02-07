@@ -4,6 +4,7 @@ import com.iamf.commons.dtos.UsuarioDTO;
 import com.iamf.commons.enums.TiposDePlantillas;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.utils.EmailUtils;
+import com.iamf.servicioVerificacion.clientes.FileManagerService;
 import com.iamf.servicioVerificacion.clientes.ServicioUsuarios;
 import com.iamf.servicioVerificacion.configs.ServiceProperties;
 import com.iamf.servicioVerificacion.dtos.Body;
@@ -16,6 +17,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -41,6 +43,8 @@ public class EmailServiceImpl implements EmailService {
     private GmailService gmailService;
     @Autowired
     private ServiceProperties serviceProperties;
+    @Autowired
+    private FileManagerService fileManagerService;
 
     @Override
     public ResponseEntity<?> sendMessage(RequestDTO request) {
@@ -54,6 +58,7 @@ public class EmailServiceImpl implements EmailService {
                 helper.setTo(request.getTo());
                 helper.setSubject(request.getSubject());
                 helper.setText(messageContent, true);
+                agregarArchivo(helper,request);
                 gmailService.sendEmail(message);
             }else {
                 return new ResponseEntity<Body>(new Body("Correo electronico invalido!") , HttpStatus.NOT_ACCEPTABLE);
@@ -67,6 +72,26 @@ public class EmailServiceImpl implements EmailService {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    private void agregarArchivo(MimeMessageHelper helper, RequestDTO request) throws MessagingException {
+        log.info("Validando si se adjuntara un archivo.");
+        if (request.getResponseFile() != null){
+            log.info("Agregando archivo al correo.");
+            byte[] fileBytes = null;
+            try {
+                log.info("Email: " + request.getTo() + ", tipo: " + request.getResponseFile().getName());
+                fileBytes = fileManagerService.verArchivo2(request.getTo(),request.getResponseFile().getName());
+            }catch (RuntimeException e){
+                log.error(e.getMessage());
+                throw new RuntimeException("Error al obtener el archivo.");
+            }
+            String fileName = request.getResponseFile().getName() + request.getResponseFile().getType();
+            ByteArrayResource resource = new ByteArrayResource(fileBytes);
+            helper.addAttachment(fileName, resource);
+        }else{
+            log.error("Validacion negativa para envio de archivos.");
+        }
     }
 
     @Override
@@ -214,6 +239,39 @@ public class EmailServiceImpl implements EmailService {
         sendMessage(request);
         return new ResponseEntity<Body>(new Body("Se envió un correo de recuperaciín de cuenta a la dirección "
                 + request.getTo() + "."), HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<?> enviarArchivo(RequestDTO request) throws MyException {
+        UsuarioDTO usuario = new UsuarioDTO();
+        try{
+            usuario = servicioUsuarios.getUsuario(request.getTo());
+        }catch (RuntimeException e){
+            log.error(e.getMessage());
+            throw new RuntimeException("Error al obtener al usuario con el email " + request.getTo() + ".");
+        }
+        log.info("Preparando plantilla " + request.getTemplate());
+        TiposDePlantillas.validarExistencia(request.getTemplate());
+        request.setMetaData(new ArrayList<MetaData>());
+
+        String[] partes = request.getResponseFile().getName().split("-");
+        String tipoArchivo = String.valueOf(partes[0]);
+        String tipoArchivoFormateado = tipoArchivo.substring(0, 1).toUpperCase() + tipoArchivo.substring(1).toLowerCase();
+        request.setSubject(tipoArchivoFormateado + " de pago en eConsulta.");
+
+        request.getMetaData().add(MetaData.builder()
+                .key("nombreUsuario")
+                .value(usuario.getNombre() + " " + usuario.getApellido())
+                .build());
+        log.info("Tipo archivo: " + tipoArchivo);
+        request.getMetaData().add(MetaData.builder()
+                .key("tipoArchivo")
+                .value(tipoArchivoFormateado)
+                .build());
+        request.setTemplate(templateService.buildMessage(request));
+        log.info("Plantilla html terminada: \n" + request.getTemplate());
+        sendMessage(request);
+        return new ResponseEntity<Body>(new Body("Enviado éxitosamente!"), HttpStatus.CREATED);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.iamf.commons.dtos;
 
+import com.iamf.filesCommons.responses.ResponseFile;
 import lombok.*;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public class RequestDTO {
 	private String dispositivo;
 	private Integer codigo;
 	private List<MetaData> metaData;
+	private ResponseFile responseFile;
 }

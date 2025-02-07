@@ -27,4 +27,9 @@ public class EmailController {
 		return emailService.nuevoLogin(request);
 	}
 
+	@PostMapping("/enviar-archivo")
+	public ResponseEntity<?> enviarArchivo(@RequestBody RequestDTO request) throws MyException {
+		return emailService.enviarArchivo(request);
+	}
+
 }

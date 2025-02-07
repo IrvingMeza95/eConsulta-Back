@@ -1,5 +1,6 @@
 package com.iamf.servicioConsultas.services.impl;
 
+import com.iamf.commons.dtos.ConsultaDTO;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
@@ -136,6 +137,11 @@ public class ConsultaServiceImpl implements ConsultaService {
         if (horario == null)
             throw new MyException("Es necesario especificar un horario.");
         return consultaRepo.validarExistenciaDeTurnoEnconsultas(horario);
+    }
+
+    @Override
+    public List<Consulta> getAll() {
+        return consultaRepo.findAll();
     }
 
 }
