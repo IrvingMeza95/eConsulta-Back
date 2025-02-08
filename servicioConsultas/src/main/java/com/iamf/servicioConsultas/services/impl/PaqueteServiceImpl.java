@@ -25,12 +25,14 @@ public class PaqueteServiceImpl implements PaqueteService {
     private PaqueteRepo paqueteRepo;
     @Autowired
     private ServicioMedicoService servicioMedicoService;
-
-    private Paquete guardar(Paquete paquete){
-        return paqueteRepo.save(paquete);
-    }
     @Value("${porcentaje.descuento.paquete}")
     private Double porcentajeDescuentoPaquete;
+
+    private Paquete guardar(Paquete paquete) {
+        Paquete paqueteDb = paqueteRepo.save(paquete);
+        calcularPrecio(paqueteDb);
+        return paqueteDb;
+    }
 
     @Override
     public Paquete crear(List<Long> ids) throws MyException {
@@ -39,14 +41,16 @@ public class PaqueteServiceImpl implements PaqueteService {
             throw new MyException("Ya existe un paquete con los servicios seleccionados, su id es " + paqueteExxistente.get(0).getId() + ".");
         log.info("Creando paquete");
         List<ServicioMedico> servicioMedicos = servicioMedicoService.getServiciosMedicos(ids);
-        Double precio = servicioMedicos.stream()
-                .mapToDouble(ServicioMedico::getPrecio)
-                .sum();
         if (servicioMedicos.isEmpty() || servicioMedicos.size() == 0)
             throw new MyException("La lista de servicios seleccionados esta vacia.");
+
+//        Double precio = servicioMedicos.stream()
+//                .mapToDouble(ServicioMedico::getPrecio)
+//                .sum();
+
         Paquete paquete = Paquete.builder()
                 .servicios(servicioMedicos)
-                .precio(precio * (1 - porcentajeDescuentoPaquete))
+                .precio(0.0)
                 .build();
         return guardar(paquete);
     }
@@ -59,7 +63,14 @@ public class PaqueteServiceImpl implements PaqueteService {
         Optional<Paquete> paquete = paqueteRepo.findById(id);
         if (paquete.isEmpty())
             throw new MyException("No se encontro el paquete con el id " + id + ".");
-        return paquete.get();
+        Paquete paqueteBd = paquete.get();
+        calcularPrecio(paqueteBd);
+        return paqueteBd;
+    }
+
+    private void calcularPrecio(Paquete paquete) {
+        Double precio = paquete.getServicios().stream().mapToDouble(ServicioMedico::getPrecio).sum();
+        paquete.setPrecio(precio * (1 - porcentajeDescuentoPaquete));
     }
 
     @Override
@@ -88,12 +99,20 @@ public class PaqueteServiceImpl implements PaqueteService {
     public List<Paquete> buscarPaquetePorServiciosIds(List<Long> serviciosIds) throws MyException {
         if (serviciosIds.isEmpty())
             throw new MyException("No se enviaron servicios para buscar paquete.");
-        return paqueteRepo.buscarPaquetePorServiciosIds(serviciosIds, serviciosIds.size());
+        List<Paquete> paquetes = paqueteRepo.buscarPaquetePorServiciosIds(serviciosIds, serviciosIds.size());
+        return paquetes.stream().map(p -> {
+            calcularPrecio(p);
+            return p;
+        }).collect(Collectors.toList());
     }
 
     @Override
     public List<Paquete> getAll() {
-        return paqueteRepo.findAll();
+        List<Paquete> paquetes = paqueteRepo.findAll();
+        return paquetes.stream().map(p -> {
+            calcularPrecio(p);
+            return p;
+        }).collect(Collectors.toList());
     }
 
     @Override

@@ -22,5 +22,10 @@ public class ServicioContratado {
     private String descripcion;
     @Column(nullable = false)
     private Double precio;
-
+    @Column(nullable = false)
+    private Double porcentajeDescuentoPaquete;
+    @Column(nullable = false)
+    private Double porcentajeDescuentoObraSocial;
+    @Column(nullable = false)
+    private Double total;
 }

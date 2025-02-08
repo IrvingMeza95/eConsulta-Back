@@ -28,8 +28,6 @@ public class ConsultaServiceImpl implements ConsultaService {
     private ServicioContratadoService servicioContratadoService;
     @Autowired
     private ServicioUsuaruis servicioUsuaruis;
-    @Value("${porcentaje.descuento.obra.social}")
-    private Double porcentajeDescuentoObraSocial;
     @Value("${limite.consultas.por.horario}")
     private Integer limiteConsultasPorHorario;
 
@@ -51,6 +49,7 @@ public class ConsultaServiceImpl implements ConsultaService {
             throw new MyException("El paciente seleccionado no há concluido su proceso de registro.");
         Paciente pacienteDb = new Paciente();
         pacienteDb.setId(paciente.get().getId());
+        pacienteDb.setObraSocial(paciente.get().getObraSocial());
         Usuario pacienteCred = new Usuario();
         pacienteCred.setId(paciente.get().getCredenciales().getId());
         pacienteDb.setCredenciales(pacienteCred);
@@ -79,11 +78,6 @@ public class ConsultaServiceImpl implements ConsultaService {
 
         List<ServicioContratado> servicioContratados = servicioContratadoService.crearLista(consulta);
         consulta.setServiciosContratados(servicioContratados);
-
-        if (paciente.get().getObraSocial())
-            consulta.setTotal(consulta.getTotal() * (1 - porcentajeDescuentoObraSocial));
-        if (consulta.getFecha().isEmpty() || consulta.getFecha().equalsIgnoreCase(""))
-            throw new MyException("Es necesario seleccionar una fecha.");
 
         if (medico.get().getTurnos() == null)
             throw new MyException("¡Error! puede deberse a que no se esten cargando bien los datos del medico o que el medico no tenga turnos asignados.");

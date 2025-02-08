@@ -11,6 +11,7 @@ import com.iamf.servicioConsultas.services.interfaces.ServicioContratadoService;
 import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +29,10 @@ public class ServicioContratadoServiceImpl implements ServicioContratadoService 
     private ServicioMedicoService servicioMedicoService;
     @Autowired
     private PaqueteService paqueteService;
+    @Value("${porcentaje.descuento.obra.social}")
+    private Double porcentajeDescuentoObraSocial;
+    @Value("${porcentaje.descuento.paquete}")
+    private Double porcentajeDescuentoPaquete;
 
     private ServicioContratado guardar(ServicioContratado servicioContratado){
         return servicioContratadoRepo.save(servicioContratado);
@@ -40,12 +45,22 @@ public class ServicioContratadoServiceImpl implements ServicioContratadoService 
         if (consulta.getIdServicioMedico() != null){
             log.info("Cargando datos de un solo servicio.");
             ServicioMedico servicioBd = servicioMedicoService.getServicioMedico(consulta.getIdServicioMedico());
-            consulta.setTotal(servicioBd.getPrecio());
+            if (consulta.getPaciente().getObraSocial()){
+                consulta.setTotal(servicioBd.getPrecio() * (1 - porcentajeDescuentoObraSocial));
+            }else{
+                consulta.setTotal(servicioBd.getPrecio());
+            }
             servicios.add(servicioBd);
         }else if (consulta.getIdPaquete() != null){
             log.info("Cargando datos de servicios de un paquete.");
             Paquete paquete = paqueteService.getPaquete(consulta.getIdPaquete());
-            consulta.setTotal(paquete.getPrecio());
+            Double total = null;
+            if (consulta.getPaciente().getObraSocial()){
+                total = paquete.getPrecio() / (1 - porcentajeDescuentoPaquete);
+                consulta.setTotal(total * (1 - (porcentajeDescuentoPaquete + porcentajeDescuentoObraSocial)));
+            }else{
+                consulta.setTotal(paquete.getPrecio());
+            }
             servicios.addAll(paquete.getServicios());
         }else{
             log.error("No se asocio ningun id de servicio o paquete.");
@@ -54,11 +69,16 @@ public class ServicioContratadoServiceImpl implements ServicioContratadoService 
 
         List<ServicioContratado> servicioContratados = servicios.stream().map(s -> {
             log.info("Registando datos de servicio con el id " + s.getId());
-
+            Double pdos = consulta.getPaciente().getObraSocial() ? porcentajeDescuentoObraSocial : 0;
+            Double pdp = (consulta.getIdPaquete() == null) ? 0 : porcentajeDescuentoPaquete;
+            log.info("Total descuento: " + (pdos + pdp));
             ServicioContratado nuevoServicio = ServicioContratado.builder()
                     .nombre(s.getTipoServicio().getNombre())
                     .descripcion(s.getDescripcion())
                     .precio(s.getPrecio())
+                    .porcentajeDescuentoObraSocial(pdos)
+                    .porcentajeDescuentoPaquete(pdp)
+                    .total(s.getPrecio() * (1 - (pdos + pdp)))
                     .build();
             return nuevoServicio;
         }).collect(Collectors.toList());
