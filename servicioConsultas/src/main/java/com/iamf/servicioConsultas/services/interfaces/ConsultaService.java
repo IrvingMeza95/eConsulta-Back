@@ -14,4 +14,6 @@ public interface ConsultaService {
     List<Consulta> getConsultasDePersona(String email) throws MyException;
     Boolean validarExistenciaDeTurnoEnconsultas(String horario) throws MyException;
     List<Consulta> getAll();
+    List<Consulta> buscarPorPacientePorRangoDeFechas(String pacinteEmail, String fechaInicio, String fechaFin) throws MyException;
+    List<Consulta> buscarPorPacientePorRangoDeFechasFiltradoPorPagado(String pacinteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
 }

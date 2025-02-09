@@ -118,64 +118,58 @@ public class MedicoServiceImpl implements MedicoService {
     }
 
     @Override
-    public ResponseMessage asignarRemoverTurno(String email, String idOHorario) throws MyException {
+    public ResponseMessage asignarRemoverTurno(String email, String horario) throws MyException {
         if (email == null)
             throw new MyException("Es neccesario un email.");
-        if (idOHorario == null)
+        if (horario == null)
             throw new MyException("Es necesario un id o un horario de turno.");
+        List<Turno> turnos = turnoService.getAllPorHorario(horario);
+
         Medico medico = getPersona(email);
-        Boolean existe = false;
-        Turno turno = new Turno();
-        for (Turno t : medico.getTurnos()){
-            if (t.getHorario().equals(idOHorario) || String.valueOf(t.getId()).equals(idOHorario)){
-                existe = true;
-                turno = turnoService.getTurno(idOHorario);
-                break;
-            }
-        }
+        boolean existe = medico.getTurnos().contains(turnos.get(0));
+
         String mensaje = null;
         if (existe){
             log.info("Eliminando turno del medico con email " + email);
-            mensaje = "Se removio el turno con horario " + turno.getHorario() +
+            mensaje = "Se removieron los turnos dentro del horario " + horario +
                     " del medico con el email " + email + ".";
-            medico.getTurnos().remove(turno);
+            medico.getTurnos().removeAll(turnos);
         }else{
             log.info("Añadiendo turno al medico con email " + email);
-            turno = turnoService.getTurno(idOHorario);
-            mensaje = "Se añadio el turno con horario " + turno.getHorario() +
-                    " al medico con el email " + email + ".";
-            medico.getTurnos().add(turno);
+            mensaje = "Se añadieron los turnos dentro del horario " + horario +
+                    " del medico con el email " + email + ".";
+            medico.getTurnos().addAll(turnos);
         }
         guardar(medico);
         return new ResponseMessage(mensaje);
     }
 
     @Override
-    public ResponseMessage asignarRemoverTurnATodos(String idOHorario, String accion) throws MyException {
-        Turno turno = turnoService.getTurno(idOHorario);
+    public ResponseMessage asignarRemoverTurnATodos(String horario, String accion) throws MyException {
+        List<Turno> turnos = turnoService.getAllPorHorario(horario);
         List<Medico> medicos = getAll();
         String mensaje = null;
         AtomicInteger contador = new AtomicInteger();
         if (accion.equalsIgnoreCase("ASIGNAR")){
 
-            log.info("Asignando el turno con horario " + turno.getHorario() +
+            log.info("Asignando el turno con horario " + horario +
                     " a todos los medicos.");
             medicos.stream().map(m -> {
-                if (!m.getTurnos().contains(turno)){
+                if (!m.getTurnos().contains(turnos.get(0))){
                     log.info("Se asigno el turno al medico con email " + m.getCredenciales().getEmail());
-                    m.getTurnos().add(turno);
+                    m.getTurnos().addAll(turnos);
                     contador.getAndIncrement();
                 }
                 return m;
             }).collect(Collectors.toList());
             mensaje = "Se asigno el turno a " + contador + " medicos.";
         }else if (accion.equalsIgnoreCase("REMOVER")){
-            log.info("Removiendo el turno con horario " + turno.getHorario() +
+            log.info("Removiendo el turno con horario " + horario +
                     " a todos los medicos.");
             medicos.stream().map(m -> {
-                if (m.getTurnos().contains(turno)){
+                if (m.getTurnos().contains(turnos.get(0))){
                     log.info("Se removio el turno al medico con email " + m.getCredenciales().getEmail());
-                    m.getTurnos().remove(turno);
+                    m.getTurnos().removeAll(turnos);
                     contador.getAndIncrement();
                 }
                 return m;

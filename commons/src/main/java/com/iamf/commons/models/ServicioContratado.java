@@ -16,6 +16,8 @@ public class ServicioContratado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 50)
+    private String fecha;
     @Column(nullable = false, unique = false, length = 100)
     private String nombre;
     @Column(nullable = false, unique = false, length = 250)

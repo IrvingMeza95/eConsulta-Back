@@ -73,6 +73,7 @@ public class ServicioContratadoServiceImpl implements ServicioContratadoService 
             Double pdp = (consulta.getIdPaquete() == null) ? 0 : porcentajeDescuentoPaquete;
             log.info("Total descuento: " + (pdos + pdp));
             ServicioContratado nuevoServicio = ServicioContratado.builder()
+                    .fecha(consulta.getFecha())
                     .nombre(s.getTipoServicio().getNombre())
                     .descripcion(s.getDescripcion())
                     .precio(s.getPrecio())
@@ -95,4 +96,24 @@ public class ServicioContratadoServiceImpl implements ServicioContratadoService 
             throw new MyException("No se encontro el servicio contratado  con el id " + id + ".");
         return servicioContratado.get();
     }
+
+    @Override
+    public List<ServicioContratado> buscarPorRangoDeFechas(String fechaInicio, String fechaFin) throws MyException {
+        if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
+            throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        log.info("Buscando consultas en rango de fechas " + fechaInicio + " - " + fechaFin);
+        return servicioContratadoRepo.buscarPorRangoDeFechas(fechaInicio,fechaFin);
+    }
+
+    @Override
+    public List<ServicioContratado> extraerServiciosContratados(List<Consulta> consultas) {
+        List<ServicioContratado> servicioContratados = new ArrayList<>();
+        for (Consulta c : consultas){
+            servicioContratados.addAll(c.getServiciosContratados());
+        }
+        return servicioContratados;
+    }
+
 }

@@ -24,13 +24,13 @@ public class MedicoController {
     }
 
     @PutMapping("/asignar-remover-turno")
-    public ResponseEntity<ResponseMessage> asignarRemoverTurno(@RequestParam String email, @RequestParam String idOHorarioTurno) throws MyException {
-        return ResponseEntity.ok(medicoService.asignarRemoverTurno(email,idOHorarioTurno));
+    public ResponseEntity<ResponseMessage> asignarRemoverTurno(@RequestParam String email, @RequestParam String horario) throws MyException {
+        return ResponseEntity.ok(medicoService.asignarRemoverTurno(email,horario));
     }
 
     @PutMapping("/asignar-remover-turno-a-todos")
-    public ResponseEntity<ResponseMessage> asignarRemoverTurnATodos(@RequestParam String idOHorario,@RequestParam String accion) throws MyException {
-        return ResponseEntity.ok(medicoService.asignarRemoverTurnATodos(idOHorario,accion));
+    public ResponseEntity<ResponseMessage> asignarRemoverTurnATodos(@RequestParam String horario,@RequestParam String accion) throws MyException {
+        return ResponseEntity.ok(medicoService.asignarRemoverTurnATodos(horario,accion));
     }
 
 }

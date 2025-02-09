@@ -20,18 +20,23 @@ public class TurnoController {
     private TurnoService turnoService;
 
     @PostMapping
-    public ResponseEntity<Turno> crear(@RequestBody Turno turno) throws MyException {
+    public ResponseEntity<List<Turno>> crear(@RequestBody Turno turno) throws MyException {
         return ResponseEntity.ok(turnoService.crear(turno));
     }
 
-    @GetMapping("/{idOHorario}")
-    public ResponseEntity<Turno> getTurno(@PathVariable String idOHorario) throws MyException {
-        return ResponseEntity.ok(turnoService.getTurno(idOHorario));
+    @GetMapping("/{idOSubHorario}")
+    public ResponseEntity<Turno> getTurno(@PathVariable String idOSubHorario) throws MyException {
+        return ResponseEntity.ok(turnoService.getTurno(idOSubHorario));
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<Turno>> getAll(){
-        return ResponseEntity.ok(turnoService.getAll());
+    public ResponseEntity<List<Turno>> getAll(@RequestParam(required = false) String horario) throws MyException {
+        if (horario == null){
+            return ResponseEntity.ok(turnoService.getAll());
+        }else{
+            return ResponseEntity.ok(turnoService.getAllPorHorario(horario));
+
+        }
     }
 
     @PutMapping("/habilitar-deshabilitar/{idHorario}")
@@ -39,9 +44,9 @@ public class TurnoController {
         return ResponseEntity.ok(turnoService.swithcEnabled(idHorario));
     }
 
-    @DeleteMapping("/{idHorario}")
-    public ResponseEntity<ResponseMessage> eliminar(@PathVariable String idHorario) throws MyException {
-        return ResponseEntity.ok(turnoService.eliminar(idHorario));
+    @DeleteMapping("/{horario}")
+    public ResponseEntity<ResponseMessage> eliminar(@PathVariable String horario) throws MyException {
+        return ResponseEntity.ok(turnoService.eliminar(horario));
     }
 
 }

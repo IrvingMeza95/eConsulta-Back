@@ -15,42 +15,58 @@ public interface MedicoRepo extends JpaRepository<Medico, String> {
             "WHERE m.id = :idMedico AND c.pagado = true")
     Boolean participaEnConsultasPagadas(@Param("idMedico") String idMedico);
     @Query(value = "WITH rango_fechas AS (\n" +
-            "    -- Generar el rango de fechas de lunes a viernes basado en la fecha proporcionada\n" +
+            "    -- Obtener el lunes y viernes de la semana de la fecha dada\n" +
             "    SELECT \n" +
             "        DATE_SUB(?1, INTERVAL WEEKDAY(?1) DAY) AS lunes,\n" +
             "        DATE_ADD(DATE_SUB(?1, INTERVAL WEEKDAY(?1) DAY), INTERVAL 4 DAY) AS viernes\n" +
             "),\n" +
             "turnos_medico AS (\n" +
-            "    -- Obtener todos los turnos del médico especificado\n" +
-            "    SELECT t.horario \n" +
+            "    -- Obtener todos los turnos del médico con la hora extraída del campo horario\n" +
+            "    SELECT \n" +
+            "        t.horario, \n" +
+            "        SUBSTRING_INDEX(t.horario, '-', 1) AS hora_turno\n" +
             "    FROM econsulta_db.turnos t\n" +
             "    JOIN econsulta_db.medico_turno mt ON t.id = mt.turno_id\n" +
             "    WHERE mt.medico_id = ?2 AND t.enabled = TRUE\n" +
             "),\n" +
+            "seq AS (\n" +
+            "    -- Generar los 5 días hábiles de la semana\n" +
+            "    SELECT 0 AS num UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4\n" +
+            "),\n" +
             "fechas_turnos AS (\n" +
-            "    -- Generar todas las combinaciones de fechas del rango con los turnos del médico\n" +
-            "    SELECT rf.lunes + INTERVAL seq DAY AS fecha, tm.horario\n" +
-            "    FROM (SELECT lunes, viernes FROM rango_fechas) rf\n" +
-            "    JOIN (SELECT 0 AS seq UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4) s\n" +
+            "    -- Generar combinaciones de fechas con los horarios del médico\n" +
+            "    SELECT \n" +
+            "        DATE_ADD(rf.lunes, INTERVAL s.num DAY) AS fecha, \n" +
+            "        tm.horario,\n" +
+            "        tm.hora_turno\n" +
+            "    FROM rango_fechas rf\n" +
+            "    JOIN seq s ON DATE_ADD(rf.lunes, INTERVAL s.num DAY) <= rf.viernes\n" +
             "    JOIN turnos_medico tm ON 1=1\n" +
-            "    WHERE rf.lunes + INTERVAL seq DAY BETWEEN rf.lunes AND rf.viernes\n" +
             "),\n" +
             "consultas_medico AS (\n" +
-            "    -- Contar las consultas por fecha y horario del médico\n" +
-            "    SELECT c.fecha, c.horario, COUNT(*) AS total_consultas\n" +
+            "    -- Contar las consultas por fecha y hora, filtrando solo las que no han sido pagadas\n" +
+            "    SELECT \n" +
+            "        c.fecha, \n" +
+            "        SUBSTRING_INDEX(c.horario, ':', 1) AS hora_consulta,\n" +
+            "        COUNT(*) AS total_consultas\n" +
             "    FROM econsulta_db.consultas c\n" +
-            "    WHERE c.medico_id = ?2\n" +
-            "    GROUP BY c.fecha, c.horario\n" +
+            "    WHERE c.medico_id = ?2 AND c.pagado = FALSE\n" +
+            "    GROUP BY c.fecha, hora_consulta\n" +
+            "),\n" +
+            "disponibilidad AS (\n" +
+            "    -- Calcular disponibilidad por fecha y horario\n" +
+            "    SELECT \n" +
+            "        ft.fecha, \n" +
+            "        ft.horario,\n" +
+            "        SUM(COALESCE(cm.total_consultas, 0)) <= ?3 AS disponible\n" +
+            "    FROM fechas_turnos ft\n" +
+            "    LEFT JOIN consultas_medico cm \n" +
+            "        ON ft.fecha = cm.fecha AND ft.hora_turno = cm.hora_consulta\n" +
+            "    GROUP BY ft.fecha, ft.horario\n" +
             ")\n" +
-            "-- Generar la tabla final con la validación de disponibilidad\n" +
-            "SELECT \n" +
-            "    ft.fecha, \n" +
-            "    ft.horario, \n" +
-            "    IF(COALESCE(cm.total_consultas, 0) < ?3, TRUE, FALSE) AS disponible\n" +
-            "FROM fechas_turnos ft\n" +
-            "LEFT JOIN consultas_medico cm \n" +
-            "    ON ft.fecha = cm.fecha AND ft.horario = cm.horario\n" +
-            "ORDER BY ft.fecha, ft.horario;", nativeQuery = true)
+            "-- Resultado final\n" +
+            "SELECT * FROM disponibilidad\n" +
+            "ORDER BY fecha, horario;\n", nativeQuery = true)
     List<Object[]> validarDisnibilidadDeMedicoPorSemana(@Param("fecha") String fecha, @Param("idMedico")
     String idMedico, @Param("limite") Integer limite);
 

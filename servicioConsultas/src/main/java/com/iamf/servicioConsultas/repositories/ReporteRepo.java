@@ -59,8 +59,8 @@ public class ReporteRepo {
                 "SELECT \n" +
                 "    m.mes,\n" +
                 "    ts.nombre AS servicio,\n" +
-                "    COALESCE(SUM(CASE WHEN c.pagado = 1 THEN sc.precio ELSE 0 END), 0) AS total_pagado,\n" +
-                "    COALESCE(SUM(CASE WHEN c.pagado = 0 THEN sc.precio ELSE 0 END), 0) AS total_no_pagado\n" +
+                "    COALESCE(SUM(CASE WHEN c.pagado = 1 THEN sc.total ELSE 0 END), 0) AS total_pagado,\n" +
+                "    COALESCE(SUM(CASE WHEN c.pagado = 0 THEN sc.total ELSE 0 END), 0) AS total_no_pagado\n" +
                 "FROM meses m\n" +
                 "CROSS JOIN econsulta_db.tipos_de_servicios ts\n" +
                 "LEFT JOIN econsulta_db.servicios_contratados sc \n" +

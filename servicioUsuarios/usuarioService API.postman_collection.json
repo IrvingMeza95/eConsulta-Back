@@ -152,7 +152,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=5388&fecha=2025-01-27 13:20:00",
+							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=8872&fecha=2025-01-27 13:20:00",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -169,7 +169,7 @@
 								},
 								{
 									"key": "codigo",
-									"value": "5388",
+									"value": "8872",
 									"description": "(Required) "
 								},
 								{
@@ -499,7 +499,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"pais\": \"mexico\",\n  \"ciudad\": \"piedras negras\",\n  \"direccion\": \"na\",\n  \"numeroExterior\": \"321\",\n  \"codigoPostal\": \"654\",\n  \"tipoPersona\": \"PACIENTE\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 1\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"dni\": \"000000\",\n  \"nombre\": \"alfonso\",\n  \"apellido\": \"flores\",\n  \"fechaNacimiento\": \"27/06/1995\",\n  \"obraSocial\": true,\n  \"sueldo\": 150,\n  \"especialidad\": \"dentista\"\n}",
+									"raw": "{\n  \"pais\": \"mexico\",\n  \"ciudad\": \"piedras negras\",\n  \"direccion\": \"na\",\n  \"numeroExterior\": \"321\",\n  \"codigoPostal\": \"654\",\n  \"tipoPersona\": \"PACIENTE\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 2\n      }\n    ],\n    \"enabled\": true,\n    \"intentos\": 0,\n    \"verificacion2Factores\": false\n  },\n  \"verificado\": false,\n  \"dni\": \"000000\",\n  \"nombre\": \"alfonso\",\n  \"apellido\": \"flores\",\n  \"fechaNacimiento\": \"27/06/1995\",\n  \"obraSocial\": false,\n  \"sueldo\": 150,\n  \"especialidad\": \"dentista\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -745,7 +745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112643\",\n    \"roles\": [\n      {\n        \"id\": 3\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"654321\",\n    \"nombre\": \"alfonso\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 2\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -993,77 +993,8 @@
 			"name": "turnos",
 			"item": [
 				{
-					"name": "{idOHorario}",
+					"name": "{idOSubHorario}",
 					"item": [
-						{
-							"name": "get Turno",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/turnos/:idOHorario",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"turnos",
-										":idOHorario"
-									],
-									"variable": [
-										{
-											"key": "idOHorario",
-											"value": "10-11",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "OK",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/turnos/:idOHorario",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"turnos",
-												":idOHorario"
-											],
-											"variable": [
-												{
-													"key": "idOHorario"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "*/*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n  \"id\": \"<long>\",\n  \"horario\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}"
-								}
-							]
-						},
 						{
 							"name": "habilitar Deshabilitar",
 							"request": {
@@ -1146,19 +1077,18 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/turnos/:idHorario",
+									"raw": "{{baseUrl}}/turnos/:horario",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"turnos",
-										":idHorario"
+										":horario"
 									],
 									"variable": [
 										{
-											"key": "idHorario",
-											"value": "10-11",
-											"description": "(Required) "
+											"key": "horario",
+											"value": "8-9"
 										}
 									]
 								}
@@ -1201,6 +1131,75 @@
 									],
 									"cookie": [],
 									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get Turno",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/turnos/:idOSubHorario",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"turnos",
+										":idOSubHorario"
+									],
+									"variable": [
+										{
+											"key": "idOSubHorario",
+											"value": "16:00",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/turnos/:idOSubHorario",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"turnos",
+												":idOSubHorario"
+											],
+											"variable": [
+												{
+													"key": "idOSubHorario"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"horario\": \"<string>\",\n  \"subHorario\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}"
 								}
 							]
 						}
@@ -1300,13 +1299,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/turnos/get-all",
+							"raw": "{{baseUrl}}/turnos/get-all?horario=10-11",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"turnos",
 								"get-all"
+							],
+							"query": [
+								{
+									"key": "horario",
+									"value": "10-11",
+									"description": "{No Required}"
+								}
 							]
 						}
 					},
@@ -1362,7 +1368,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/disponibilidad-semanal?email=irvingmeza95@gmail.com&fecha=2025-01-29",
+							"raw": "{{baseUrl}}/medicos/disponibilidad-semanal?email=irvingmeza95@gmail.com&fecha=2025-02-03",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1378,7 +1384,7 @@
 								},
 								{
 									"key": "fecha",
-									"value": "2025-01-29",
+									"value": "2025-02-03",
 									"description": "(Required) "
 								}
 							]
@@ -1443,7 +1449,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=irvingmeza95@gmail.com&idOHorarioTurno=16-17",
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno?email=irvingmeza95@gmail.com&horario=10-11",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1458,8 +1464,8 @@
 									"description": "(Required) "
 								},
 								{
-									"key": "idOHorarioTurno",
-									"value": "16-17",
+									"key": "horario",
+									"value": "10-11",
 									"description": "(Required) "
 								}
 							]
@@ -1524,7 +1530,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?idOHorario=8-9&accion=ASIGNAR",
+							"raw": "{{baseUrl}}/medicos/asignar-remover-turno-a-todos?horario=8-9&accion=REMOVER",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1534,13 +1540,13 @@
 							],
 							"query": [
 								{
-									"key": "idOHorario",
+									"key": "horario",
 									"value": "8-9",
 									"description": "(Required) "
 								},
 								{
 									"key": "accion",
-									"value": "ASIGNAR",
+									"value": "REMOVER",
 									"description": "(Required) "
 								}
 							]
@@ -1632,13 +1638,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios"
+			"value": "http://vps-4110266-x.dattaweb.com:8080/api/usuarios",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8080/api/usuarios",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",

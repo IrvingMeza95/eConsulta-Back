@@ -1,6 +1,5 @@
 package com.iamf.servicioConsultas.services.impl;
 
-import com.iamf.commons.dtos.ConsultaDTO;
 import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
@@ -73,16 +72,20 @@ public class ConsultaServiceImpl implements ConsultaService {
         consulta.setMedico(medicoDb);
 
         log.error("Validando disponibilidad de fecha y hora.");
-        if (consultaRepo.validarCupoDeTurno(medicoDb.getId(), consulta.getHorario(),consulta.getFecha(),limiteConsultasPorHorario))
+        String[] partes = consulta.getHorario().split(":");
+        String horario = partes[0] + "-" + String.valueOf(Long.parseLong(partes[0]) + 1);
+        if (consultaRepo.validarCupoDeTurno(medicoDb.getId(), horario,consulta.getFecha(),limiteConsultasPorHorario))
             throw new MyException("No hay cupo en la fecha y hora especificada.");
+        if (consultaRepo.validarExistenciaDeSubHorario(medicoDb.getId(),consulta.getHorario(),consulta.getFecha()))
+            throw new MyException("Ya existe una consulta programada para la misma hora y fecha y el mismo medico.");
 
         List<ServicioContratado> servicioContratados = servicioContratadoService.crearLista(consulta);
         consulta.setServiciosContratados(servicioContratados);
 
         if (medico.get().getTurnos() == null)
             throw new MyException("¡Error! puede deberse a que no se esten cargando bien los datos del medico o que el medico no tenga turnos asignados.");
-        Boolean band = medico.get().getTurnos().stream()
-                .anyMatch(t -> t.getHorario().equalsIgnoreCase(consulta.getHorario()));
+        boolean band = medico.get().getTurnos().stream()
+                .anyMatch(t -> t.getEnabled() && t.getSubHorario().equalsIgnoreCase(consulta.getHorario()));
         if (!band)
             throw new MyException("El medico no tiene disponibilidad en el horario seleccionado.");
 
@@ -136,6 +139,36 @@ public class ConsultaServiceImpl implements ConsultaService {
     @Override
     public List<Consulta> getAll() {
         return consultaRepo.findAll();
+    }
+
+    @Override
+    public List<Consulta> buscarPorPacientePorRangoDeFechas(String pacinteEmail, String fechaInicio, String fechaFin) throws MyException {
+        PersonaDTO paciente = servicioUsuaruis.getPersona(pacinteEmail);
+        if (!paciente.getTipoPersona().equals(TipoPersona.PACIENTE))
+            throw new MyException("El email no pertenece a ningun paciente.");
+        if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
+            throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        log.info("Buscando consultas del paciente con email " + paciente.getCredenciales().getEmail() +
+                " en rango de fechas " + fechaInicio + " - " + fechaFin);
+        return consultaRepo.buscarPorPacientePorRangoDeFechas(paciente.getCredenciales().getEmail(), fechaInicio,fechaFin);
+    }
+
+    @Override
+    public List<Consulta> buscarPorPacientePorRangoDeFechasFiltradoPorPagado(String pacinteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException {
+        PersonaDTO paciente = servicioUsuaruis.getPersona(pacinteEmail);
+        if (!paciente.getTipoPersona().equals(TipoPersona.PACIENTE))
+            throw new MyException("El email no pertenece a ningun paciente.");
+        if (pagado == null)
+            throw new MyException("Es necesario especificar si deseas filtrar por pagado o no pagado.");
+        if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
+            throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        log.info("Buscando consultas del paciente con email " + paciente.getCredenciales().getEmail() +
+                " en rango de fechas " + fechaInicio + " - " + fechaFin);
+        return consultaRepo.buscarPorPacientePorRangoDeFechasFiltradoPorPagado(paciente.getCredenciales().getEmail(), fechaInicio,fechaFin,pagado);
     }
 
 }

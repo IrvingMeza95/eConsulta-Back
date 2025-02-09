@@ -732,7 +732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  2,\n  3,\n  4\n]",
+							"raw": "[\n  1,\n  2\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1112,7 +1112,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "21",
+											"value": "10",
 											"description": "(Required) "
 										}
 									]
@@ -1265,7 +1265,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-02-05\",\n  \"horario\": \"13-14\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"9:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1488,7 +1488,7 @@
 							"variable": [
 								{
 									"key": "anio",
-									"value": "<string>",
+									"value": "2025",
 									"description": "(Required) "
 								}
 							]
@@ -1533,6 +1533,99 @@
 							],
 							"cookie": [],
 							"body": "[\n  [],\n  []\n]"
+						}
+					]
+				},
+				{
+					"name": "reporte Servicios Contratados Por Rango De Fechas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=2025-01-01&fechaFin=2025-02-28",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reportes",
+								"reporte-servicios-contratados-por-rango-fechas"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-01-01",
+									"description": "(Required) "
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-02-28",
+									"description": "(Required) "
+								},
+								{
+									"key": "pacienteEmail",
+									"value": "iamf_095@hotmail.com",
+									"description": "(No Required) ",
+									"disabled": true
+								},
+								{
+									"key": "pagado",
+									"value": "false",
+									"description": "(No Required) ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=<string>&fechaFin=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reportes",
+										"reporte-servicios-contratados-por-rango-fechas"
+									],
+									"query": [
+										{
+											"key": "fechaInicio",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "fechaFin",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"porcentajeDescuentoPaquete\": \"<double>\",\n    \"porcentajeDescuentoObraSocial\": \"<double>\",\n    \"total\": \"<double>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"porcentajeDescuentoPaquete\": \"<double>\",\n    \"porcentajeDescuentoObraSocial\": \"<double>\",\n    \"total\": \"<double>\"\n  }\n]"
 						}
 					]
 				}
@@ -1959,13 +2052,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas",
-			"disabled": true
+			"value": "http://localhost:8080/api/consultas"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",

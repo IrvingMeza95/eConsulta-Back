@@ -44,6 +44,7 @@ public class ConsultaMapper {
         PersonaDTO medico = new PersonaDTO();
         medico.setNombre(consultaDTO.getMedico().getNombre());
         medico.setApellido(consultaDTO.getMedico().getApellido());
+        medico.setEspecialidad(consultaDTO.getMedico().getEspecialidad());
         UsuarioDTO medicoCred = new UsuarioDTO();
         medicoCred.setEmail(consultaDTO.getMedico().getCredenciales().getEmail());
         medico.setCredenciales(medicoCred);

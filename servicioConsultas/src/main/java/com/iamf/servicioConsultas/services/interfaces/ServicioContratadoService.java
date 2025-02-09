@@ -9,4 +9,6 @@ import java.util.List;
 public interface ServicioContratadoService {
     List<ServicioContratado> crearLista(Consulta consulta) throws MyException;
     ServicioContratado getServicioContratado(Long id) throws MyException;
+    List<ServicioContratado> buscarPorRangoDeFechas(String fechaInicio, String fechaFin) throws MyException;
+    List<ServicioContratado> extraerServiciosContratados(List<Consulta> consultas);
 }

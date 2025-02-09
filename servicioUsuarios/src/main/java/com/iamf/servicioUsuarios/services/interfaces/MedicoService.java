@@ -18,6 +18,6 @@ public interface MedicoService {
     void agregarArchivo(String param, String idArchivo) throws MyException;
     List<Medico> getAll();
     List<Object[]> disponibilidadSemanal(String fecha, String email) throws MyException;
-    ResponseMessage asignarRemoverTurno(String email, String idOHorario) throws MyException;
-    ResponseMessage asignarRemoverTurnATodos(String idOHorario, String accion) throws MyException;
+    ResponseMessage asignarRemoverTurno(String email, String horario) throws MyException;
+    ResponseMessage asignarRemoverTurnATodos(String horario, String accion) throws MyException;
 }
