@@ -51,8 +51,8 @@ public class PersonaMapper {
 		fillPersonaDTO(medico,personaDTO);
 		if (medico.getEspecialidad() != null)
 			personaDTO.setEspecialidad(medico.getEspecialidad());
-		if (medico.getTurnos() != null)
-			personaDTO.setTurnos(medico.getTurnos());
+//		if (medico.getTurnos() != null)
+//			personaDTO.setTurnos(medico.getTurnos());
 		personaDTO.setSueldo(medico.getSueldo());
 		return personaDTO;
 	}

@@ -23,6 +23,13 @@ public class MedicoController {
         return ResponseEntity.ok(medicoService.disponibilidadSemanal(fecha,email));
     }
 
+    @GetMapping("/disponibilidad-por-fecha-horario")
+    public ResponseEntity<List<Object[]>> disnibilidadPorFechaHorario(@RequestParam String fecha,
+                                                                                     @RequestParam String email,
+                                                                                     @RequestParam String horario) throws MyException {
+        return ResponseEntity.ok(medicoService.validarDisnibilidadDeMedicoPorFechaHorario(fecha,email,horario));
+    }
+
     @PutMapping("/asignar-remover-turno")
     public ResponseEntity<ResponseMessage> asignarRemoverTurno(@RequestParam String email, @RequestParam String horario) throws MyException {
         return ResponseEntity.ok(medicoService.asignarRemoverTurno(email,horario));

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -132,7 +131,16 @@ public class TurnoServiceImol implements TurnoService {
         List<Turno> turnos = turnoRepo.buscarSubHorariosAPartirDeHorario(partes[0]);
         if (turnos.isEmpty())
             throw new MyException("No se encontraron turnos con el horario " + horario + ".");
+        log.info("Extrayendo turnos del horario " + horario);
         return turnos;
+    }
+
+    @Override
+    public List<Turno> getAllPorMedico(String email) throws MyException {
+        if (email == null)
+            throw new MyException("Es necesario proporcionar un email de algun medico.");
+        log.info("Extrayendo turnos del medico con el email  " + email);
+        return turnoRepo.getAllPorMedico(email);
     }
 
     private List<Turno> buscarSubHorariosAPartirDeHorario(String hora) {

@@ -17,4 +17,6 @@ public interface TurnoRepo extends JpaRepository<Turno,Long> {
     Boolean validarExistencia(@Param("horario") String horario);
     @Query("SELECT t FROM Turno t WHERE t.subHorario LIKE CONCAT(:subHorario, '%')")
     List<Turno> buscarSubHorariosAPartirDeHorario(@Param("subHorario") String subHorario);
+    @Query("SELECT m.turnos FROM Medico m WHERE m.credenciales.email = :medicoEmail")
+    List<Turno> getAllPorMedico(@Param("medicoEmail") String medicoEmail);
 }

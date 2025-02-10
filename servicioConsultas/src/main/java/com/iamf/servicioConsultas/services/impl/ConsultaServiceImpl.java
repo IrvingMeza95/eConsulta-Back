@@ -82,9 +82,10 @@ public class ConsultaServiceImpl implements ConsultaService {
         List<ServicioContratado> servicioContratados = servicioContratadoService.crearLista(consulta);
         consulta.setServiciosContratados(servicioContratados);
 
-        if (medico.get().getTurnos() == null)
+        List<Turno> turnos = servicioUsuaruis.getTurnos(null,medicoDb.getCredenciales().getEmail());
+        if (turnos == null)
             throw new MyException("¡Error! puede deberse a que no se esten cargando bien los datos del medico o que el medico no tenga turnos asignados.");
-        boolean band = medico.get().getTurnos().stream()
+        boolean band = turnos.stream()
                 .anyMatch(t -> t.getEnabled() && t.getSubHorario().equalsIgnoreCase(consulta.getHorario()));
         if (!band)
             throw new MyException("El medico no tiene disponibilidad en el horario seleccionado.");

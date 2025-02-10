@@ -13,4 +13,6 @@ public interface TurnoService {
     ResponseMessage swithcEnabled(String idOHorario) throws MyException;
     ResponseMessage eliminar(String idHorario) throws MyException;
     List<Turno> getAllPorHorario(String horario) throws MyException;
+    List<Turno> getAllPorMedico(String email) throws MyException;
+
 }

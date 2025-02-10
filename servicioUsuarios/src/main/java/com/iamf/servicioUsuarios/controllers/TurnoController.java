@@ -30,11 +30,14 @@ public class TurnoController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<Turno>> getAll(@RequestParam(required = false) String horario) throws MyException {
-        if (horario == null){
-            return ResponseEntity.ok(turnoService.getAll());
-        }else{
+    public ResponseEntity<List<Turno>> getAll(@RequestParam(required = false) String horario,
+                                              @RequestParam(required = false) String medicoEmail) throws MyException {
+        if (horario != null) {
             return ResponseEntity.ok(turnoService.getAllPorHorario(horario));
+        }else if (medicoEmail != null){
+            return ResponseEntity.ok(turnoService.getAllPorMedico(medicoEmail));
+        }else{
+            return ResponseEntity.ok(turnoService.getAll());
 
         }
     }

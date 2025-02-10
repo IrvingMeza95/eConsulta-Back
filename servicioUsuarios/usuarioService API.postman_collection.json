@@ -745,7 +745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"tipoPersona\": \"PACIENTE\",\n  \"dni\": \"654321\",\n    \"nombre\": \"alfonso\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"iamf_095@hotmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8787912322\",\n    \"roles\": [\n      {\n        \"id\": 2\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
+							"raw": "{\n  \"tipoPersona\": \"MEDICO\",\n  \"dni\": \"123456\",\n    \"nombre\": \"irving\",\n    \"apellido\": \"meza\",\n    \"fechaNacimiento\": \"01/01/1973\",\n  \"credenciales\": {\n    \"email\": \"irvingmeza95@gmail.com\",\n    \"codigoDeLlamada\": \"+52\",\n    \"celular\": \"8781112343\",\n    \"roles\": [\n      {\n        \"id\": 3\n      }\n    ],\n    \"fechaDeSolicitudDeCodigoDeVerificacion\": \"2025-01-27 13:00:00\"\n  },\n  \"obraSocial\": false,\n  \"sueldo\": 100,\n    \"especialidad\": \"cardiologia\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1018,7 +1018,7 @@
 									"variable": [
 										{
 											"key": "idHorario",
-											"value": "9-10",
+											"value": "8-9",
 											"description": "(Required) "
 										}
 									]
@@ -1299,7 +1299,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/turnos/get-all?horario=10-11",
+							"raw": "{{baseUrl}}/turnos/get-all?medicoEmail=irvingmeza95@gmail.com",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1311,6 +1311,12 @@
 								{
 									"key": "horario",
 									"value": "10-11",
+									"description": "{No Required}",
+									"disabled": true
+								},
+								{
+									"key": "medicoEmail",
+									"value": "irvingmeza95@gmail.com",
 									"description": "{No Required}"
 								}
 							]
@@ -1597,6 +1603,97 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "disnibilidad Por Fecha Horario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/disponibilidad-por-fecha-horario?fecha=2025-02-03&email=irvingmeza95@gmail.com&horario=10-11",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"disponibilidad-por-fecha-horario"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2025-02-03",
+									"description": "(Required) "
+								},
+								{
+									"key": "email",
+									"value": "irvingmeza95@gmail.com",
+									"description": "(Required) "
+								},
+								{
+									"key": "horario",
+									"value": "10-11",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/disponibilidad-por-fecha-horario?fecha=<string>&email=<string>&horario=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"disponibilidad-por-fecha-horario"
+									],
+									"query": [
+										{
+											"key": "fecha",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "horario",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [],\n  []\n]"
 						}
 					]
 				}

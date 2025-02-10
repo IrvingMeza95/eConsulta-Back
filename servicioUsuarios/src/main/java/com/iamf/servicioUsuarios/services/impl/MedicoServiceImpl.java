@@ -182,4 +182,19 @@ public class MedicoServiceImpl implements MedicoService {
         return new ResponseMessage(mensaje);
     }
 
+    @Override
+    public List<Object[]> validarDisnibilidadDeMedicoPorFechaHorario(String fecha, String email, String horario) throws MyException {
+        log.info("Obteniendo disponibilidad de subhorarios en el horario " + horario + " del medico con el email "
+                + email + " en la fecha " + fecha);
+        if (fecha == null)
+            throw new MyException("Es necesario especificar una fecha.");
+        if (email == null)
+            throw new MyException("Es necesario especificar un email de medico");
+        if (horario == null)
+            throw new MyException("Es necesario especificar un horario");
+        Medico medico = getPersona(email);
+        List<Object[]> respuesta = medicoRepo.validarDisnibilidadDeMedicoPorFechaHorario(fecha,medico.getId(),horario);
+        return respuesta;
+    }
+
 }
