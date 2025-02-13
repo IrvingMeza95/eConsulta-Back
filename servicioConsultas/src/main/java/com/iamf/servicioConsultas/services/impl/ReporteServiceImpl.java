@@ -49,13 +49,13 @@ public class ReporteServiceImpl implements ReporteService {
 
     @Override
     public List<ServicioContratado> reporteServiciosContratadosDePacientePorRangoDeFechas(String pacienteEmail, String fechaInicio, String fechaFin) throws MyException {
-        List<Consulta>  consultas = consultaService.buscarPorPacientePorRangoDeFechas(pacienteEmail,fechaInicio,fechaFin);
+        List<Consulta>  consultas = consultaService.buscarPorEmailPorRangoDeFechas(pacienteEmail,fechaInicio,fechaFin);
         return servicioContratadoService.extraerServiciosContratados(consultas);
     }
 
     @Override
     public List<ServicioContratado> reporteServiciosContratadosDePacientePorRangoDeFechasFiltradoPorOagado(String pacienteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException {
-        List<Consulta>  consultas = consultaService.buscarPorPacientePorRangoDeFechasFiltradoPorPagado(pacienteEmail,fechaInicio,fechaFin, pagado);
+        List<Consulta>  consultas = consultaService.buscarPorEmailPorRangoDeFechasFiltradoPorPagado(pacienteEmail,fechaInicio,fechaFin, pagado);
         return servicioContratadoService.extraerServiciosContratados(consultas);
     }
 

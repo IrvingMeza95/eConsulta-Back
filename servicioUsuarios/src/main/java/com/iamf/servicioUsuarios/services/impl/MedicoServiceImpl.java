@@ -45,17 +45,7 @@ public class MedicoServiceImpl implements MedicoService {
     public Medico crear(RegistroDTO registro) throws MyException {
         Medico medico = new Medico();
         if (registro.getEspecialidad() != null || !registro.getEspecialidad().equalsIgnoreCase("")) {
-            List<String> especialidades = medicoRepo.getEspecialidades();
-            log.info("Validando si la especialidad " + registro.getEspecialidad() + " ya existe en base de datos.");
-            boolean existe = existeEspecialidad(especialidades,registro.getEspecialidad());
-            if (existe){
-                log.info("Especialidad " + registro.getEspecialidad() + " ya existe.");
-                String especialidadDb = obtenerEspecialidadExacta(especialidades,registro.getEspecialidad());
-                medico.setEspecialidad(especialidadDb);
-            }else{
-                log.info("Especialidad " + registro.getEspecialidad() + " no existe.");
-                medico.setEspecialidad(registro.getEspecialidad());
-            }
+            medico.setEspecialidad(getEspecialidad(registro.getEspecialidad()));
         }else{
             throw new MyException("Es necesario especificar la especialidad.");
         }
@@ -84,7 +74,7 @@ public class MedicoServiceImpl implements MedicoService {
     public Medico modificar(String param, PersonaDTO nuevoMedico) throws MyException {
         Medico medico = getPersona(param);
         if (nuevoMedico.getEspecialidad() != null)
-            medico.setEspecialidad(nuevoMedico.getEspecialidad());
+            medico.setEspecialidad(getEspecialidad(nuevoMedico.getEspecialidad()));
         if (nuevoMedico.getSueldo() != 0)
             medico.setSueldo(nuevoMedico.getSueldo());
         personaService.modificar(medico,nuevoMedico);
@@ -263,6 +253,19 @@ public class MedicoServiceImpl implements MedicoService {
             }
         }
         return null;
+    }
+
+    private String getEspecialidad(String especialidad){
+        log.info("Validando si la especialidad " + especialidad + " ya existe en base de datos.");
+        List<String> especialidades = medicoRepo.getEspecialidades();
+        boolean existe = existeEspecialidad(especialidades,especialidad);
+        if (existe){
+            log.info("Especialidad " + especialidad + " ya existe.");
+            return obtenerEspecialidadExacta(especialidades,especialidad);
+        }else{
+            log.info("Especialidad " + especialidad + " no existe.");
+            return especialidad;
+        }
     }
 
 }

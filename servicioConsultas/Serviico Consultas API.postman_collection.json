@@ -1265,7 +1265,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"11:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"12:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1343,13 +1343,37 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/consultas/get-all",
+							"raw": "{{baseUrl}}/consultas/get-all?email=irvingmeza95@gmail.com&pagado=false",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"consultas",
 								"get-all"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "irvingmeza95@gmail.com",
+									"description": "(No requerido)\n\nEmail de la persona (MEDICO o PACIENTE)."
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2025-02-01",
+									"description": "(No requerido)\n\nFecha de inicio de un rango de fechas.",
+									"disabled": true
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-02-03",
+									"description": "(No requerido)\n\nFecha de fin de un rango de fechas.",
+									"disabled": true
+								},
+								{
+									"key": "pagado",
+									"value": "false",
+									"description": "(No requerido)\n\nEstatus del pago de la consulta (true o false)."
+								}
 							]
 						}
 					},
@@ -1547,7 +1571,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=2025-01-01&fechaFin=2025-02-28&pacienteEmail=iamf_095@hotmail.com&pagado=false",
+							"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=2025-02-03&fechaFin=2025-02-03&pacienteEmail=iamf_095@hotmail.com",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1558,12 +1582,12 @@
 							"query": [
 								{
 									"key": "fechaInicio",
-									"value": "2025-01-01",
+									"value": "2025-02-03",
 									"description": "(Requerido)\n\nFecha de inicio."
 								},
 								{
 									"key": "fechaFin",
-									"value": "2025-02-28",
+									"value": "2025-02-03",
 									"description": "(Requerido)\n\nFecha de fin."
 								},
 								{
@@ -1574,7 +1598,8 @@
 								{
 									"key": "pagado",
 									"value": "false",
-									"description": "(No requerido)\n\nEn casos de querer filtrar por estado de pago de la consulta, ingresar \"trjue\" o \"false\"."
+									"description": "(No requerido)\n\nEn casos de querer filtrar por estado de pago de la consulta, ingresar \"trjue\" o \"false\".",
+									"disabled": true
 								}
 							]
 						}

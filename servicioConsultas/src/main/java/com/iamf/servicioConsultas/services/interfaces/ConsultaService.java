@@ -14,6 +14,10 @@ public interface ConsultaService {
     List<Consulta> getConsultasDePersona(String email) throws MyException;
     Boolean validarExistenciaDeTurnoEnconsultas(String horario) throws MyException;
     List<Consulta> getAll();
-    List<Consulta> buscarPorPacientePorRangoDeFechas(String pacinteEmail, String fechaInicio, String fechaFin) throws MyException;
-    List<Consulta> buscarPorPacientePorRangoDeFechasFiltradoPorPagado(String pacinteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
+    List<Consulta> buscarPorEmailPorRangoDeFechas(String email, String fechaInicio, String fechaFin) throws MyException;
+    List<Consulta> buscarPorEmailPorRangoDeFechasFiltradoPorPagado(String email, String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
+    List<Consulta> buscarPorRangoDeFechas(String fechaInicio, String fechaFin) throws MyException;
+    List<Consulta> buscarPorPagado(Boolean pagado) throws MyException;
+    List<Consulta> buscarPorRangoDeFechasFiltradoPorPagado(String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
+    List<Consulta> buscarPorEmailFiltradoPorPagado(String email, Boolean pagado) throws MyException;
 }

@@ -143,33 +143,69 @@ public class ConsultaServiceImpl implements ConsultaService {
     }
 
     @Override
-    public List<Consulta> buscarPorPacientePorRangoDeFechas(String pacinteEmail, String fechaInicio, String fechaFin) throws MyException {
-        PersonaDTO paciente = servicioUsuaruis.getPersona(pacinteEmail);
-        if (!paciente.getTipoPersona().equals(TipoPersona.PACIENTE))
-            throw new MyException("El email no pertenece a ningun paciente.");
+    public List<Consulta> buscarPorEmailPorRangoDeFechas(String email, String fechaInicio, String fechaFin) throws MyException {
+        PersonaDTO persona = servicioUsuaruis.getPersona(email);
         if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
             throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
         if (fechaInicio.compareTo(fechaFin) > 0)
             throw new MyException("Fecha inicio es posterior a fecha fin.");
-        log.info("Buscando consultas del paciente con email " + paciente.getCredenciales().getEmail() +
+        log.info("Buscando consultas del persona con email " + persona.getCredenciales().getEmail() +
                 " en rango de fechas " + fechaInicio + " - " + fechaFin);
-        return consultaRepo.buscarPorPacientePorRangoDeFechas(paciente.getCredenciales().getEmail(), fechaInicio,fechaFin);
+        return consultaRepo.buscarPorEmailYRangoDeFechas(persona.getCredenciales().getEmail(), fechaInicio,fechaFin);
     }
 
     @Override
-    public List<Consulta> buscarPorPacientePorRangoDeFechasFiltradoPorPagado(String pacinteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException {
-        PersonaDTO paciente = servicioUsuaruis.getPersona(pacinteEmail);
-        if (!paciente.getTipoPersona().equals(TipoPersona.PACIENTE))
-            throw new MyException("El email no pertenece a ningun paciente.");
+    public List<Consulta> buscarPorEmailPorRangoDeFechasFiltradoPorPagado(String email, String fechaInicio, String fechaFin, Boolean pagado) throws MyException {
+        PersonaDTO persona = servicioUsuaruis.getPersona(email);
         if (pagado == null)
             throw new MyException("Es necesario especificar si deseas filtrar por pagado o no pagado.");
         if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
             throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
         if (fechaInicio.compareTo(fechaFin) > 0)
             throw new MyException("Fecha inicio es posterior a fecha fin.");
-        log.info("Buscando consultas del paciente con email " + paciente.getCredenciales().getEmail() +
+        log.info("Buscando consultas del persona con email " + persona.getCredenciales().getEmail() +
                 " en rango de fechas " + fechaInicio + " - " + fechaFin);
-        return consultaRepo.buscarPorPacientePorRangoDeFechasFiltradoPorPagado(paciente.getCredenciales().getEmail(), fechaInicio,fechaFin,pagado);
+        return consultaRepo.buscarPorEmailYRangoDeFechasFiltradoPorPagado(persona.getCredenciales().getEmail(), fechaInicio,fechaFin,pagado);
+    }
+
+    @Override
+    public List<Consulta> buscarPorRangoDeFechas(String fechaInicio, String fechaFin) throws MyException {
+        if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
+            throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        log.info("Buscando consultas en rango de fechas " + fechaInicio + " - " + fechaFin);
+        return consultaRepo.buscarPorRangoDeFechas(fechaInicio,fechaFin);
+    }
+
+    @Override
+    public List<Consulta> buscarPorPagado(Boolean pagado) throws MyException {
+        if (pagado == null)
+            throw new MyException("Es necesario especificar si deseas filtrar por pagado o no pagado.");
+        log.info("Buscando consultas con estatus de pago " + pagado);
+        return consultaRepo.buscarPorPagadp(pagado);
+    }
+
+    @Override
+    public List<Consulta> buscarPorRangoDeFechasFiltradoPorPagado(String fechaInicio, String fechaFin, Boolean pagado) throws MyException {
+        if (pagado == null)
+            throw new MyException("Es necesario especificar si deseas filtrar por pagado o no pagado.");
+        if ( fechaInicio == null || fechaFin == null || fechaInicio.isEmpty() || fechaFin.isEmpty())
+            throw new MyException("Es necesario especificar la fecha de inicio y de fin.");
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        log.info("Buscando consultas en rango de fechas " + fechaInicio + " - " + fechaFin + " con estatus de pago " + pagado);
+        return consultaRepo.buscarPorRangoDeFechasFiltradoPorPagado(fechaInicio,fechaFin,pagado);
+    }
+
+    @Override
+    public List<Consulta> buscarPorEmailFiltradoPorPagado(String email, Boolean pagado) throws MyException {
+        PersonaDTO persona = servicioUsuaruis.getPersona(email);
+        if (pagado == null)
+            throw new MyException("Es necesario especificar si deseas filtrar por pagado o no pagado.");
+        log.info("Buscando consultas del persona con email " + persona.getCredenciales().getEmail() +
+                " con estatus de pago " + pagado);
+        return consultaRepo.buscarPorEmailFiltradoPorPagado(persona.getCredenciales().getEmail(),pagado);
     }
 
 }

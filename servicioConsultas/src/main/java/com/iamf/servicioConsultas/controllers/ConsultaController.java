@@ -66,7 +66,35 @@ public class ConsultaController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<ConsultaDTO>> getAll(){
+    public ResponseEntity<List<ConsultaDTO>> getAll(@RequestParam(required = false) String email,
+                                                    @RequestParam(required = false) String fechaInicio,
+                                                    @RequestParam(required = false) String fechaFin,
+                                                    @RequestParam(required = false) Boolean pagado) throws MyException {
+        if (email != null){
+            if (fechaInicio != null && fechaFin != null && pagado != null) {
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorEmailPorRangoDeFechasFiltradoPorPagado(email, fechaInicio, fechaFin, pagado)));
+            }else if (fechaInicio != null && fechaFin != null) {
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorEmailPorRangoDeFechas(email, fechaInicio, fechaFin)));
+            }else if (fechaInicio == null && fechaFin == null && pagado != null){
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorEmailFiltradoPorPagado(email, pagado)));
+            }else{
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService.getConsultasDePersona(email)));
+            }
+        }else{
+            if (fechaInicio != null && fechaFin != null && pagado != null) {
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorRangoDeFechasFiltradoPorPagado(fechaInicio, fechaFin, pagado)));
+            }else if (fechaInicio != null && fechaFin != null){
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorRangoDeFechas(fechaInicio, fechaFin)));
+            }else if (fechaInicio == null && fechaFin == null && pagado != null){
+                return ResponseEntity.ok(consultaMapper.getConsultas(consultaService
+                        .buscarPorPagado(pagado)));
+            }
+        }
         return ResponseEntity.ok(consultaMapper.getConsultasBasic(consultaService.getAll()));
     }
 
