@@ -107,4 +107,8 @@ public interface MedicoRepo extends JpaRepository<Medico, String> {
             "AND t.enabled = TRUE;\n", nativeQuery = true)
     List<Object[]> validarDisnibilidadDeMedicoPorFecha(@Param("fecha") String fecha, @Param("idMedico")
     String idMedico);
+    @Query("SELECT DISTINCT m.especialidad FROM Medico m")
+    List<String> getEspecialidades();
+    @Query("SELECT m FROM Medico m WHERE m.especialidad = :especialidad")
+    List<Medico> getAllPorEspecialidad(@Param("especialidad") String especialidad);
 }

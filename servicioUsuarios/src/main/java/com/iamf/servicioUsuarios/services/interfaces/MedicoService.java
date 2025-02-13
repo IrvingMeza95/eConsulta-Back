@@ -5,7 +5,6 @@ import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
-import feign.Param;
 
 import java.util.List;
 
@@ -33,4 +32,6 @@ public interface MedicoService {
 
     List<Object[]> validarDisnibilidadDeMedicoPorFechaHorario(String fecha, String email, String horario) throws MyException;
     List<Object[]> validarDisnibilidadDeMedicoPorFecha(String fecha, String email) throws MyException;
+    List<String> getEspecialidades() throws MyException;
+    List<Medico> getAllPorEspecialidad(String especialidad) throws MyException;
 }

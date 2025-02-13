@@ -16,8 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -42,8 +44,21 @@ public class MedicoServiceImpl implements MedicoService {
     @Override
     public Medico crear(RegistroDTO registro) throws MyException {
         Medico medico = new Medico();
-        if (registro.getEspecialidad() != null || !registro.getEspecialidad().equalsIgnoreCase(""))
-            medico.setEspecialidad(registro.getEspecialidad());
+        if (registro.getEspecialidad() != null || !registro.getEspecialidad().equalsIgnoreCase("")) {
+            List<String> especialidades = medicoRepo.getEspecialidades();
+            log.info("Validando si la especialidad " + registro.getEspecialidad() + " ya existe en base de datos.");
+            boolean existe = existeEspecialidad(especialidades,registro.getEspecialidad());
+            if (existe){
+                log.info("Especialidad " + registro.getEspecialidad() + " ya existe.");
+                String especialidadDb = obtenerEspecialidadExacta(especialidades,registro.getEspecialidad());
+                medico.setEspecialidad(especialidadDb);
+            }else{
+                log.info("Especialidad " + registro.getEspecialidad() + " no existe.");
+                medico.setEspecialidad(registro.getEspecialidad());
+            }
+        }else{
+            throw new MyException("Es necesario especificar la especialidad.");
+        }
         if (registro.getSueldo() == null || registro.getSueldo() == 0)
             throw new MyException("El sueldo no puede ser 0 o vacio.");
         medico.setSueldo(registro.getSueldo());
@@ -208,6 +223,46 @@ public class MedicoServiceImpl implements MedicoService {
         Medico medico = getPersona(email);
         List<Object[]> respuesta = medicoRepo.validarDisnibilidadDeMedicoPorFecha(fecha,medico.getId());
         return respuesta;
+    }
+
+    @Override
+    public List<String> getEspecialidades() throws MyException {
+        List<String> especialidades = medicoRepo.getEspecialidades();
+        if (especialidades.isEmpty())
+            throw new MyException("No hay especialidades.");
+        return especialidades;
+    }
+
+    @Override
+    public List<Medico> getAllPorEspecialidad(String especialidad) throws MyException {
+        if (especialidad == null)
+            throw new MyException("Es necesario especificar la especialidad.");
+        return medicoRepo.getAllPorEspecialidad(especialidad);
+    }
+
+    private boolean existeEspecialidad(List<String> especialidades, String nuevaEspecialidad){
+        Set<String> especialidadesNormalizadas = especialidades.stream()
+                .map(this::normalizarTexto)
+                .collect(Collectors.toSet());
+
+        return especialidadesNormalizadas.contains(normalizarTexto(nuevaEspecialidad));
+    }
+
+    private String normalizarTexto(String cadena) {
+        return Normalizer.normalize(cadena, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "")
+                .toLowerCase();
+    }
+
+    private String obtenerEspecialidadExacta(List<String> especialidades, String nuevaEspecialidad) {
+        String especialidadNormalizada = normalizarTexto(nuevaEspecialidad);
+
+        for (String especialidad : especialidades) {
+            if (normalizarTexto(especialidad).equals(especialidadNormalizada)) {
+                return especialidad; // Devuelve la versión exacta de la lista original
+            }
+        }
+        return null;
     }
 
 }

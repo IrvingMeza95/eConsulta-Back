@@ -168,13 +168,17 @@ public class PersonaController {
     }
 
     @GetMapping("/get-all/{tipo}")
-    public ResponseEntity<List<PersonaDTO>> getAll(@PathVariable TipoPersona tipo) throws MyException {
+    public ResponseEntity<List<PersonaDTO>> getAll(@PathVariable TipoPersona tipo, @RequestParam(required = false) String especialidadMedico) throws MyException {
         List<PersonaDTO> personas = new ArrayList<>();
         if (tipo == null)
             throw new MyException("Es necesario especificar el tipo de persona.");
         if (tipo.equals(TipoPersona.MEDICO)){
             log.info("Buscando personas tipo MEDICO.");
-            personas = personaMapper.listaMedicos(medicoService.getAll());
+            if (especialidadMedico == null) {
+                personas = personaMapper.listaMedicos(medicoService.getAll());
+            }else{
+                personas = personaMapper.listaMedicos(medicoService.getAllPorEspecialidad(especialidadMedico));
+            }
             return ResponseEntity.ok(personas);
         }else if (tipo.equals(TipoPersona.PACIENTE)){
             log.info("Buscando personsa tipo PACIENTE    .");

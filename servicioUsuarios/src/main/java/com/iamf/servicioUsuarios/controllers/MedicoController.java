@@ -44,4 +44,9 @@ public class MedicoController {
         return ResponseEntity.ok(medicoService.asignarRemoverTurnATodos(horario,accion));
     }
 
+    @GetMapping("/especialidades")
+    public ResponseEntity<List<String>> getEspecialidades() throws MyException {
+        return ResponseEntity.ok(medicoService.getEspecialidades());
+    }
+
 }
