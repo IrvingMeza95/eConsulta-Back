@@ -32,4 +32,5 @@ public interface MedicoService {
     ResponseMessage asignarRemoverTurnATodos(String horario, String accion) throws MyException;
 
     List<Object[]> validarDisnibilidadDeMedicoPorFechaHorario(String fecha, String email, String horario) throws MyException;
+    List<Object[]> validarDisnibilidadDeMedicoPorFecha(String fecha, String email) throws MyException;
 }

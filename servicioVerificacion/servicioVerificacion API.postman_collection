@@ -29,13 +29,14 @@
 							"formdata": [
 								{
 									"key": "file",
+									"description": "(Requerido)\n\nEnviar solo 1 archivo a la ves.",
 									"type": "file",
 									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Templates/Correo_agregar_password.html"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/templates?tipo=CODIGO_VERIFICACION_DE_CORREO&description=Correo para agregar contraseña.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
+							"raw": "{{baseUrl}}/templates?tipo=CODIGO_VERIFICACION_DE_CORREO&description=Correo de creacion de contraseña.&vars=nombreUsuario,urlAgregarPassword,fechaExpiracion",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -46,22 +47,22 @@
 								{
 									"key": "tipo",
 									"value": "CODIGO_VERIFICACION_DE_CORREO",
-									"description": "(Required) "
+									"description": "(Requerido)\n\nTipo de plantilla a dar de alta, puede llamar a la request llamada \"Tipos de plantilla\"."
 								},
 								{
 									"key": "description",
-									"value": "Correo para agregar contraseña.",
-									"description": "(Required) "
+									"value": "Correo de creacion de contraseña.",
+									"description": "(Requerido)\n\nDescripcion de la plantilla."
 								},
 								{
 									"key": "vars",
 									"value": "nombreUsuario,urlAgregarPassword,fechaExpiracion",
-									"description": "(Required) "
+									"description": "(Requerido)\n\nVariables que sean reemplazadas en la plantilla."
 								},
 								{
 									"key": "vars",
 									"value": "nombreUsuario,tipoArchivo",
-									"description": "(Required) ",
+									"description": "(Requerido)\n\nVariables que sean reemplazadas en la plantilla.",
 									"disabled": true
 								}
 							]
@@ -482,7 +483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CODIGO_VERIFICACION_DE_CORREO\"\n}",
+							"raw": "{\n    \"to\": \"irvingmeza95@gmail.com\",\n    \"fecha\": \"2025-01-27 15:00:00\",\n    \"template\": \"CORREO_RECUPERACION_PASSWORD\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",

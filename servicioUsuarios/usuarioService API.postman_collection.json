@@ -152,7 +152,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=8872&fecha=2025-01-27 13:20:00",
+							"raw": "{{baseUrl}}/usuarios/agregar-password/:param?password=123456&codigo=7353&fecha=2025-01-27 13:20:00",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -169,7 +169,7 @@
 								},
 								{
 									"key": "codigo",
-									"value": "8872",
+									"value": "7353",
 									"description": "(Required) "
 								},
 								{
@@ -180,7 +180,7 @@
 							"variable": [
 								{
 									"key": "param",
-									"value": "irvingmeza95@gmail.com",
+									"value": "iamf_095@hotmail.com",
 									"description": "(Required) "
 								}
 							]
@@ -1617,7 +1617,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/medicos/disponibilidad-por-fecha-horario?fecha=2025-02-03&email=irvingmeza95@gmail.com&horario=10-11",
+							"raw": "{{baseUrl}}/medicos/disponibilidad-por-fecha-horario?fecha=2025-02-03&email=irvingmeza95@gmail.com",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1638,8 +1638,9 @@
 								},
 								{
 									"key": "horario",
-									"value": "10-11",
-									"description": "(Required) "
+									"value": "11-12",
+									"description": "(No requerido)\n\nEspecifica el horario en formato \"10-11\" en caso que quieras filtrar.",
+									"disabled": true
 								}
 							]
 						}

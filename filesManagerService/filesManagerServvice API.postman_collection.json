@@ -110,13 +110,13 @@
 									"variable": [
 										{
 											"key": "param",
-											"value": "iamf_095@hotmail.com",
-											"description": "(Required) "
+											"value": "irvingmeza95@gmail.com",
+											"description": "Email de la persona (Requerido)."
 										},
 										{
 											"key": "tipo",
-											"value": "RECIBO-22",
-											"description": "(Required) "
+											"value": "PROFILE_PICTURE",
+											"description": "Agrega la prop \"name\" del ResponseFile que te devuelve el JSON de cada archivo en el metodo \"files-paths\" (requerido)."
 										}
 									]
 								}
@@ -195,13 +195,14 @@
 										{
 											"key": "tipo",
 											"value": "RECIBO",
-											"description": "Agregar el tipo para filtrar."
+											"description": "(Requerido)\n\nAgregar el tipo para filtrar (RECIBO, FACTURA, PROFILE_PICTURE)."
 										}
 									],
 									"variable": [
 										{
 											"key": "param",
-											"value": ""
+											"value": "iamf_095@hotmail.com",
+											"description": "(Requerido)\n\nEmail de la persona."
 										}
 									]
 								}
@@ -269,6 +270,7 @@
 							"formdata": [
 								{
 									"key": "file",
+									"description": "Enviar solo 1 archivo por request, que no supere los 5mbts de tamaño.",
 									"type": "file",
 									"src": "/C:/Users/iamf_/OneDrive/Desktop/Drive/Irving/Programacion/Proyectos/eConsulta/Archivos de prueba/FACTURA DE CONSULTA 1.pdf"
 								}
@@ -286,17 +288,17 @@
 								{
 									"key": "idUsuario",
 									"value": "iamf_095@hotmail.com",
-									"description": "(Required) "
+									"description": " (Requerido)\n\nEmail de la persona."
 								},
 								{
 									"key": "tipo",
 									"value": "FACTURA",
-									"description": "(Required)"
+									"description": "(Requerido)\n\nPara subir un archivo nuevo, especifica el tipo de archivo (FACTURA, RECIBO, PROFILE_PICTURE).\n(Opcional)\n\nPara acttualizar un archivo existente, insertar la prop \"name\" del JSON que devuelve por archivo en el metodo \"files-paths\"."
 								},
 								{
 									"key": "idConsulta",
 									"value": "1",
-									"description": "(Optional)"
+									"description": "\nEn caso de subir un archivo nuevo del tipo \"RECIBO\" o \"FACTURA\", inserre el ID de la consulta a la que estara relacionada."
 								}
 							]
 						}

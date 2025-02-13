@@ -89,4 +89,22 @@ public interface MedicoRepo extends JpaRepository<Medico, String> {
             "    ON tf.sub_horario = cf.horario;", nativeQuery = true)
     List<Object[]> validarDisnibilidadDeMedicoPorFechaHorario(@Param("fecha") String fecha, @Param("idMedico")
     String idMedico, @Param("horario") String horario);
+    @Query(value = "SELECT \n" +
+            "    ?1 AS Fecha,\n" +
+            "    t.sub_horario AS Horario,\n" +
+            "    CASE \n" +
+            "        WHEN c.horario IS NULL THEN TRUE \n" +
+            "        ELSE FALSE \n" +
+            "    END AS Disponibilidad\n" +
+            "FROM turnos t\n" +
+            "JOIN medico_turno mt ON t.id = mt.turno_id\n" +
+            "JOIN medicos m ON mt.medico_id = m.id\n" +
+            "LEFT JOIN consultas c \n" +
+            "    ON c.medico_id = m.id \n" +
+            "    AND c.horario = t.sub_horario \n" +
+            "    AND c.fecha = ?1\n" +
+            "WHERE m.id = ?2\n" +
+            "AND t.enabled = TRUE;\n", nativeQuery = true)
+    List<Object[]> validarDisnibilidadDeMedicoPorFecha(@Param("fecha") String fecha, @Param("idMedico")
+    String idMedico);
 }

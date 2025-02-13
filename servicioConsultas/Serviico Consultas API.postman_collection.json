@@ -1112,7 +1112,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "10",
+											"value": "1",
 											"description": "(Required) "
 										}
 									]
@@ -1265,7 +1265,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"9:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"11:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1547,7 +1547,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=2025-01-01&fechaFin=2025-02-28",
+							"raw": "{{baseUrl}}/reportes/reporte-servicios-contratados-por-rango-fechas?fechaInicio=2025-01-01&fechaFin=2025-02-28&pacienteEmail=iamf_095@hotmail.com&pagado=false",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1559,24 +1559,22 @@
 								{
 									"key": "fechaInicio",
 									"value": "2025-01-01",
-									"description": "(Required) "
+									"description": "(Requerido)\n\nFecha de inicio."
 								},
 								{
 									"key": "fechaFin",
 									"value": "2025-02-28",
-									"description": "(Required) "
+									"description": "(Requerido)\n\nFecha de fin."
 								},
 								{
 									"key": "pacienteEmail",
 									"value": "iamf_095@hotmail.com",
-									"description": "(No Required) ",
-									"disabled": true
+									"description": "(No requerido)\nEn casi de necesitar el reporte de un usuario en especifico, ingrese el email de la persona."
 								},
 								{
 									"key": "pagado",
 									"value": "false",
-									"description": "(No Required) ",
-									"disabled": true
+									"description": "(No requerido)\n\nEn casos de querer filtrar por estado de pago de la consulta, ingresar \"trjue\" o \"false\"."
 								}
 							]
 						}
@@ -2052,13 +2050,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas"
+			"value": "http://localhost:8080/api/consultas",
+			"disabled": true
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "token",
