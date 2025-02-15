@@ -12,5 +12,6 @@ public interface PacienteRepo extends JpaRepository<Paciente, String> {
             "FROM Paciente p JOIN p.consultas c " +
             "WHERE p.id = :idPaciente AND c.pagado = true")
     Boolean tieneConsultasPagadas(@Param("idPaciente") String idPaciente);
-
+    @Query("SELECT COUNT(p) FROM Paciente p")
+    Integer totalPacientes();
 }

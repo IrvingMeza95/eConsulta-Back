@@ -17,4 +17,5 @@ public interface PacienteService {
     ResponseMessage eliminar(String param) throws MyException;
     void agregarArchivo(String param, String idArchivo) throws MyException;
     List<Paciente> getAll();
+    Integer totalPacientes();
 }

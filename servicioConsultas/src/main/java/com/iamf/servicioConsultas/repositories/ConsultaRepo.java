@@ -52,4 +52,6 @@ public interface ConsultaRepo extends JpaRepository<Consulta,Long> {
     List<Consulta> buscarPorEmailFiltradoPorPagado(
             @Param("email") String email,
             @Param("pagado") Boolean pagado);
+    @Query("SELECT COUNT(c) FROM Consulta c WHERE c.fecha =:fecha")
+    Integer totalConsultasEnFecha(@Param("fecha") String fecha);
 }

@@ -98,4 +98,10 @@ public class ConsultaController {
         return ResponseEntity.ok(consultaMapper.getConsultasBasic(consultaService.getAll()));
     }
 
+
+    @GetMapping("/total-consultas")
+    public ResponseEntity<Integer> totalConsultas(@RequestParam String fecha) throws MyException {
+        return ResponseEntity.ok(consultaService.totalConsultasEnFecha(fecha));
+    }
+
 }

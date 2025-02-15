@@ -20,4 +20,5 @@ public interface ConsultaService {
     List<Consulta> buscarPorPagado(Boolean pagado) throws MyException;
     List<Consulta> buscarPorRangoDeFechasFiltradoPorPagado(String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
     List<Consulta> buscarPorEmailFiltradoPorPagado(String email, Boolean pagado) throws MyException;
+    Integer totalConsultasEnFecha(String fecha) throws MyException;
 }

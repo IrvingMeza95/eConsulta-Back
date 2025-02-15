@@ -732,7 +732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  2\n]",
+							"raw": "[\n  1,\n  4,\n  5\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1412,6 +1412,77 @@
 							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<string>\",\n    \"horario\": \"<string>\",\n    \"medico\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"persona\": {\n          \"id\": \"<string>\",\n          \"dni\": \"<string>\",\n          \"nombre\": \"<string>\",\n          \"apellido\": \"<string>\",\n          \"fechaNacimiento\": \"<string>\",\n          \"pais\": \"<string>\",\n          \"ciudad\": \"<string>\",\n          \"direccion\": \"<string>\",\n          \"numeroExterior\": \"<string>\",\n          \"codigoPostal\": \"<string>\",\n          \"credenciales\": {\n            \"id\": \"<string>\",\n            \"email\": \"<string>\",\n            \"username\": \"<string>\",\n            \"password\": \"<string>\",\n            \"codigoDeLlamada\": \"<string>\",\n            \"celular\": \"<string>\",\n            \"roles\": [\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_SUPER_ADMIN\"\n              },\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_USER\"\n              }\n            ],\n            \"enabled\": \"<boolean>\",\n            \"intentos\": \"<integer>\",\n            \"persona\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"codigoDeVerificacion\": \"<integer>\",\n            \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n            \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n            \"nivelDeVerificacion\": \"MEDIO\",\n            \"emailVerificado\": \"<boolean>\",\n            \"celularVerificado\": \"<boolean>\",\n            \"verificacion2Factores\": \"<boolean>\"\n          },\n          \"archivos\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"verificado\": \"<boolean>\",\n          \"tipoPersona\": \"MEDICO\"\n        },\n        \"tipoPersona\": \"MEDICO\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"ALTO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\",\n        \"nombre\": \"<string>\",\n        \"apellido\": \"<string>\"\n      },\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"PACIENTE\",\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        }\n      ],\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"obraSocial\": \"<boolean>\",\n      \"sueldo\": \"<double>\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        }\n      ]\n    },\n    \"paciente\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"persona\": {\n          \"id\": \"<string>\",\n          \"dni\": \"<string>\",\n          \"nombre\": \"<string>\",\n          \"apellido\": \"<string>\",\n          \"fechaNacimiento\": \"<string>\",\n          \"pais\": \"<string>\",\n          \"ciudad\": \"<string>\",\n          \"direccion\": \"<string>\",\n          \"numeroExterior\": \"<string>\",\n          \"codigoPostal\": \"<string>\",\n          \"credenciales\": {\n            \"id\": \"<string>\",\n            \"email\": \"<string>\",\n            \"username\": \"<string>\",\n            \"password\": \"<string>\",\n            \"codigoDeLlamada\": \"<string>\",\n            \"celular\": \"<string>\",\n            \"roles\": [\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_SUPER_ADMIN\"\n              },\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_USER\"\n              }\n            ],\n            \"enabled\": \"<boolean>\",\n            \"intentos\": \"<integer>\",\n            \"persona\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"codigoDeVerificacion\": \"<integer>\",\n            \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n            \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n            \"nivelDeVerificacion\": \"BASICO\",\n            \"emailVerificado\": \"<boolean>\",\n            \"celularVerificado\": \"<boolean>\",\n            \"verificacion2Factores\": \"<boolean>\"\n          },\n          \"archivos\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"verificado\": \"<boolean>\",\n          \"tipoPersona\": \"MEDICO\"\n        },\n        \"tipoPersona\": \"PACIENTE\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"MEDIO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\",\n        \"nombre\": \"<string>\",\n        \"apellido\": \"<string>\"\n      },\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MEDICO\",\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        }\n      ],\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"obraSocial\": \"<boolean>\",\n      \"sueldo\": \"<double>\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        }\n      ]\n    },\n    \"idServicioMedico\": \"<long>\",\n    \"idPaquete\": \"<long>\",\n    \"total\": \"<double>\",\n    \"pagado\": \"<boolean>\",\n    \"serviciosContratados\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<string>\",\n    \"horario\": \"<string>\",\n    \"medico\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"persona\": {\n          \"id\": \"<string>\",\n          \"dni\": \"<string>\",\n          \"nombre\": \"<string>\",\n          \"apellido\": \"<string>\",\n          \"fechaNacimiento\": \"<string>\",\n          \"pais\": \"<string>\",\n          \"ciudad\": \"<string>\",\n          \"direccion\": \"<string>\",\n          \"numeroExterior\": \"<string>\",\n          \"codigoPostal\": \"<string>\",\n          \"credenciales\": {\n            \"id\": \"<string>\",\n            \"email\": \"<string>\",\n            \"username\": \"<string>\",\n            \"password\": \"<string>\",\n            \"codigoDeLlamada\": \"<string>\",\n            \"celular\": \"<string>\",\n            \"roles\": [\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_SUPER_ADMIN\"\n              },\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_USER\"\n              }\n            ],\n            \"enabled\": \"<boolean>\",\n            \"intentos\": \"<integer>\",\n            \"persona\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"codigoDeVerificacion\": \"<integer>\",\n            \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n            \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n            \"nivelDeVerificacion\": \"ALTO\",\n            \"emailVerificado\": \"<boolean>\",\n            \"celularVerificado\": \"<boolean>\",\n            \"verificacion2Factores\": \"<boolean>\"\n          },\n          \"archivos\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"verificado\": \"<boolean>\",\n          \"tipoPersona\": \"MEDICO\"\n        },\n        \"tipoPersona\": \"PACIENTE\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_USER\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"MEDIO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\",\n        \"nombre\": \"<string>\",\n        \"apellido\": \"<string>\"\n      },\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MEDICO\",\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        }\n      ],\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"obraSocial\": \"<boolean>\",\n      \"sueldo\": \"<double>\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        }\n      ]\n    },\n    \"paciente\": {\n      \"id\": \"<string>\",\n      \"pais\": \"<string>\",\n      \"ciudad\": \"<string>\",\n      \"direccion\": \"<string>\",\n      \"numeroExterior\": \"<string>\",\n      \"codigoPostal\": \"<string>\",\n      \"credenciales\": {\n        \"id\": \"<string>\",\n        \"persona\": {\n          \"id\": \"<string>\",\n          \"dni\": \"<string>\",\n          \"nombre\": \"<string>\",\n          \"apellido\": \"<string>\",\n          \"fechaNacimiento\": \"<string>\",\n          \"pais\": \"<string>\",\n          \"ciudad\": \"<string>\",\n          \"direccion\": \"<string>\",\n          \"numeroExterior\": \"<string>\",\n          \"codigoPostal\": \"<string>\",\n          \"credenciales\": {\n            \"id\": \"<string>\",\n            \"email\": \"<string>\",\n            \"username\": \"<string>\",\n            \"password\": \"<string>\",\n            \"codigoDeLlamada\": \"<string>\",\n            \"celular\": \"<string>\",\n            \"roles\": [\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_SUPER_ADMIN\"\n              },\n              {\n                \"id\": \"<long>\",\n                \"nombre\": \"ROLE_ADMIN\"\n              }\n            ],\n            \"enabled\": \"<boolean>\",\n            \"intentos\": \"<integer>\",\n            \"persona\": {\n              \"value\": \"<Circular reference to #/components/schemas/Persona detected>\"\n            },\n            \"codigoDeVerificacion\": \"<integer>\",\n            \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n            \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n            \"nivelDeVerificacion\": \"SIN_VERIFICAR\",\n            \"emailVerificado\": \"<boolean>\",\n            \"celularVerificado\": \"<boolean>\",\n            \"verificacion2Factores\": \"<boolean>\"\n          },\n          \"archivos\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"verificado\": \"<boolean>\",\n          \"tipoPersona\": \"PACIENTE\"\n        },\n        \"tipoPersona\": \"PACIENTE\",\n        \"email\": \"<string>\",\n        \"username\": \"<string>\",\n        \"password\": \"<string>\",\n        \"codigoDeLlamada\": \"<string>\",\n        \"celular\": \"<string>\",\n        \"roles\": [\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_SUPER_ADMIN\"\n          },\n          {\n            \"id\": \"<long>\",\n            \"nombre\": \"ROLE_ADMIN\"\n          }\n        ],\n        \"enabled\": \"<boolean>\",\n        \"intentos\": \"<integer>\",\n        \"codigoDeVerificacion\": \"<integer>\",\n        \"vencimientoDeCodigoDeVerificacion\": \"<string>\",\n        \"fechaDeSolicitudDeCodigoDeVerificacion\": \"<string>\",\n        \"nivelDeVerificacion\": \"ALTO\",\n        \"emailVerificado\": \"<boolean>\",\n        \"celularVerificado\": \"<boolean>\",\n        \"verificacion2Factores\": \"<boolean>\",\n        \"nombre\": \"<string>\",\n        \"apellido\": \"<string>\"\n      },\n      \"verificado\": \"<boolean>\",\n      \"tipoPersona\": \"MEDICO\",\n      \"archivos\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<string>\",\n          \"type\": \"<string>\",\n          \"size\": \"<integer>\"\n        }\n      ],\n      \"dni\": \"<string>\",\n      \"nombre\": \"<string>\",\n      \"apellido\": \"<string>\",\n      \"fechaNacimiento\": \"<string>\",\n      \"obraSocial\": \"<boolean>\",\n      \"sueldo\": \"<double>\",\n      \"especialidad\": \"<string>\",\n      \"turnos\": [\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<long>\",\n          \"horario\": \"<string>\",\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"consultas\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ConsultaDTO detected>\"\n        }\n      ]\n    },\n    \"idServicioMedico\": \"<long>\",\n    \"idPaquete\": \"<long>\",\n    \"total\": \"<double>\",\n    \"pagado\": \"<boolean>\",\n    \"serviciosContratados\": [\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"nombre\": \"<string>\",\n        \"descripcion\": \"<string>\",\n        \"precio\": \"<double>\"\n      }\n    ]\n  }\n]"
 						}
 					]
+				},
+				{
+					"name": "total Consultas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/consultas/total-consultas?fecha=2025-02-03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"consultas",
+								"total-consultas"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2025-02-03",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/consultas/total-consultas?fecha=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"consultas",
+										"total-consultas"
+									],
+									"query": [
+										{
+											"key": "fecha",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<integer>"
+						}
+					]
 				}
 			]
 		},
@@ -2075,13 +2146,13 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/api/consultas",
-			"disabled": true
+			"value": "http://localhost:8080/api/consultas"
 		},
 		{
 			"key": "baseUrl",
 			"value": "http://vps-4110266-x.dattaweb.com:8080/api/consultas",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",

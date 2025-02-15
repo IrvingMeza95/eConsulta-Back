@@ -11,10 +11,12 @@ import com.iamf.servicioConsultas.services.interfaces.ServicioMedicoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +29,8 @@ public class PaqueteServiceImpl implements PaqueteService {
     private ServicioMedicoService servicioMedicoService;
     @Value("${porcentaje.descuento.paquete}")
     private Double porcentajeDescuentoPaquete;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     private Paquete guardar(Paquete paquete) {
         Paquete paqueteDb = paqueteRepo.save(paquete);
@@ -35,7 +39,30 @@ public class PaqueteServiceImpl implements PaqueteService {
     }
 
     @Override
-    public Paquete crear(List<Long> ids) throws MyException {
+    public synchronized Paquete creacionPaqueteControlado(List<Long> ids) throws MyException {
+        /*
+            - Metodo de creacion de paquetes para controlar transacciones concurrentes evitando el efecto carrera
+            - Solo funciona para apis con solo 1 instancia del servicio
+            - Para multiples instancias del mismo servicio, se implementa Redis
+        */
+        return crear(ids);
+    }
+
+    private Paquete crear(List<Long> ids) throws MyException {
+//        String lockKey = "lock:paquete:" + ids.hashCode();
+//
+//        Boolean locked = null;
+//        try{
+//            log.info("Validando si la lista con lockkey: " + lockKey + " ya esta siendo creada.");
+//            locked = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, "locked", 5, TimeUnit.SECONDS);
+//        }catch (RuntimeException e){
+//            log.error(String.valueOf(e));
+//            throw new RuntimeException(e.getMessage());
+//        }
+//
+//        if (Boolean.FALSE.equals(locked))
+//            throw new MyException("Otro proceso está creando este paquete, inténtalo más tarde.");
+
         List<Paquete> paqueteExxistente = buscarPaquetePorServiciosIds(ids);
         if (!paqueteExxistente.isEmpty())
             throw new MyException("Ya existe un paquete con los servicios seleccionados, su id es " + paqueteExxistente.get(0).getId() + ".");
@@ -43,10 +70,6 @@ public class PaqueteServiceImpl implements PaqueteService {
         List<ServicioMedico> servicioMedicos = servicioMedicoService.getServiciosMedicos(ids);
         if (servicioMedicos.isEmpty() || servicioMedicos.size() == 0)
             throw new MyException("La lista de servicios seleccionados esta vacia.");
-
-//        Double precio = servicioMedicos.stream()
-//                .mapToDouble(ServicioMedico::getPrecio)
-//                .sum();
 
         Paquete paquete = Paquete.builder()
                 .servicios(servicioMedicos)

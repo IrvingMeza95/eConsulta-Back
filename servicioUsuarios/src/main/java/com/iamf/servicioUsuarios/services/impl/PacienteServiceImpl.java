@@ -80,4 +80,10 @@ public class PacienteServiceImpl implements PacienteService {
     public List<Paciente> getAll() {
         return pacienteRepo.findAll();
     }
+
+    @Override
+    public Integer totalPacientes() {
+        return pacienteRepo.totalPacientes();
+    }
+
 }

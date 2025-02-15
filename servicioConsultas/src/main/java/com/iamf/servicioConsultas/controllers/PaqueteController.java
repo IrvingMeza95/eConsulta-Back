@@ -21,7 +21,7 @@ public class PaqueteController {
 
     @PostMapping
     public ResponseEntity<Paquete> crear(@RequestBody List<Long> ids) throws MyException {
-        return ResponseEntity.ok(paqueteService.crear(ids));
+        return ResponseEntity.ok(paqueteService.creacionPaqueteControlado(ids));
     }
 
     @GetMapping("/{id}")

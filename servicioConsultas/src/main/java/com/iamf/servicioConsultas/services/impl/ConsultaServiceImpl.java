@@ -208,4 +208,11 @@ public class ConsultaServiceImpl implements ConsultaService {
         return consultaRepo.buscarPorEmailFiltradoPorPagado(persona.getCredenciales().getEmail(),pagado);
     }
 
+    @Override
+    public Integer totalConsultasEnFecha(String fecha) throws MyException {
+        if (fecha == null)
+            throw new MyException("Es necesario proporcionar una fecha.");
+        return consultaRepo.totalConsultasEnFecha(fecha);
+    }
+
 }
