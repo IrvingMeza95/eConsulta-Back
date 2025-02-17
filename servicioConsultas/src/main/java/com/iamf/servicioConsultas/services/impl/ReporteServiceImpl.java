@@ -59,4 +59,15 @@ public class ReporteServiceImpl implements ReporteService {
         return servicioContratadoService.extraerServiciosContratados(consultas);
     }
 
+    @Override
+    public List<Object[]> reporteDeIngresosYEgresosPorFecha(String fechaInicio, String fechaFin) throws MyException {
+        if (fechaInicio == null || fechaFin == null)
+            throw new MyException("Es necesario especificar una correctamente el rango de fechas.");
+        log.info("Generando informe de ingresos y egresos de las fechas " + fechaInicio + " y " + fechaFin);
+        if (fechaInicio.compareTo(fechaFin) > 0)
+            throw new MyException("Fecha inicio es posterior a fecha fin.");
+        List<Object[]> resultado = reporteRepo.reporteDeIngresosYEgresosPorFecha(fechaInicio, fechaFin);
+        return resultado;
+    }
+
 }

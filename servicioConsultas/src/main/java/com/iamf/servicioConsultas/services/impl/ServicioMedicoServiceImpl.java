@@ -65,7 +65,6 @@ public class ServicioMedicoServiceImpl implements ServicioMedicoService {
                     }
                     return servicioMedico;
                 })
-                .filter(servicio -> servicio != null && servicio.getEnabled())
                 .collect(Collectors.toList());
         return serviciosMedicos;
     }

@@ -44,4 +44,11 @@ public class ReporteController {
         }
     }
 
+    @GetMapping("/ingresos-egresos")
+    public ResponseEntity<List<Object[]>> reporteDeIngresosYEgresosPorFecha(@RequestParam String fechaInicio,
+                                                                            @RequestParam String fechaFin) throws MyException {
+        return ResponseEntity.ok(reporteService.reporteDeIngresosYEgresosPorFecha(fechaInicio,fechaFin));
+
+    }
+
 }

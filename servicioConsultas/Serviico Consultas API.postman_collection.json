@@ -35,7 +35,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "4",
+											"value": "1",
 											"description": "(Required) "
 										}
 									]
@@ -501,7 +501,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "3",
+											"value": "18",
 											"description": "(Required) "
 										}
 									]
@@ -732,7 +732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  1,\n  4,\n  5\n]",
+							"raw": "[\n  1,\n  2,\n  3,\n  4,\n  5\n]",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -814,7 +814,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    1,\r\n    2\r\n]",
+							"raw": "[\r\n    4,\r\n    3,\r\n    5\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1112,7 +1112,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "1",
+											"value": "2",
 											"description": "(Required) "
 										}
 									]
@@ -1265,7 +1265,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"fecha\": \"2025-02-03\",\n  \"horario\": \"12:00\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
+							"raw": "{\n  \"fecha\": \"2025-02-04\",\n  \"horario\": \"12:45\",\n  \"medico\": {\n    \"credenciales\": {\n      \"email\": \"irvingmeza95@gmail.com\"\n    }\n  },\n  \"paciente\": {\n    \"credenciales\": {\n      \"email\": \"iamf_095@hotmail.com\"\n    }\n  },\n  \"idServicioMedico\": 1\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1343,7 +1343,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/consultas/get-all?email=irvingmeza95@gmail.com&pagado=false",
+							"raw": "{{baseUrl}}/consultas/get-all",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1355,7 +1355,8 @@
 								{
 									"key": "email",
 									"value": "irvingmeza95@gmail.com",
-									"description": "(No requerido)\n\nEmail de la persona (MEDICO o PACIENTE)."
+									"description": "(No requerido)\n\nEmail de la persona (MEDICO o PACIENTE).",
+									"disabled": true
 								},
 								{
 									"key": "fechaInicio",
@@ -1372,7 +1373,8 @@
 								{
 									"key": "pagado",
 									"value": "false",
-									"description": "(No requerido)\n\nEstatus del pago de la consulta (true o false)."
+									"description": "(No requerido)\n\nEstatus del pago de la consulta (true o false).",
+									"disabled": true
 								}
 							]
 						}
@@ -1720,6 +1722,86 @@
 							],
 							"cookie": [],
 							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"porcentajeDescuentoPaquete\": \"<double>\",\n    \"porcentajeDescuentoObraSocial\": \"<double>\",\n    \"total\": \"<double>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"porcentajeDescuentoPaquete\": \"<double>\",\n    \"porcentajeDescuentoObraSocial\": \"<double>\",\n    \"total\": \"<double>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "reporte De Ingresos Y Egresos Por Fecha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reportes/ingresos-egresos?fechaInicio=2025-02-01&fechaFin=2025-02-04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reportes",
+								"ingresos-egresos"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-02-01",
+									"description": "(Required)"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-02-04",
+									"description": "(Required)"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reportes/ingresos-egresos?fecha1=<string>&fecha2=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reportes",
+										"ingresos-egresos"
+									],
+									"query": [
+										{
+											"key": "fecha1",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "fecha2",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [],\n  []\n]"
 						}
 					]
 				}

@@ -74,4 +74,23 @@ public class ReporteRepo {
         return query.getResultList();
     }
 
+    public List<Object[]> reporteDeIngresosYEgresosPorFecha(String fechaInicio, String fechaFin) {
+        String sql = "WITH MedicosUnicos AS (\n" +
+                "    SELECT DISTINCT m.id, m.sueldo\n" +
+                "    FROM econsulta_db.consultas c\n" +
+                "    JOIN econsulta_db.medicos m ON c.medico_id = m.id\n" +
+                "    WHERE c.fecha BETWEEN '" + fechaInicio + "' AND '" + fechaFin + "'\n" +
+                ")\n" +
+                "SELECT\n" +
+                "    '" + fechaInicio + "' AS FechaInicio,\n" +
+                "    '" + fechaFin + "' AS FechaFin,\n" +
+                "    COALESCE(SUM(CASE WHEN c.pagado = TRUE THEN c.total ELSE 0 END), 0) AS Ganancias,\n" +
+                "    COALESCE(SUM(mu.sueldo), 0) AS Gastado\n" +
+                "FROM econsulta_db.consultas c\n" +
+                "LEFT JOIN MedicosUnicos mu ON c.medico_id = mu.id\n" +
+                "WHERE c.fecha BETWEEN '" + fechaInicio + "' AND '" + fechaFin + "';\n";
+        Query query = entityManager.createNativeQuery(sql);
+        return query.getResultList();
+    }
+
 }

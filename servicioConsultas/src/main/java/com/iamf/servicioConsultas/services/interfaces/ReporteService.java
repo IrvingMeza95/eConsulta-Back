@@ -12,4 +12,5 @@ public interface ReporteService {
     List<ServicioContratado> reporteServiciosContratadosPorRangoDeFechas(String fechaInicio, String fechaFin) throws MyException;
     List<ServicioContratado> reporteServiciosContratadosDePacientePorRangoDeFechas(String pacienteEmail, String fechaInicio, String fechaFin) throws MyException;
     List<ServicioContratado> reporteServiciosContratadosDePacientePorRangoDeFechasFiltradoPorOagado(String pacienteEmail, String fechaInicio, String fechaFin, Boolean pagado) throws MyException;
+    List<Object[]> reporteDeIngresosYEgresosPorFecha(String fechaInicio, String fechaFin) throws MyException;
 }
