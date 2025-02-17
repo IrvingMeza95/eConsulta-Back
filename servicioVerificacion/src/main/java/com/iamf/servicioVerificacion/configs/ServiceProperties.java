@@ -14,4 +14,5 @@ public class ServiceProperties {
     private String phoneSmsPermited;
     private String whatsappPermited;
     private String urlAgregarPassword;
+    private String urlRecuperarPassword;
 }

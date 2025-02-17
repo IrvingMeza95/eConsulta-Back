@@ -230,11 +230,26 @@ public class MedicoServiceImpl implements MedicoService {
         return medicoRepo.getAllPorEspecialidad(especialidad);
     }
 
+    @Override
+    public ResponseMessage modificarEspecialidad(String especialidad, String nuevaEspecialidad) throws MyException {
+        if (especialidad == null || especialidad.isEmpty())
+            throw new MyException("Es necesarrio especificar la especialidad a modificar.");
+        if (nuevaEspecialidad == null || nuevaEspecialidad.isEmpty())
+            throw new MyException("Especialidad invalida.");
+        log.info("Se modificara la especialidad " + especialidad + " por " + nuevaEspecialidad);
+        List<String> especialidades = getEspecialidades();
+        String especialidadBd = getEspecialidad(especialidad);
+        if (especialidadBd.isEmpty())
+            throw new MyException("La especialidad que desea modificar no exxisste.");
+        int medicosActualizados = medicoRepo.actualizarEspecialidad(especialidadBd,nuevaEspecialidad);
+        return new ResponseMessage("La especialidad " + nuevaEspecialidad + " se actualizo en "
+                + medicosActualizados + " medicos.");
+    }
+
     private boolean existeEspecialidad(List<String> especialidades, String nuevaEspecialidad){
         Set<String> especialidadesNormalizadas = especialidades.stream()
                 .map(this::normalizarTexto)
                 .collect(Collectors.toSet());
-
         return especialidadesNormalizadas.contains(normalizarTexto(nuevaEspecialidad));
     }
 

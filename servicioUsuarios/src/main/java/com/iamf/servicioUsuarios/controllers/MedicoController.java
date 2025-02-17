@@ -49,4 +49,10 @@ public class MedicoController {
         return ResponseEntity.ok(medicoService.getEspecialidades());
     }
 
+    @PutMapping("/especialidades/actualizar")
+    public ResponseEntity<ResponseMessage> modificarEspecialidad(@RequestParam String especialidad,
+                                                                 @RequestParam String nuevaEspecialidad) throws MyException {
+        return ResponseEntity.ok(medicoService.modificarEspecialidad(especialidad,nuevaEspecialidad));
+    }
+
 }

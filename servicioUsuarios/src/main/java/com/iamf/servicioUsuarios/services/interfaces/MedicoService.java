@@ -34,4 +34,5 @@ public interface MedicoService {
     List<Object[]> validarDisnibilidadDeMedicoPorFecha(String fecha, String email) throws MyException;
     List<String> getEspecialidades() throws MyException;
     List<Medico> getAllPorEspecialidad(String especialidad) throws MyException;
+    ResponseMessage modificarEspecialidad(String especialidad, String nuevaEspecialidad) throws MyException;
 }

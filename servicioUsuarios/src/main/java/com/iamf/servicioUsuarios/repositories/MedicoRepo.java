@@ -2,7 +2,9 @@ package com.iamf.servicioUsuarios.repositories;
 
 import com.iamf.commons.models.Medico;
 import feign.Param;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -111,4 +113,8 @@ public interface MedicoRepo extends JpaRepository<Medico, String> {
     List<String> getEspecialidades();
     @Query("SELECT m FROM Medico m WHERE m.especialidad = :especialidad")
     List<Medico> getAllPorEspecialidad(@Param("especialidad") String especialidad);
+    @Transactional
+    @Modifying
+    @Query("UPDATE Medico m SET m.especialidad = :nuevaEspecialidad WHERE m.especialidad = :especialidad")
+    int actualizarEspecialidad(String especialidad, String nuevaEspecialidad);
 }

@@ -224,7 +224,7 @@ public class EmailServiceImpl implements EmailService {
                 .key("nombreUsuario")
                 .value(usuario.getNombre() + " " + usuario.getApellido())
                 .build());
-        String urlAgregarPassword = serviceProperties.getUrlAgregarPassword().replace("username", usuario.getUsername());
+        String urlAgregarPassword = serviceProperties.getUrlRecuperarPassword().replace("username", usuario.getUsername());
         String urlFinal = urlAgregarPassword.replace("codigo", String.valueOf(codigoDeVerificacion));
         request.getMetaData().add(MetaData.builder()
                 .key("urlAgregarPassword")

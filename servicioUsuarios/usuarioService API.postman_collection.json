@@ -1365,6 +1365,151 @@
 			"name": "medicos",
 			"item": [
 				{
+					"name": "especialidades",
+					"item": [
+						{
+							"name": "get Especialidades",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/especialidades",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"especialidades"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/medicos/especialidades",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"medicos",
+												"especialidades"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
+								}
+							]
+						},
+						{
+							"name": "modificar Especialidad",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/especialidades/actualizar?especialidad=cardiologia&nuevaEspecialidad=Cardiología",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"especialidades",
+										"actualizar"
+									],
+									"query": [
+										{
+											"key": "especialidad",
+											"value": "cardiologia",
+											"description": "(Required) "
+										},
+										{
+											"key": "nuevaEspecialidad",
+											"value": "Cardiología",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/medicos/especialidades/actualizar?especialidad=<string>&nuevaEspecialidad=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"medicos",
+												"especialidades",
+												"actualizar"
+											],
+											"query": [
+												{
+													"key": "especialidad",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "nuevaEspecialidad",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "disponibilidad Semanal",
 					"request": {
 						"method": "GET",
@@ -1696,63 +1841,6 @@
 							],
 							"cookie": [],
 							"body": "[\n  [],\n  []\n]"
-						}
-					]
-				},
-				{
-					"name": "get Especialidades",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "*/*"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/medicos/especialidades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"medicos",
-								"especialidades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/medicos/especialidades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"medicos",
-										"especialidades"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": "[\n  \"<string>\",\n  \"<string>\"\n]"
 						}
 					]
 				}
