@@ -54,28 +54,6 @@ public class PersonaServiceImpl implements PersonaService    {
     }
 
     @Override
-    public void modificar(Persona personaActual, Persona nuevaPersona) throws MyException {
-        if (nuevaPersona.getCredenciales() != null)
-            personaActual.setCredenciales(usuarioService.modificar(
-                personaActual.getCredenciales().getEmail(), usuarioMapper.getUsuarioDTO(
-                            nuevaPersona.getCredenciales())
-                    ));
-//        personaActual.setVerificado(nuevaPersona.getVerificado());
-        if (nuevaPersona.getTipoPersona() != null)
-//        personaActual.setArchivos(nuevaPersona.getArchivos());
-        if (nuevaPersona.getCiudad() != null)
-            personaActual.setCiudad(nuevaPersona.getCiudad());
-        if (nuevaPersona.getCodigoPostal() != null)
-            personaActual.setCodigoPostal(nuevaPersona.getCodigoPostal());
-        if (nuevaPersona.getDireccion() != null)
-            personaActual.setDireccion(nuevaPersona.getDireccion());
-        if (nuevaPersona.getNumeroExterior() != null)
-            personaActual.setNumeroExterior(nuevaPersona.getNumeroExterior());
-        if (nuevaPersona.getPais() != null)
-            personaActual.setPais(nuevaPersona.getPais());
-    }
-
-    @Override
     public void modificar(Persona personaActual, PersonaDTO nuevaPersona) throws MyException {
         if (nuevaPersona.getCredenciales() != null)
             personaActual.setCredenciales(usuarioService.modificar(

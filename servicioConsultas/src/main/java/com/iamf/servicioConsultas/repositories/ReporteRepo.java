@@ -31,12 +31,19 @@ public class ReporteRepo {
                 "SELECT \n" +
                 "    m.mes,\n" +
                 "    COALESCE(SUM(CASE WHEN c.pagado = 1 THEN c.total ELSE 0 END), 0) AS total_pagado,\n" +
-                "    COALESCE(SUM(CASE WHEN c.pagado = 0 THEN c.total ELSE 0 END), 0) AS total_no_pagado\n" +
+                "    COALESCE(SUM(CASE WHEN c.pagado = 0 THEN c.total ELSE 0 END), 0) AS total_no_pagado,\n" +
+                "    COALESCE(\n" +
+                "        (SELECT SUM(sueldo) FROM (\n" +
+                "            SELECT DISTINCT DATE_FORMAT(c.fecha, '%Y-%m') AS mes, c.fecha, c.medico_id, m.sueldo\n" +
+                "            FROM econsulta_db.consultas c\n" +
+                "            JOIN econsulta_db.medicos m ON c.medico_id = m.id\n" +
+                "        ) AS subquery WHERE subquery.mes = m.mes)\n" +
+                "    , 0) AS total_gastado\n" +
                 "FROM meses m\n" +
                 "LEFT JOIN econsulta_db.consultas c \n" +
                 "    ON DATE_FORMAT(c.fecha, '%Y-%m') = m.mes\n" +
                 "GROUP BY m.mes\n" +
-                "ORDER BY m.mes;";
+                "ORDER BY m.mes;\n";
         Query query = entityManager.createNativeQuery(sql);
         return query.getResultList();
     }

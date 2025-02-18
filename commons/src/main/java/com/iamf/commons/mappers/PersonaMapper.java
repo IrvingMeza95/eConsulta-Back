@@ -43,6 +43,7 @@ public class PersonaMapper {
 		PersonaDTO personaDTO = new PersonaDTO();
 		fillPersonaDTO(paciente,personaDTO);
 		personaDTO.setObraSocial(paciente.getObraSocial());
+		personaDTO.getCredenciales().setPassword(null);
 		return personaDTO;
 	}
 
@@ -54,6 +55,7 @@ public class PersonaMapper {
 //		if (medico.getTurnos() != null)
 //			personaDTO.setTurnos(medico.getTurnos());
 		personaDTO.setSueldo(medico.getSueldo());
+		personaDTO.getCredenciales().setPassword(null);
 		return personaDTO;
 	}
 

@@ -252,11 +252,11 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new MyException("La contraseña no puede ser nula.");
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         usuario.setPassword(encoder.encode(password));
+        usuario.setEnabled(true);
+        guardar(usuario);
         eliminarCodigoDeVerificacion(usuario);
         usuarioRepo.cambiarEmailVerificado(true,param);
         cambiarNivelDeVerificacion(usuario,NivelDeVerificacion.BASICO);
-        usuario.setEnabled(true);
-        guardar(usuario);
     }
 
 }
