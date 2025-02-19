@@ -14,6 +14,7 @@ import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.services.interfaces.MedicoService;
 import com.iamf.servicioUsuarios.services.interfaces.PacienteService;
 import com.iamf.servicioUsuarios.services.interfaces.PersonaService;
+import com.iamf.servicioUsuarios.services.interfaces.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,8 @@ public class PersonaController {
     @Autowired
     private ServicioVerificacion servicioVerificacion;
     private final PersonaMapper personaMapper = new PersonaMapper();
+    @Autowired
+    private UsuarioService usuarioService;
 
     @GetMapping("/{param}")
     public ResponseEntity<PersonaDTO> getPersona(@PathVariable String param) throws MyException {
@@ -168,11 +171,11 @@ public class PersonaController {
     }
 
     @GetMapping("/get-all/{tipo}")
-    public ResponseEntity<List<PersonaDTO>> getAll(@PathVariable TipoPersona tipo, @RequestParam(required = false) String especialidadMedico) throws MyException {
+    public ResponseEntity<List<PersonaDTO>> getAll(@PathVariable(required = false) String tipo,
+                                                   @RequestParam(required = false) String especialidadMedico) throws MyException {
         List<PersonaDTO> personas = new ArrayList<>();
-        if (tipo == null)
-            throw new MyException("Es necesario especificar el tipo de persona.");
-        if (tipo.equals(TipoPersona.MEDICO)){
+
+        if (tipo.equalsIgnoreCase(TipoPersona.MEDICO.name())){
             log.info("Buscando personas tipo MEDICO.");
             if (especialidadMedico == null) {
                 personas = personaMapper.listaMedicos(medicoService.getAll());
@@ -180,12 +183,14 @@ public class PersonaController {
                 personas = personaMapper.listaMedicos(medicoService.getAllPorEspecialidad(especialidadMedico));
             }
             return ResponseEntity.ok(personas);
-        }else if (tipo.equals(TipoPersona.PACIENTE)){
+        }else if (tipo.equalsIgnoreCase(TipoPersona.PACIENTE.name())){
             log.info("Buscando personsa tipo PACIENTE    .");
             personas = personaMapper.listaPacientes(pacienteService.getAll());
             return ResponseEntity.ok(personas);
+        }else{
+            log.info("Buscando todas las personas de base de datos.");
+            return ResponseEntity.ok(personaMapper.listaPersonaDTO(usuarioService.getPersonas()));
         }
-        return null;
     }
 
 }

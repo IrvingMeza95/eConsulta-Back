@@ -1,6 +1,7 @@
 package com.iamf.commons.mappers;
 
 import com.iamf.commons.dtos.PersonaDTO;
+import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.models.Medico;
 import com.iamf.commons.models.Paciente;
 import com.iamf.commons.models.Persona;
@@ -19,24 +20,13 @@ public class PersonaMapper {
 	}
 
     public PersonaDTO getPersonaDTO(Persona persona){
-        PersonaDTO personaDTO = PersonaDTO.builder()
-        		.id(persona.getId())
-				.tipoPersona(persona.getTipoPersona())
-				.dni(persona.getDni())
-				.nombre(persona.getNombre())
-				.apellido(persona.getApellido())
-				.fechaNacimiento(persona.getFechaNacimiento())
-				.pais(persona.getPais())
-        		.ciudad(persona.getCiudad())
-        		.direccion(persona.getDireccion())
-        		.numeroExterior(persona.getNumeroExterior())
-        		.codigoPostal(persona.getCodigoPostal())
-        		.credenciales(usuarioMapper.getUsuarioDTO(persona.getCredenciales()))
-        		.verificado(persona.getVerificado())
-				.tipoPersona(persona.getTipoPersona())
-//				.archivos(resoonseFileMapper.getResponseFileList2(persona.getArchivos()))
-        		.build();
-        return personaDTO;
+		PersonaDTO personaDTO = new PersonaDTO();
+		if (persona.getTipoPersona().equals(TipoPersona.MEDICO)){
+			personaDTO = getMedicoDTO((Medico)persona);
+		} else {
+			personaDTO = getPacienteDTO((Paciente) persona);
+		}
+		return personaDTO;
     }
 
 	public PersonaDTO getPacienteDTO(Paciente paciente){
