@@ -4,7 +4,11 @@ import com.iamf.commons.dtos.PersonaDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Persona;
+import com.iamf.commons.models.Role;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
+
+import java.util.List;
 
 public interface PersonaService {
     Persona gatPersona(String param) throws MyException;

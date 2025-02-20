@@ -4,7 +4,9 @@ import com.iamf.commons.dtos.UsuarioDTO;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Persona;
+import com.iamf.commons.models.Role;
 import com.iamf.commons.models.Usuario;
+import com.iamf.commons.responses.ResponseMessage;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,4 +25,6 @@ public interface UsuarioService {
     Integer guardarCodigoDeVerificacion(String email, Integer codigo, String fechaDeExpiracion);
     TipoPersona getTipoPersona(String param) throws MyException;
     void agregarPassword(String param, String password, Integer codigo, String fecha) throws MyException;
+    void eliminarRolee(String id);
+    ResponseMessage modificarRoles(String email, List<Long> rolesIds) throws MyException;
 }

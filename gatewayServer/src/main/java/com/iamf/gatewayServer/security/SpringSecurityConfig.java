@@ -30,18 +30,28 @@ public class SpringSecurityConfig {
 	@Bean
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
 		return http.authorizeExchange()
+
 				.pathMatchers("/api/security/oauth/**", "/api/wsChats/**", "/api/usuarios/verificacion/**",
 						"/api/verificacion/**","/api/usuarios/usuarios/agregar-password/**").permitAll()
+
 				.pathMatchers(HttpMethod.POST,"/api/usuarios/persona").permitAll()
+
 				.pathMatchers(HttpMethod.GET,"/api/usuarios/persona/**", "/api/files/**", "/api/chats/**")
 				.hasAnyRole("ADMIN","USER","SUPER_ADMIN")
+
+				.pathMatchers(HttpMethod.GET,"/api/usuarios/roles").hasAnyRole("ADMIN","SUPER_ADMIN")
+
 				.pathMatchers(HttpMethod.DELETE, "/api/usuarios/**","/api/consultas/**","/api/verificacion/**","/api/files/**")
 				.hasRole("SUPER_ADMIN")
-				.pathMatchers(HttpMethod.PUT,"/api/usuarios/medicos/**").hasRole("SUPER_ADMIN")
+
+				.pathMatchers(HttpMethod.PUT,"api/usuarios/usuarios/**","/api/usuarios/medicos/**").hasRole("SUPER_ADMIN")
+
 				.pathMatchers("/api/consultas/reportes/**")
 				.hasRole("SUPER_ADMIN")
+
 				.pathMatchers("/api/usuarios/usuarios/**","/api/consultas/**")
 				.hasAnyRole("ADMIN","SUPER_ADMIN")
+
 				.anyExchange().authenticated()
 				.and().cors().configurationSource(corsConfigurationSource())
 				.and().cors().configurationSource(corsConfigurationSource())

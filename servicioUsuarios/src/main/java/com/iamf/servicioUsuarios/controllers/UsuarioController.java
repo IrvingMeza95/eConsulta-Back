@@ -82,4 +82,10 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.getTipoPersona(param));
     }
 
+    @PutMapping("/modificar-roles/{email}")
+    public ResponseEntity<ResponseMessage> modificarRoles(@PathVariable String email,
+            @RequestBody List<Long> rolesIds) throws MyException {
+        return ResponseEntity.ok(usuarioService.modificarRoles(email,rolesIds));
+    }
+
 }

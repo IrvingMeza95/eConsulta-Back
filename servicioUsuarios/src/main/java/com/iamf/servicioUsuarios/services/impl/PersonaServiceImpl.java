@@ -9,6 +9,7 @@ import com.iamf.commons.models.Persona;
 import com.iamf.servicioUsuarios.dtos.RegistroDTO;
 import com.iamf.servicioUsuarios.services.interfaces.PersonaService;
 import com.iamf.servicioUsuarios.services.interfaces.UsuarioService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,7 @@ public class PersonaServiceImpl implements PersonaService    {
         usuarioService.guardar(persona.getCredenciales());
     }
 
+    @Transactional
     @Override
     public void modificar(Persona personaActual, PersonaDTO nuevaPersona) throws MyException {
         if (nuevaPersona.getCredenciales() != null)

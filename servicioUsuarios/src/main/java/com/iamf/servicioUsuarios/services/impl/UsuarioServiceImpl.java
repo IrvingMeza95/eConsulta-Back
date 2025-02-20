@@ -3,16 +3,20 @@ package com.iamf.servicioUsuarios.services.impl;
 import com.iamf.commons.dtos.RequestDTO;
 import com.iamf.commons.dtos.UsuarioDTO;
 import com.iamf.commons.enums.NivelDeVerificacion;
+import com.iamf.commons.enums.Roles;
 import com.iamf.commons.enums.TipoPersona;
 import com.iamf.commons.enums.TiposDePlantillas;
 import com.iamf.commons.exceptions.MyException;
 import com.iamf.commons.models.Persona;
+import com.iamf.commons.models.Role;
 import com.iamf.commons.models.Usuario;
+import com.iamf.commons.responses.ResponseMessage;
 import com.iamf.commons.utils.EmailUtils;
-import com.iamf.commons.utils.ServicioVerificacionUtils;
 import com.iamf.servicioUsuarios.clientes.ServicioVerificacion;
 import com.iamf.servicioUsuarios.repositories.UsuarioRepo;
+import com.iamf.servicioUsuarios.services.interfaces.RoleService;
 import com.iamf.servicioUsuarios.services.interfaces.UsuarioService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,15 +38,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepo usuarioRepo;
     @Autowired
     private ServicioVerificacion servicioVerificacion;
+    @Autowired
+    private RoleService roleService;
 
     @Override
     public Usuario crear(Usuario usuario) throws MyException {
-//        if (usuario.getPassword() == null || usuario.getPassword().equals(""))
-//            throw new MyException("La contraseña no puede ser nula.");
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        usuario.setPassword(encoder.encode(usuario.getPassword()));
         usuario.setUsername(usuario.getEmail());
-//        usuario.setCodigoDeVerificacion(ServicioVerificacionUtils.codigoDeVerificacion());
+        Role role = roleService.getRole(Roles.ROLE_USER.name());
+        usuario.getRoles().add(role);
         return guardar(usuario);
     }
 
@@ -67,6 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuario.getPersona();
     }
 
+    @Transactional
     @Override
     public Usuario modificar(String paramUsuario, UsuarioDTO nuevoUsuario) throws MyException {
         Usuario usuario = getUsuario(paramUsuario);
@@ -74,8 +79,6 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setCodigoDeLlamada(nuevoUsuario.getCodigoDeLlamada());
         if (nuevoUsuario.getCelular() != null)
             usuario.setCelular(nuevoUsuario.getCelular());
-        if (nuevoUsuario.getRoles() != null)
-            usuario.setRoles(nuevoUsuario.getRoles());
         if (nuevoUsuario.getEnabled() != null)
             usuario.setEnabled(nuevoUsuario.getEnabled());
         if (nuevoUsuario.getIntentos() != null)
@@ -257,6 +260,35 @@ public class UsuarioServiceImpl implements UsuarioService {
         eliminarCodigoDeVerificacion(usuario);
         usuarioRepo.cambiarEmailVerificado(true,param);
         cambiarNivelDeVerificacion(usuario,NivelDeVerificacion.BASICO);
+    }
+
+    @Override
+    public void eliminarRolee(String id) {
+        log.info("Eliminando los roles del usuario con id " + id);
+        usuarioRepo.eliminarRolesDeUsuario(id);
+    }
+
+    @Transactional
+    @Override
+    public ResponseMessage modificarRoles(String email, List<Long> rolesIds) throws MyException {
+        log.info("Se modificaran los roles del usuario con email " + email);
+        Usuario usuario = getUsuario(email);
+        eliminarRolee(usuario.getId());
+        List<Role> nuevosRoles = rolesIds.stream().map(id -> {
+            Role rol  = null;
+            try {
+                rol = roleService.getRole(id);
+            } catch (MyException e) {
+                log.error(e.getMessage());
+                throw new RuntimeException(e);
+            }
+            return rol;
+        }).toList();
+        for (Role r : nuevosRoles){
+            usuarioRepo.agregarRolAUsuario(usuario.getId(), r.getId());
+            log.info("Se agrego rol con id " + r.getId());
+        }
+        return new ResponseMessage("Se han modificado los roles del usuario con email " + email + " correctamente.");
     }
 
 }

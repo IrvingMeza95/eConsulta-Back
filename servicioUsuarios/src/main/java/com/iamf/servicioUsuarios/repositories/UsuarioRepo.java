@@ -36,4 +36,11 @@ public interface UsuarioRepo extends JpaRepository<Usuario, String> {
     @Transactional
     @Query("UPDATE Usuario u SET u.celularVerificado = ?1 WHERE u.email = ?2")
     Integer cambiarCelularVerificado(Boolean estatus, String email);
+    @Modifying
+    @Query(value = "DELETE FROM roles_de_usuario WHERE usuario_id = ?1", nativeQuery = true)
+    void eliminarRolesDeUsuario(String usuarioId);
+    @Modifying
+    @Query(value = "INSERT INTO roles_de_usuario (usuario_id, rol_id) VALUES (?1, ?2)", nativeQuery = true)
+    void agregarRolAUsuario(String usuarioId, Long roleId);
+
 }
