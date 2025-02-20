@@ -69,16 +69,20 @@ public class AuthenticationSuccessErrorHandler implements AuthenticationEventPub
 			log.info("Dispositivo: " + dispositivo);
 
 			//Correo de nuevo inicio de sesion
-//			RequestDTO requestDTO = RequestDTO.builder()
-//					.to(usuario.getEmail())
-//					.username(usuario.getUsername())
-//					.subject("Nuevo inicio de sesión.")
-//					.template(TiposDePlantillas.NUEVO_INICIO_DE_SESION.name())
-//					.fecha(fechaHora)
-//					.ubicacion(ubicacion)
-//					.dispositivo(dispositivo)
-//					.build();
-//			servicioVerificacion.sendEmail(requestDTO);
+			RequestDTO requestDTO = RequestDTO.builder()
+					.to(usuario.getEmail())
+					.username(usuario.getUsername())
+					.subject("Nuevo inicio de sesión.")
+					.template(TiposDePlantillas.NUEVO_INICIO_DE_SESION.name())
+					.fecha(fechaHora)
+					.ubicacion(ubicacion)
+					.dispositivo(dispositivo)
+					.build();
+			try{
+				servicioVerificacion.sendEmail(requestDTO);
+			}catch (RuntimeException e){
+				log.error(e.getMessage());
+			}
 		}
 	}
 
