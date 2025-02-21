@@ -36,8 +36,9 @@ public class SpringSecurityConfig {
 
 				.pathMatchers(HttpMethod.POST,"/api/usuarios/persona").permitAll()
 
-				.pathMatchers(HttpMethod.GET,"/api/usuarios/persona/**", "/api/files/**", "/api/chats/**")
-				.hasAnyRole("ADMIN","USER","SUPER_ADMIN")
+				.pathMatchers(HttpMethod.GET,"/api/usuarios/persona/**", "/api/files/**", "/api/chats/**",
+						 "/api/consultas/consultas/**", "/api/consultas/servicios/**","/api/consultas/paquetes/**"
+						,"/api/consultas/tipos-de-servicios/**").hasAnyRole("ADMIN","USER","SUPER_ADMIN")
 
 				.pathMatchers(HttpMethod.GET,"/api/usuarios/roles").hasAnyRole("ADMIN","SUPER_ADMIN")
 
