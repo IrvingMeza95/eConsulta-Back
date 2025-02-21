@@ -44,8 +44,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario crear(Usuario usuario) throws MyException {
         usuario.setUsername(usuario.getEmail());
+        List<Role> roles = new ArrayList<>();
         Role role = roleService.getRole(Roles.ROLE_USER.name());
-        usuario.getRoles().add(role);
+        roles.add(role);
+        usuario.setRoles(roles);
         return guardar(usuario);
     }
 
