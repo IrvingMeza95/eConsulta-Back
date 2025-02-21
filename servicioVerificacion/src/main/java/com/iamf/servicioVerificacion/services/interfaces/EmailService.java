@@ -9,7 +9,7 @@ public interface EmailService {
     ResponseEntity<?> sendMessage(RequestDTO request);
     ResponseEntity<?> codigoDeVerificacionDeCorreo(RequestDTO request, UsuarioDTO usuarioDTO, Integer codigo) throws MyException;
     ResponseEntity<?> codigoDeVerificacion2Factores(RequestDTO request, UsuarioDTO usuarioDTO, Integer codigo) throws MyException;
-    ResponseEntity<?> nuevoLogin(RequestDTO request) throws MyException;
+    ResponseEntity<?> nuevoLogin(RequestDTO request, UsuarioDTO usuario) throws MyException;
     ResponseEntity<?> emailDeBienvenida(RequestDTO request) throws MyException;
     ResponseEntity<?> correoRecuperacionPassword(RequestDTO request, UsuarioDTO usuarioDTO, Integer codigo) throws MyException;
     ResponseEntity<?> enviarArchivo(RequestDTO request) throws MyException;

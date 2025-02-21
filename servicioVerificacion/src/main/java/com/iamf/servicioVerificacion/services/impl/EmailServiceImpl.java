@@ -161,13 +161,13 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public ResponseEntity<?> nuevoLogin(RequestDTO request) throws MyException {
+    public ResponseEntity<?> nuevoLogin(RequestDTO request, UsuarioDTO usuario) throws MyException {
         log.info("Preparando plantilla " + request.getTemplate());
         TiposDePlantillas.validarExistencia(request.getTemplate());
         request.setMetaData(new ArrayList<MetaData>());
         request.getMetaData().add(MetaData.builder()
                 .key("nombreUsuario")
-                .value(request.getUsername())
+                .value(usuario.getNombre() + " " + usuario.getApellido())
                 .build());
         request.getMetaData().add(MetaData.builder()
                 .key("fechaHora")
