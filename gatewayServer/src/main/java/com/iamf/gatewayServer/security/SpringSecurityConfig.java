@@ -36,6 +36,9 @@ public class SpringSecurityConfig {
 
 				.pathMatchers(HttpMethod.POST,"/api/usuarios/persona").permitAll()
 
+				.pathMatchers(HttpMethod.POST,"/api/consultas/consultas")
+				.hasAnyRole("USER","ADMIN","SUPER_ADMIN")
+
 				.pathMatchers(HttpMethod.GET,"/api/usuarios/persona/**", "/api/files/**", "/api/chats/**",
 						 "/api/consultas/consultas/**", "/api/consultas/servicios/**","/api/consultas/paquetes/**"
 						,"/api/consultas/tipos-de-servicios/**").hasAnyRole("ADMIN","USER","SUPER_ADMIN")
@@ -47,10 +50,10 @@ public class SpringSecurityConfig {
 
 				.pathMatchers(HttpMethod.PUT,"api/usuarios/usuarios/**","/api/usuarios/medicos/**").hasRole("SUPER_ADMIN")
 
-				.pathMatchers("/api/consultas/reportes/**")
+				.pathMatchers("/api/consultas/**")
 				.hasRole("SUPER_ADMIN")
 
-				.pathMatchers("/api/usuarios/usuarios/**","/api/consultas/**")
+				.pathMatchers("/api/usuarios/usuarios/**")
 				.hasAnyRole("ADMIN","SUPER_ADMIN")
 
 				.anyExchange().authenticated()
