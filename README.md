@@ -33,11 +33,41 @@ el trabajo en equipo, replicando un entorno lo más parecido posible al mundo re
     - [Github](https://github.com/martinsosafer)
     - [Linkedin](https://www.linkedin.com/in/mart%C3%ADn-fernandez-53917b245/)
 
-## 🚀 Configuración e Instalación
+## ⚙️ Gestión de Configuración
 
-Este proyecto se ejecuta mediante microservicios en Spring Boot y requiere de una infraestructura definida en Docker Compose.  
-Para conocer más detalles sobre cómo desplegarlo con Docker Compose, visita el siguiente repositorio:
+Este proyecto utiliza un **servidor de configuración centralizado** basado en **Spring Cloud Config Server**, el cual se encarga de gestionar 
+las propiedades y parámetros de todos los microservicios de forma externa.
 
-📌 [Repositorio Docker-Compose](https://github.com/IrvingMeza95/eConsulta-API.git)
+### 📌 Repositorio de Configuración
+Toda la configuración se encuentra almacenada en el siguiente repositorio:
+
+🔗 [eConsulta-Back-Configs](https://github.com/IrvingMeza95/eConsulta-Back-Configs.git)
+
+Los microservicios obtienen su configuración desde este servidor, lo que permite:
+- ✅ Mantener la configuración separada del código.
+- ✅ Aplicar cambios en caliente sin necesidad de redeploys.
+- ✅ Centralizar y versionar las propiedades del sistema.
+
+### 🔧 Configuración en los Microservicios
+Cada microservicio está configurado para obtener sus propiedades desde el servidor de configuración mediante la siguiente URL:
+
+```plaintext
+http://config-server:8888/{application}/{profile}
+```
+
+Donde:
+- `{application}` es el nombre del microservicio.
+- `{profile}` es el entorno de configuración (`dev`, `qa`, `prod`, etc.).
+
+Por ejemplo, para el servicio `servicioConsultas` en entorno de desarrollo:
+
+```plaintext
+http://config-server:8888/servicioConsultas/dev
+```
+
+### 🚀 Cómo Ejecutarlo
+El servidor de configuración se despliega junto con los demás microservicios en Docker Compose. Para más detalles sobre cómo iniciar el sistema, revisa el repositorio correspondiente:
+
+🔗 [Repositorio Docker-Compose](https://github.com/tu-org/docker-compose-repo)
 
 Ahí encontrarás instrucciones sobre cómo iniciar los servicios y sus configuraciones específicas.
